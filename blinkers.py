@@ -1,6 +1,14 @@
 #!/usr/bin/python2.6
 #Spencer Krum
 #LED Teensy Experiments
+#\x00 is B7
+#\x01 is D0
+#\x02 is B5
+#\x03 is B6
+#\x04 is B4
+#\x05 is D1
+#\x06 is C6
+#\x07 is C5
 
 import serial, sys, time
 
