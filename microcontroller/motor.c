@@ -162,25 +162,88 @@ void handle_sensor_query(uint8_t port)
            }
 			break;
 		case 2:
-			OCR1A = val;
+            adc_start(ADC_MUX_PIN_F2, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		case 3:
-			OCR1B = val;
+            adc_start(ADC_MUX_PIN_F3, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		case 4:
-			OCR2A = val;
+            adc_start(ADC_MUX_PIN_F4, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		case 5:
-			OCR2B = val;
+            adc_start(ADC_MUX_PIN_F5, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		case 6:
-			OCR3A = val;
+            adc_start(ADC_MUX_PIN_F6, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		case 7:
-			OCR3B = val;
+            adc_start(ADC_MUX_PIN_F7, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		case 8:
-			OCR3C = val;
+            adc_start(ADC_MUX_PIN_F8, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
 			break;
 		default:
 			usb_serial_putchar('\x01');
