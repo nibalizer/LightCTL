@@ -41,13 +41,12 @@
 
 
 # Target file name (without extension).
-TARGET = motor
+TARGET = analog_sensing
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC =	motor.c \
-	usb_serial.c \
-	sampling.c
+SRC =	analog.c \
+	analog.h \
 
 
 # MCU name, you MUST set this to match the board you are using

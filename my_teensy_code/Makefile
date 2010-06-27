@@ -41,14 +41,14 @@
 
 
 # Target file name (without extension).
-TARGET = motor
+TARGET = teensy
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC =	motor.c \
-	usb_serial.c \
-	sampling.c
-
+SRC =	$(TARGET).c \
+	usb_debug_only.c \
+	print.c\
+	analog.c
 
 # MCU name, you MUST set this to match the board you are using
 # type "make clean" after changing this, so all files will be rebuilt
