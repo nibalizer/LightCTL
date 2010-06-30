@@ -20,27 +20,53 @@
 
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <avr/interrupt.h>
 #include <stdint.h>
 #include <util/delay.h>
 #include "usb_serial.h"
-#include "sampling.h"
 
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
-#define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))
 
+#define START_ADC ADCSRA |= (1 << ADSC);
+
+#define ADC_COMPLETE (ADCSRA & (1 << ADIF))
 
 void send_str(const char *s);
 uint8_t recv_str(char *buf, uint8_t size);
 void parse_and_execute_command(const char *buf, uint8_t num);
 
+uint8_t adcl_vals[8];
+uint8_t adch_vals[8];
+uint8_t cur_adc_mux;
+
+void set_adc_port(uint8_t port)
+{
+	ADMUX = (1 << REFS1) | (1 << REFS0);
+	ADMUX |= port;
+}
+
+void setup_adc(void)
+{
+	uint8_t i;
+
+	for(i = 0;i < 8;i++)
+	{
+		adcl_vals[i] = 0;
+		adch_vals[i] = 0;
+	}
+
+	cur_adc_mux = 3;
+
+	// Set ref voltage / MUX
+	ADMUX = (1 << REFS1) | (1 << REFS0) | (1 << MUX1) | (1 << MUX0);
+	ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
+	ADCSRB = (1 << ADTS2) | (1 << ADTS1);
+
+	// Digital disable (do this to all pins with analog signal applied to them)
+}
+
 void set_default_duty_cycles(void)
 {
-	OCR0A = 0x00;
-	OCR0B = 0x00;
-
-	OCR2A = 0x00;
-	OCR2B = 0x00;
-
 	OCR1AH = 0x00;
 	OCR1AL = 0x00; // Register used by 8bit pwm
 	OCR1BH = 0x00;
@@ -54,197 +80,85 @@ void set_default_duty_cycles(void)
 	OCR3BL = 0x00; // Register used by 8bit pwm
 	OCR3CH = 0x00;
 	OCR3CL = 0x00; // Register used by 8bit pwm
-
-	set_default_duty_cycles();
 }
 
 void setup_pwms(void)
 {
-	// Timer 0
+	// Timer 1
 	// Set ports to output
-	DDRB |= (1 << DDB4) | (1 << DDB5) | (1 << DDB6) | (1 << DDB7);
-//	DDRC |= (1 << DDC4) | (1 << DDC5) | (1 << DDC6);
-	DDRD |= (1 << DDD0) | (1 << DDD1);
+	DDRB = (1 << DDB5) | (1 << DDB6) | (1 << DDB7);
+	DDRC = (1 << DDC4) | (1 << DDC5) | (1 << DDC6);
 
-	TCCR0A = (1 << COM0A1) | (1 << COM0B1) | (1 << WGM00) | (1 << WGM01);
-	TCCR0B = (1 << CS00);
+	OCR1A = 0;
+	OCR1B = 0;
+	OCR1C = 0;
 
-	TCCR2A = (1 << COM2A1) | (1 << COM2B1) | (1 << WGM20) | (1 << WGM21);
-	TCCR2B = (1 << CS20);
+	TCCR1A= (1<<COM1A1) | (1 << COM1B1) | (1 << COM1C1);
+	TCCR1B=0x12;
+	TCNT1H=0x00;
+	TCNT1L=0x00;
 
-	TCCR1A = (1 << COM1A1) | (1 << COM1B1) | (1 << WGM10);
-	TCCR1B = (1 << WGM12) | (1 << CS10);
-	TCCR1C = 0;
+	OCR3A = 0;
+	OCR3B = 0;
+	OCR3C = 0;
 
-	TCCR3A = (1 << COM3A1) | (1 << COM3B1) | (1 << WGM30);
-	TCCR3B = (1 << WGM32) | (1 << CS30);
-	TCCR3C = 0;
+	TCCR3A= (1<<COM3A1) | (1 << COM3B1) | (1 << COM3C1);
+	TCCR3B=0x12;
+	TCNT3H=0x00;
+	TCNT3L=0x00;
+
+	// 50hz
+	ICR1=20000;
+	ICR3=20000;
+}
+
+void handle_query_pwm_command(uint8_t port)
+{
+	// TODO
 }
 
 /**
  * @breif Handle a set pwm command
  */
-
-void handle_set_pwm_command(uint8_t port, uint8_t val)
+void handle_set_pwm_command(uint8_t port, uint8_t vall, uint8_t valh)
 {
 	usb_serial_putchar('\x04');
 	usb_serial_putchar(port);
 	switch(port)
 	{
 		case 0:
-			OCR0A = val;
+			OCR1AH = valh;
+			OCR1AL = vall;
 			break;
 		case 1:
-			OCR0B = val;
+			OCR1BH = valh;
+			OCR1BL = vall;
 			break;
 		case 2:
-			OCR1A = val;
+			OCR1CH = valh;
+			OCR1CL = vall;
 			break;
 		case 3:
-			OCR1B = val;
+			OCR3AH = valh;
+			OCR3AL = vall;
 			break;
 		case 4:
-			OCR2A = val;
+			OCR3BH = valh;
+			OCR3BL = vall;
 			break;
 		case 5:
-			OCR2B = val;
+			OCR3CH = valh;
+			OCR3CL = vall;
 			break;
-		case 6:
-			OCR3A = val;
-			break;
-		case 7:
-			OCR3B = val;
-			break;
-		case 8:
-			OCR3C = val;
-			break;
-		default:
-			usb_serial_putchar('\x01');
-			usb_serial_putchar('\n');
-			return;
 	}
 	usb_serial_putchar('\x00');
 	usb_serial_putchar('\n');
 }
 
-void handle_sensor_query(uint8_t port)
-{
-	int i;
-    uint16_t val;
-    char buf[4];
-    int readings = 10;
-    usb_serial_putchar('\x07');
-	usb_serial_putchar(port);
-	switch(port)
-	{
-		case 0:
-            
-            adc_start(ADC_MUX_PIN_F0, ADC_REF_POWER);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 1:
-			adc_start(ADC_MUX_PIN_F1, ADC_REF_POWER);
-           _delay_ms(500); 
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 2:
-            adc_start(ADC_MUX_PIN_F2, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 3:
-            adc_start(ADC_MUX_PIN_F3, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 4:
-            adc_start(ADC_MUX_PIN_F4, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 5:
-            adc_start(ADC_MUX_PIN_F5, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 6:
-            adc_start(ADC_MUX_PIN_F6, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 7:
-            adc_start(ADC_MUX_PIN_F7, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		default:
-			usb_serial_putchar('\x01');
-			usb_serial_putchar('\n');
-			return;
-	}
-	usb_serial_putchar('\x00');
-	usb_serial_putchar('\n');
-}
 void handle_version_command(void)
 {
 	usb_serial_putchar('\x00');
-	send_str(PSTR("Motor Controller 1.0\n"));
+	send_str(PSTR("Arm Controller 1.0\n"));
 }
 
 void handle_ping_command(const char *str, uint8_t len)
@@ -270,6 +184,25 @@ void handle_pwm_ports_command(void)
 	send_str(PSTR("\x01\x02\x03\x04\x05\x06\x07\x08\n"));
 }
 
+void handle_adc_ports_command(void)
+{
+	usb_serial_putchar("\x06\x03\n");
+}
+
+void handle_query_adc_command(uint8_t port)
+{
+	START_ADC;
+	while(!ADC_COMPLETE);
+	uint8_t ah, al;
+	ah = ADCL;
+	al = ADCH;
+	usb_serial_putchar('\x07');
+	usb_serial_putchar('\x03');
+	usb_serial_putchar(ah);
+	usb_serial_putchar(al);
+	usb_serial_putchar('\n');
+}
+
 void handle_command(const char *str, uint8_t len)
 {
 	if(len == 0)
@@ -287,11 +220,17 @@ void handle_command(const char *str, uint8_t len)
 			handle_pwm_ports_command();
 			break;
 		case 4:
-			handle_set_pwm_command(str[1], str[2]);
+			handle_set_pwm_command(str[1], str[2], str[3]);
 			break;
-        case 7:
-            handle_sensor_query(str[1]);
-            break;
+		case 5:
+			handle_query_pwm_command(str[1]);
+			break;
+		case 6:
+			handle_adc_ports_command();
+			break;
+		case 7:
+			handle_query_adc_command(str[1]);
+			break;
 		default:
 			send_str(PSTR("INVALID_COMMAND_CODE"));
 	}
@@ -302,8 +241,9 @@ int main(void)
 	char buf[32];
 	uint8_t n;
 
-	CPU_PRESCALE(2);
+	CPU_PRESCALE(0);
 	setup_pwms();
+	setup_adc();
 
 	usb_init();
 	while (!usb_configured()) /* wait */ ;

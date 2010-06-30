@@ -1,3 +1,8 @@
+#define FILE_ID_STR "[ motor.c ] sk, 2010-06-28,17:11"
+
+#define COMPILED_MSG "file: " __FILE__ " compiled : " __DATE__ ", "__TIME__
+
+//#############################################################
 /* 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,6 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+//#############################################################
 
 #include <avr/io.h>
 #include <avr/pgmspace.h>
@@ -25,13 +31,17 @@
 #include "usb_serial.h"
 #include "sampling.h"
 
+//#############################################################
+
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))
 
 
-void send_str(const char *s);
+void send_PSTR(const char *s);
 uint8_t recv_str(char *buf, uint8_t size);
 void parse_and_execute_command(const char *buf, uint8_t num);
+
+//#############################################################
 
 void set_default_duty_cycles(void)
 {
@@ -57,13 +67,14 @@ void set_default_duty_cycles(void)
 
 	set_default_duty_cycles();
 }
+//#############################################################
 
 void setup_pwms(void)
 {
 	// Timer 0
 	// Set ports to output
 	DDRB |= (1 << DDB4) | (1 << DDB5) | (1 << DDB6) | (1 << DDB7);
-//	DDRC |= (1 << DDC4) | (1 << DDC5) | (1 << DDC6);
+	DDRC |= (1 << DDC4) | (1 << DDC5) | (1 << DDC6);
 	DDRD |= (1 << DDD0) | (1 << DDD1);
 
 	TCCR0A = (1 << COM0A1) | (1 << COM0B1) | (1 << WGM00) | (1 << WGM01);
@@ -80,6 +91,7 @@ void setup_pwms(void)
 	TCCR3B = (1 << WGM32) | (1 << CS30);
 	TCCR3C = 0;
 }
+//#############################################################
 
 /**
  * @breif Handle a set pwm command
@@ -126,6 +138,7 @@ void handle_set_pwm_command(uint8_t port, uint8_t val)
 	usb_serial_putchar('\x00');
 	usb_serial_putchar('\n');
 }
+//#############################################################
 
 void handle_sensor_query(uint8_t port)
 {
@@ -133,13 +146,16 @@ void handle_sensor_query(uint8_t port)
     uint16_t val;
     char buf[4];
     int readings = 10;
+
     usb_serial_putchar('\x07');
-	usb_serial_putchar(port);
+    usb_serial_putchar(port);
+
 	switch(port)
 	{
 		case 0:
             
             adc_start(ADC_MUX_PIN_F0, ADC_REF_POWER);
+           _delay_ms(500); 
             for(i=1;i<readings;i++){
                 val = adc_read();
                 buf[0] = HEX((val >> 8) & 15);
@@ -233,19 +249,37 @@ void handle_sensor_query(uint8_t port)
 	        	usb_serial_write((unsigned char *)buf, 4);
            }
 			break;
+#if 0
+		case 8:
+            adc_start(ADC_MUX_PIN_F8, ADC_REF_POWER);
+            _delay_ms(500);
+            for(i=1;i<readings;i++){
+                val = adc_read();
+                buf[0] = HEX((val >> 8) & 15);
+                buf[1] = HEX((val >> 4) & 15);
+                buf[2] = HEX(val & 15);
+                buf[3] = ' ';
+	        	usb_serial_write((unsigned char *)buf, 4);
+           }
+			break;
+
+#endif
 		default:
 			usb_serial_putchar('\x01');
 			usb_serial_putchar('\n');
 			return;
 	}
-	usb_serial_putchar('\x00');
+//	usb_serial_putchar('\x00');
 	usb_serial_putchar('\n');
 }
+//#############################################################
+
 void handle_version_command(void)
 {
-	usb_serial_putchar('\x00');
-	send_str(PSTR("Motor Controller 1.0\n"));
+//	usb_serial_putchar('\x00');
+	send_PSTR(PSTR("Wamser Lamp Controller 1.0\n"));
 }
+//#############################################################
 
 void handle_ping_command(const char *str, uint8_t len)
 {
@@ -254,7 +288,7 @@ void handle_ping_command(const char *str, uint8_t len)
 
 	data_itr = str;
 
-	usb_serial_putchar('\x02');
+//	usb_serial_putchar('\x02');
 	while(ndx < len)
 	{
 		usb_serial_putchar(data_itr[ndx]);
@@ -262,19 +296,63 @@ void handle_ping_command(const char *str, uint8_t len)
 	}
 	usb_serial_putchar('\n');
 }
+//#############################################################
 
 void handle_pwm_ports_command(void)
 {
 	usb_serial_putchar('\x03');
 	usb_serial_putchar('\x00');
-	send_str(PSTR("\x01\x02\x03\x04\x05\x06\x07\x08\n"));
+	send_PSTR(PSTR("\x01\x02\x03\x04\x05\x06\x07\x08\n"));
 }
+//#############################################################
 
 void handle_command(const char *str, uint8_t len)
 {
-	if(len == 0)
-		return;
+	if( len == 0 )
+            {
+	    send_PSTR( "\r\n"  );
+	    return;
+	    }
+#if 1
+	switch( str[0] )
+	{
+                case '?':
+		case 'h':
+			send_PSTR( FILE_ID_STR      "\r\n" );
+			send_PSTR( COMPILED_MSG     "\r\n" );
+			send_PSTR( PSTR( "v => version"      "\r\n") );
+			send_PSTR(       "g => ping"         "\r\n"  );
+			send_PSTR(       "z => ports"        "\r\n"  );
+			send_PSTR(       "s => set PWM"      "\r\n"  );
+			send_PSTR(       "q => query sensor" "\r\n"  );
+			break;
 
+		case 'v':
+			handle_version_command();
+			break;
+
+		case 'g':
+			handle_ping_command(str, len);
+			break;
+
+		case 'z':
+			handle_pwm_ports_command();
+			break;
+
+		case 's':
+			handle_set_pwm_command(str[1], str[2]);
+			break;
+
+        	case 'q':
+            		handle_sensor_query(str[1]);
+            		break;
+
+		default:
+			send_PSTR(PSTR("INVALID_COMMAND_CODE"));
+			send_PSTR( COMPILED_MSG     "\r\n" );
+			break;
+	}
+#else
 	switch(str[0])
 	{
 		case 0:
@@ -289,13 +367,15 @@ void handle_command(const char *str, uint8_t len)
 		case 4:
 			handle_set_pwm_command(str[1], str[2]);
 			break;
-        case 7:
-            handle_sensor_query(str[1]);
-            break;
+        	case 7:
+            		handle_sensor_query(str[1]);
+            		break;
 		default:
-			send_str(PSTR("INVALID_COMMAND_CODE"));
+			send_PSTR(PSTR("INVALID_COMMAND_CODE"));
 	}
+#endif
 }
+//#############################################################
 
 int main(void)
 {
@@ -322,11 +402,12 @@ int main(void)
 	}
 
 }
+//#############################################################
 
 // Send a string to the USB serial port.  The string must be in
 // flash memory, using PSTR
 //
-void send_str(const char *s)
+void send_PSTR(const char *s)
 {
 	char c;
 	while (1) {
@@ -335,6 +416,7 @@ void send_str(const char *s)
 		usb_serial_putchar(c);
 	}
 }
+//#############################################################
 
 // Receive a string from the USB serial port.  The string is stored
 // in the buffer and this function will not exceed the buffer size.
@@ -366,7 +448,9 @@ uint8_t recv_str(char *buf, uint8_t size)
 	}
 	return count;
 }
+//#############################################################
 
+#if 0
 // parse a user command and execute it, or print an error message
 //
 void parse_and_execute_command(const char *buf, uint8_t num)
@@ -374,7 +458,7 @@ void parse_and_execute_command(const char *buf, uint8_t num)
 	uint8_t port, pin, val;
 
 	if (num < 3) {
-		send_str(PSTR("unrecognized format, 3 chars min req'd\r\n"));
+		send_PSTR(PSTR("unrecognized format, 3 chars min req'd\r\n"));
 		return;
 	}
 	// first character is the port letter
@@ -383,18 +467,18 @@ void parse_and_execute_command(const char *buf, uint8_t num)
 	} else if (buf[0] >= 'a' && buf[0] <= 'f') {
 		port = buf[0] - 'a';
 	} else {
-		send_str(PSTR("Unknown port \""));
+		send_PSTR(PSTR("Unknown port \""));
 		usb_serial_putchar(buf[0]);
-		send_str(PSTR("\", must be A - F\r\n"));
+		send_PSTR(PSTR("\", must be A - F\r\n"));
 		return;
 	}
 	// second character is the pin number
 	if (buf[1] >= '0' && buf[1] <= '7') {
 		pin = buf[1] - '0';
 	} else {
-		send_str(PSTR("Unknown pin \""));
+		send_PSTR(PSTR("Unknown pin \""));
 		usb_serial_putchar(buf[0]);
-		send_str(PSTR("\", must be 0 to 7\r\n"));
+		send_PSTR(PSTR("\", must be 0 to 7\r\n"));
 		return;
 	}
 	// if the third character is a question mark, read the pin
@@ -404,7 +488,7 @@ void parse_and_execute_command(const char *buf, uint8_t num)
 		// read the pin
 		val = *(uint8_t *)(0x20 + port * 3) & (1 << pin);
 		usb_serial_putchar(val ? '1' : '0');
-		send_str(PSTR("\r\n"));
+		send_PSTR(PSTR("\r\n"));
 		return;
 	}
 	// if the third character is an equals sign, write the pin
@@ -422,16 +506,17 @@ void parse_and_execute_command(const char *buf, uint8_t num)
 			*(uint8_t *)(0x22 + port * 3) |= (1 << pin);
 			return;
 		} else {
-			send_str(PSTR("Unknown value \""));
+			send_PSTR(PSTR("Unknown value \""));
 			usb_serial_putchar(buf[3]);
-			send_str(PSTR("\", must be 0 or 1\r\n"));
+			send_PSTR(PSTR("\", must be 0 or 1\r\n"));
 			return;
 		}
 	}
 	// otherwise, error message
-	send_str(PSTR("Unknown command \""));
+	send_PSTR(PSTR("Unknown command \""));
 	usb_serial_putchar(buf[0]);
-	send_str(PSTR("\", must be ? or =\r\n"));
+	send_PSTR(PSTR("\", must be ? or =\r\n"));
 }
-
+#endif
+//#############################################################
 
