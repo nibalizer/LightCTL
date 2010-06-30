@@ -18,6 +18,9 @@
  * THE SOFTWARE.
  */
 
+//mostly written by the guys at pjrc.com and greghaynes
+//updated last by spencer krum krum.spencer@gmail.com
+
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 #include <stdint.h>
@@ -244,7 +247,7 @@ void handle_sensor_query(uint8_t port)
 void handle_version_command(void)
 {
 	usb_serial_putchar('\x00');
-	send_str(PSTR("Motor Controller 1.0\n"));
+	send_str(PSTR("Lamp Controler\n"));
 }
 
 void handle_ping_command(const char *str, uint8_t len)
