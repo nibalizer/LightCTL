@@ -1,3 +1,4 @@
+#!/usr/bin/python2.6
 #Spencer Krum
 #LightCTL
 
@@ -144,27 +145,27 @@ def sensor_readout():
         x.read(2)
         print "t is %f" % t
         if (t < 102):
-            one()
-        elif (t < 204):
-            two()
-        elif (t < 306):
-            three()
-        elif (t < 408):
-            four()
-        elif (t < 510):
-            five()
-        elif (t < 612):
-            six()
-        elif (t < 714):
-            seven()
-        elif (t < 816):
-            eight()
-        elif (t < 918):
-            nine()
-        elif (t < 1023):
             zero()
+        elif (t < 204):
+            one()
+        elif (t < 306):
+            two()
+        elif (t < 408):
+            three()
+        elif (t < 510):
+            four()
+        elif (t < 612):
+            five()
+        elif (t < 714):
+            six()
+        elif (t < 816):
+            seven()
+        elif (t < 918):
+            eight()
+        elif (t < 1023):
+            nine()
 
 
-
+sensor_readout()
 
 

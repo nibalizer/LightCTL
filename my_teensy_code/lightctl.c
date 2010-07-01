@@ -28,6 +28,7 @@
 #include "usb_serial.h"
 #include "sampling.h"
 
+
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))
 
@@ -35,6 +36,87 @@
 void send_str(const char *s);
 uint8_t recv_str(char *buf, uint8_t size);
 void parse_and_execute_command(const char *buf, uint8_t num);
+
+void sensor_display(){
+    uint8_t full = 255;
+    uint8_t off = 0;
+    uint16_t val;
+    while(1){
+        adc_start(ADC_MUX_PIN_F0, ADC_REF_POWER);
+        val = adc_read();
+        if (val < 100){
+            OCR0B = off;
+            OCR1A = off;
+            OCR2A = off;
+            OCR2B = off;
+        }
+        else{
+        if (val < 200){
+            OCR0B = off;
+            OCR1A = off;
+            OCR2A = off;
+            OCR2B = full;
+        }
+        else{
+        if (val < 300){
+            OCR0B = off;
+            OCR1A = off;
+            OCR2A = full;
+            OCR2B = off;
+        }
+        else{
+        if (val < 400){
+            OCR0B = off;
+            OCR1A = off;
+            OCR2A = full;
+            OCR2B = full;
+        }      
+        else{
+        if (val < 500){
+            OCR0B = full;
+            OCR1A = off;
+            OCR2A = off;
+            OCR2B = off;
+        }
+        else{
+        if (val < 600){
+            OCR0B = full;
+            OCR1A = off;
+            OCR2A = off;
+            OCR2B = full;
+        }  
+        else{
+        if (val < 700){
+            OCR0B = full;
+            OCR1A = off;
+            OCR2A = full;
+            OCR2B = off;
+        } 
+        else{
+        if (val < 800){
+            OCR0B = full;
+            OCR1A = off;
+            OCR2A = full;
+            OCR2B = full;
+        } 
+        else{
+        if (val < 900){
+            OCR0B = off;
+            OCR1A = full;
+            OCR2A = off;
+            OCR2B = off;
+        }
+        else{
+        if (val < 1000){
+            OCR0B = off;
+            OCR1A = full;
+            OCR2A = off;
+            OCR2B = full;
+        }
+        }}}}}}}}}}
+
+
+}
 
 void set_default_duty_cycles(void)
 {
@@ -308,21 +390,11 @@ int main(void)
 	CPU_PRESCALE(2);
 	setup_pwms();
 
-	usb_init();
-	while (!usb_configured()) /* wait */ ;
-	_delay_ms(1000);
-
 	while (1){
-		while (!(usb_serial_get_control() & USB_SERIAL_DTR)) /* wait */ ;
-		usb_serial_flush_input();
-
-		while (1) {
-			n = recv_str(buf, sizeof(buf));
-			if (n == 255) break;
-			handle_command(buf, n);
+            sensor_display();
 		}
 		
-	}
+	
 
 }
 

@@ -2041,42 +2041,42 @@
  2252               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 usb_serial.c
-     /tmp/ccC7wFFf.s:2      *ABS*:0000003f __SREG__
-     /tmp/ccC7wFFf.s:3      *ABS*:0000003e __SP_H__
-     /tmp/ccC7wFFf.s:4      *ABS*:0000003d __SP_L__
-     /tmp/ccC7wFFf.s:5      *ABS*:00000034 __CCP__
-     /tmp/ccC7wFFf.s:6      *ABS*:00000000 __tmp_reg__
-     /tmp/ccC7wFFf.s:7      *ABS*:00000001 __zero_reg__
-     /tmp/ccC7wFFf.s:21     .text.usb_init:00000000 usb_init
+     /tmp/ccYmxV3e.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccYmxV3e.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccYmxV3e.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccYmxV3e.s:5      *ABS*:00000034 __CCP__
+     /tmp/ccYmxV3e.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/ccYmxV3e.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/ccYmxV3e.s:21     .text.usb_init:00000000 usb_init
                              .bss:00000000 usb_configuration
-     /tmp/ccC7wFFf.s:1929   .bss:00000001 cdc_line_rtsdtr
-     /tmp/ccC7wFFf.s:66     .text.usb_configured:00000000 usb_configured
-     /tmp/ccC7wFFf.s:81     .text.usb_serial_getchar:00000000 usb_serial_getchar
-     /tmp/ccC7wFFf.s:142    .text.usb_serial_available:00000000 usb_serial_available
-     /tmp/ccC7wFFf.s:178    .text.usb_serial_flush_input:00000000 usb_serial_flush_input
-     /tmp/ccC7wFFf.s:218    .text.usb_serial_putchar:00000000 usb_serial_putchar
-     /tmp/ccC7wFFf.s:1931   .bss:00000003 transmit_previous_timeout
-     /tmp/ccC7wFFf.s:1930   .bss:00000002 transmit_flush_timer
-     /tmp/ccC7wFFf.s:323    .text.usb_serial_putchar_nowait:00000000 usb_serial_putchar_nowait
-     /tmp/ccC7wFFf.s:380    .text.usb_serial_write:00000000 usb_serial_write
-     /tmp/ccC7wFFf.s:1006   .text.usb_serial_flush_output:00000000 usb_serial_flush_output
-     /tmp/ccC7wFFf.s:1043   .text.usb_serial_get_baud:00000000 usb_serial_get_baud
-     /tmp/ccC7wFFf.s:1948   .data:00000000 cdc_line_coding
-     /tmp/ccC7wFFf.s:1061   .text.usb_serial_get_stopbits:00000000 usb_serial_get_stopbits
-     /tmp/ccC7wFFf.s:1075   .text.usb_serial_get_paritytype:00000000 usb_serial_get_paritytype
-     /tmp/ccC7wFFf.s:1089   .text.usb_serial_get_numbits:00000000 usb_serial_get_numbits
-     /tmp/ccC7wFFf.s:1103   .text.usb_serial_get_control:00000000 usb_serial_get_control
-     /tmp/ccC7wFFf.s:1117   .text.usb_serial_set_control:00000000 usb_serial_set_control
-     /tmp/ccC7wFFf.s:1187   .text.__vector_10:00000000 __vector_10
-     /tmp/ccC7wFFf.s:1271   .text.__vector_11:00000000 __vector_11
-     /tmp/ccC7wFFf.s:1904   .progmem.data:00000000 descriptor_list
-     /tmp/ccC7wFFf.s:1934   .progmem.data:0000002a endpoint_config_table
-     /tmp/ccC7wFFf.s:1960   .progmem.data:00000034 device_descriptor
-     /tmp/ccC7wFFf.s:1981   .progmem.data:00000046 config1_descriptor
-     /tmp/ccC7wFFf.s:2051   .progmem.data:00000089 string0
-     /tmp/ccC7wFFf.s:2057   .progmem.data:0000008d string1
-     /tmp/ccC7wFFf.s:2073   .progmem.data:000000a3 string2
-     /tmp/ccC7wFFf.s:2090   .progmem.data:000000bb string3
+     /tmp/ccYmxV3e.s:1929   .bss:00000001 cdc_line_rtsdtr
+     /tmp/ccYmxV3e.s:66     .text.usb_configured:00000000 usb_configured
+     /tmp/ccYmxV3e.s:81     .text.usb_serial_getchar:00000000 usb_serial_getchar
+     /tmp/ccYmxV3e.s:142    .text.usb_serial_available:00000000 usb_serial_available
+     /tmp/ccYmxV3e.s:178    .text.usb_serial_flush_input:00000000 usb_serial_flush_input
+     /tmp/ccYmxV3e.s:218    .text.usb_serial_putchar:00000000 usb_serial_putchar
+     /tmp/ccYmxV3e.s:1931   .bss:00000003 transmit_previous_timeout
+     /tmp/ccYmxV3e.s:1930   .bss:00000002 transmit_flush_timer
+     /tmp/ccYmxV3e.s:323    .text.usb_serial_putchar_nowait:00000000 usb_serial_putchar_nowait
+     /tmp/ccYmxV3e.s:380    .text.usb_serial_write:00000000 usb_serial_write
+     /tmp/ccYmxV3e.s:1006   .text.usb_serial_flush_output:00000000 usb_serial_flush_output
+     /tmp/ccYmxV3e.s:1043   .text.usb_serial_get_baud:00000000 usb_serial_get_baud
+     /tmp/ccYmxV3e.s:1948   .data:00000000 cdc_line_coding
+     /tmp/ccYmxV3e.s:1061   .text.usb_serial_get_stopbits:00000000 usb_serial_get_stopbits
+     /tmp/ccYmxV3e.s:1075   .text.usb_serial_get_paritytype:00000000 usb_serial_get_paritytype
+     /tmp/ccYmxV3e.s:1089   .text.usb_serial_get_numbits:00000000 usb_serial_get_numbits
+     /tmp/ccYmxV3e.s:1103   .text.usb_serial_get_control:00000000 usb_serial_get_control
+     /tmp/ccYmxV3e.s:1117   .text.usb_serial_set_control:00000000 usb_serial_set_control
+     /tmp/ccYmxV3e.s:1187   .text.__vector_10:00000000 __vector_10
+     /tmp/ccYmxV3e.s:1271   .text.__vector_11:00000000 __vector_11
+     /tmp/ccYmxV3e.s:1904   .progmem.data:00000000 descriptor_list
+     /tmp/ccYmxV3e.s:1934   .progmem.data:0000002a endpoint_config_table
+     /tmp/ccYmxV3e.s:1960   .progmem.data:00000034 device_descriptor
+     /tmp/ccYmxV3e.s:1981   .progmem.data:00000046 config1_descriptor
+     /tmp/ccYmxV3e.s:2051   .progmem.data:00000089 string0
+     /tmp/ccYmxV3e.s:2057   .progmem.data:0000008d string1
+     /tmp/ccYmxV3e.s:2073   .progmem.data:000000a3 string2
+     /tmp/ccYmxV3e.s:2090   .progmem.data:000000bb string3
 
 UNDEFINED SYMBOLS
 __do_copy_data

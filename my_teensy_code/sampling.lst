@@ -188,19 +188,19 @@
  251               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 sampling.c
-     /tmp/ccf0iaOh.s:2      *ABS*:0000003f __SREG__
-     /tmp/ccf0iaOh.s:3      *ABS*:0000003e __SP_H__
-     /tmp/ccf0iaOh.s:4      *ABS*:0000003d __SP_L__
-     /tmp/ccf0iaOh.s:5      *ABS*:00000034 __CCP__
-     /tmp/ccf0iaOh.s:6      *ABS*:00000000 __tmp_reg__
-     /tmp/ccf0iaOh.s:7      *ABS*:00000001 __zero_reg__
-     /tmp/ccf0iaOh.s:21     .text.adc_start:00000000 adc_start
+     /tmp/cc8iLJCK.s:2      *ABS*:0000003f __SREG__
+     /tmp/cc8iLJCK.s:3      *ABS*:0000003e __SP_H__
+     /tmp/cc8iLJCK.s:4      *ABS*:0000003d __SP_L__
+     /tmp/cc8iLJCK.s:5      *ABS*:00000034 __CCP__
+     /tmp/cc8iLJCK.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/cc8iLJCK.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/cc8iLJCK.s:21     .text.adc_start:00000000 adc_start
                              .bss:00000000 head
-     /tmp/ccf0iaOh.s:200    .bss:00000001 tail
-     /tmp/ccf0iaOh.s:64     .text.adc_available:00000000 adc_available
-     /tmp/ccf0iaOh.s:94     .text.adc_read:00000000 adc_read
-     /tmp/ccf0iaOh.s:201    .bss:00000002 buffer
-     /tmp/ccf0iaOh.s:140    .text.__vector_29:00000000 __vector_29
+     /tmp/cc8iLJCK.s:200    .bss:00000001 tail
+     /tmp/cc8iLJCK.s:64     .text.adc_available:00000000 adc_available
+     /tmp/cc8iLJCK.s:94     .text.adc_read:00000000 adc_read
+     /tmp/cc8iLJCK.s:201    .bss:00000002 buffer
+     /tmp/cc8iLJCK.s:140    .text.__vector_29:00000000 __vector_29
 
 UNDEFINED SYMBOLS
 __do_copy_data
