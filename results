@@ -1,0 +1,4 @@
+krum@macaroni:~/CollatzConjecture-pdx.edu/cython_iterator$ ./timedrun.py 1000000000
+Mon Jun 28 22:13:04 2010
+(813500443L, 805L)
+
