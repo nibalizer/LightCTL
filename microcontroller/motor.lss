@@ -21,15 +21,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_abbrev 0000049a  00000000  00000000  00003031  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00001717  00000000  00000000  000034cb  2**0
+  9 .debug_line   00001720  00000000  00000000  000034cb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000240  00000000  00000000  00004be4  2**2
+ 10 .debug_frame  00000240  00000000  00000000  00004bec  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    0000053b  00000000  00000000  00004e24  2**0
+ 11 .debug_str    00000540  00000000  00000000  00004e2c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    00001270  00000000  00000000  0000535f  2**0
+ 12 .debug_loc    00001270  00000000  00000000  0000536c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000150  00000000  00000000  000065cf  2**0
+ 13 .debug_ranges 00000150  00000000  00000000  000065dc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -204,51 +204,51 @@ uint8_t adc_available(void)
      12a:	1f 06       	cpc	r1, r31
      12c:	1c 06       	cpc	r1, r28
 
-0000012e <__c.1657>:
+0000012e <__c.1660>:
      12e:	22 2c 20 6d 75 73 74 20 62 65 20 3f 20 6f 72 20     ", must be ? or 
      13e:	3d 0d 0a 00                                         =...
 
-00000142 <__c.1655>:
+00000142 <__c.1658>:
      142:	55 6e 6b 6e 6f 77 6e 20 63 6f 6d 6d 61 6e 64 20     Unknown command 
      152:	22 00                                               ".
 
-00000154 <__c.1653>:
+00000154 <__c.1656>:
      154:	22 2c 20 6d 75 73 74 20 62 65 20 30 20 6f 72 20     ", must be 0 or 
      164:	31 0d 0a 00                                         1...
 
-00000168 <__c.1651>:
+00000168 <__c.1654>:
      168:	55 6e 6b 6e 6f 77 6e 20 76 61 6c 75 65 20 22 00     Unknown value ".
 
-00000178 <__c.1649>:
+00000178 <__c.1652>:
      178:	0d 0a 00                                            ...
 
-0000017b <__c.1647>:
+0000017b <__c.1650>:
      17b:	22 2c 20 6d 75 73 74 20 62 65 20 30 20 74 6f 20     ", must be 0 to 
      18b:	37 0d 0a 00                                         7...
 
-0000018f <__c.1645>:
+0000018f <__c.1648>:
      18f:	55 6e 6b 6e 6f 77 6e 20 70 69 6e 20 22 00           Unknown pin ".
 
-0000019d <__c.1643>:
+0000019d <__c.1646>:
      19d:	22 2c 20 6d 75 73 74 20 62 65 20 41 20 2d 20 46     ", must be A - F
      1ad:	0d 0a 00                                            ...
 
-000001b0 <__c.1641>:
+000001b0 <__c.1644>:
      1b0:	55 6e 6b 6e 6f 77 6e 20 70 6f 72 74 20 22 00        Unknown port ".
 
-000001bf <__c.1639>:
+000001bf <__c.1642>:
      1bf:	75 6e 72 65 63 6f 67 6e 69 7a 65 64 20 66 6f 72     unrecognized for
      1cf:	6d 61 74 2c 20 33 20 63 68 61 72 73 20 6d 69 6e     mat, 3 chars min
      1df:	20 72 65 71 27 64 0d 0a 00                           req'd...
 
-000001e8 <__c.1574>:
+000001e8 <__c.1577>:
      1e8:	49 4e 56 41 4c 49 44 5f 43 4f 4d 4d 41 4e 44 5f     INVALID_COMMAND_
      1f8:	43 4f 44 45 00                                      CODE.
 
-000001fd <__c.1561>:
+000001fd <__c.1564>:
      1fd:	01 02 03 04 05 06 07 08 0a 00                       ..........
 
-00000207 <__c.1544>:
+00000207 <__c.1547>:
      207:	4d 6f 74 6f 72 20 43 6f 6e 74 72 6f 6c 6c 65 72     Motor Controller
      217:	20 31 2e 30 0a 00                                    1.0..
 

@@ -19,7 +19,7 @@ import sys, time, serial
 
 
 x = serial.Serial('/dev/ttyACM0')
-
+pause = float(sys.argv[1])
 
 def zero():
     x.write('\x04\x01\x00\n')
@@ -129,6 +129,26 @@ def count():
             time.sleep(.5)
 
 
+def highbit():
+	x.write('\x04\x00\xFF\n')
+
+def lowbit():
+	x.write('\x04\x00\x00\n')
+
+
+def display_two():
+	while True:
+		highbit()
+		one()
+		time.sleep(pause)
+		lowbit()
+		two()
+		time.sleep(pause)
+
+		
+
+
+
 def sensor_readout():
     while True:
         t = x.inWaiting()
@@ -166,6 +186,5 @@ def sensor_readout():
             nine()
 
 
-sensor_readout()
 
-
+display_two()

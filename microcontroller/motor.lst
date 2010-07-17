@@ -152,8 +152,8 @@
  166 0008 00F4      		brsh .L11
  167               	.LVL8:
  168               	.LSM39:
- 169 000a 80E0      		ldi r24,lo8(__c.1639)
- 170 000c 90E0      		ldi r25,hi8(__c.1639)
+ 169 000a 80E0      		ldi r24,lo8(__c.1642)
+ 170 000c 90E0      		ldi r25,hi8(__c.1642)
  171 000e 00C0      		rjmp .L24
  172               	.LVL9:
  173               	.L11:
@@ -169,16 +169,16 @@
  183 001c 9630      		cpi r25,lo8(6)
  184 001e 00F0      		brlo .L13
  185               	.LSM42:
- 186 0020 80E0      		ldi r24,lo8(__c.1641)
- 187 0022 90E0      		ldi r25,hi8(__c.1641)
+ 186 0020 80E0      		ldi r24,lo8(__c.1644)
+ 187 0022 90E0      		ldi r25,hi8(__c.1644)
  188 0024 0E94 0000 		call send_str
  189               	.LVL11:
  190               	.LSM43:
  191 0028 8881      		ld r24,Y
  192 002a 0E94 0000 		call usb_serial_putchar
  193               	.LSM44:
- 194 002e 80E0      		ldi r24,lo8(__c.1643)
- 195 0030 90E0      		ldi r25,hi8(__c.1643)
+ 194 002e 80E0      		ldi r24,lo8(__c.1646)
+ 195 0030 90E0      		ldi r25,hi8(__c.1646)
  196 0032 00C0      		rjmp .L24
  197               	.LVL12:
  198               	.L13:
@@ -195,16 +195,16 @@
  209 0042 00C0      		rjmp .L26
  210               	.L14:
  211               	.LSM47:
- 212 0044 80E0      		ldi r24,lo8(__c.1645)
- 213 0046 90E0      		ldi r25,hi8(__c.1645)
+ 212 0044 80E0      		ldi r24,lo8(__c.1648)
+ 213 0046 90E0      		ldi r25,hi8(__c.1648)
  214 0048 0E94 0000 		call send_str
  215               	.LVL14:
  216               	.LSM48:
  217 004c 8881      		ld r24,Y
  218 004e 0E94 0000 		call usb_serial_putchar
  219               	.LSM49:
- 220 0052 80E0      		ldi r24,lo8(__c.1647)
- 221 0054 90E0      		ldi r25,hi8(__c.1647)
+ 220 0052 80E0      		ldi r24,lo8(__c.1650)
+ 221 0054 90E0      		ldi r25,hi8(__c.1650)
  222 0056 00C0      		rjmp .L24
  223               	.LVL15:
  224               	.L26:
@@ -238,8 +238,8 @@
  252 0084 0E94 0000 		call usb_serial_putchar
  253               	.LVL17:
  254               	.LSM52:
- 255 0088 80E0      		ldi r24,lo8(__c.1649)
- 256 008a 90E0      		ldi r25,hi8(__c.1649)
+ 255 0088 80E0      		ldi r24,lo8(__c.1652)
+ 256 008a 90E0      		ldi r25,hi8(__c.1652)
  257 008c 00C0      		rjmp .L24
  258               	.LVL18:
  259               	.L23:
@@ -303,30 +303,30 @@
  317               	.LVL22:
  318               	.L21:
  319               	.LSM60:
- 320 00e8 80E0      		ldi r24,lo8(__c.1651)
- 321 00ea 90E0      		ldi r25,hi8(__c.1651)
+ 320 00e8 80E0      		ldi r24,lo8(__c.1654)
+ 321 00ea 90E0      		ldi r25,hi8(__c.1654)
  322 00ec 0E94 0000 		call send_str
  323               	.LVL23:
  324               	.LSM61:
  325 00f0 8B81      		ldd r24,Y+3
  326 00f2 0E94 0000 		call usb_serial_putchar
  327               	.LSM62:
- 328 00f6 80E0      		ldi r24,lo8(__c.1653)
- 329 00f8 90E0      		ldi r25,hi8(__c.1653)
+ 328 00f6 80E0      		ldi r24,lo8(__c.1656)
+ 329 00f8 90E0      		ldi r25,hi8(__c.1656)
  330 00fa 00C0      		rjmp .L24
  331               	.LVL24:
  332               	.L19:
  333               	.LSM63:
- 334 00fc 80E0      		ldi r24,lo8(__c.1655)
- 335 00fe 90E0      		ldi r25,hi8(__c.1655)
+ 334 00fc 80E0      		ldi r24,lo8(__c.1658)
+ 335 00fe 90E0      		ldi r25,hi8(__c.1658)
  336 0100 0E94 0000 		call send_str
  337               	.LVL25:
  338               	.LSM64:
  339 0104 8881      		ld r24,Y
  340 0106 0E94 0000 		call usb_serial_putchar
  341               	.LSM65:
- 342 010a 80E0      		ldi r24,lo8(__c.1657)
- 343 010c 90E0      		ldi r25,hi8(__c.1657)
+ 342 010a 80E0      		ldi r24,lo8(__c.1660)
+ 343 010c 90E0      		ldi r25,hi8(__c.1660)
  344               	.LVL26:
  345               	.L24:
  346 010e 0E94 0000 		call send_str
@@ -353,8 +353,8 @@
  369 0006 80E0      		ldi r24,lo8(0)
  370 0008 0E94 0000 		call usb_serial_putchar
  371               	.LSM70:
- 372 000c 80E0      		ldi r24,lo8(__c.1561)
- 373 000e 90E0      		ldi r25,hi8(__c.1561)
+ 372 000c 80E0      		ldi r24,lo8(__c.1564)
+ 373 000e 90E0      		ldi r25,hi8(__c.1564)
  374 0010 0E94 0000 		call send_str
  375               	/* epilogue start */
  376               	.LSM71:
@@ -426,8 +426,8 @@
  446 0000 80E0      		ldi r24,lo8(0)
  447 0002 0E94 0000 		call usb_serial_putchar
  448               	.LSM81:
- 449 0006 80E0      		ldi r24,lo8(__c.1544)
- 450 0008 90E0      		ldi r25,hi8(__c.1544)
+ 449 0006 80E0      		ldi r24,lo8(__c.1547)
+ 450 0008 90E0      		ldi r25,hi8(__c.1547)
  451 000a 0E94 0000 		call send_str
  452               	/* epilogue start */
  453               	.LSM82:
@@ -1723,8 +1723,8 @@
  1751               	.LVL151:
  1752               	.L160:
  1753               	.LSM243:
- 1754 004a 80E0      		ldi r24,lo8(__c.1574)
- 1755 004c 90E0      		ldi r25,hi8(__c.1574)
+ 1754 004a 80E0      		ldi r24,lo8(__c.1577)
+ 1755 004c 90E0      		ldi r25,hi8(__c.1577)
  1756 004e 0E94 0000 		call send_str
  1757               	.LVL152:
  1758               	.L167:
@@ -1822,70 +1822,70 @@
  1852 006c 00C0      		rjmp .L174
  1853               	.LFE14:
  1855               		.section	.progmem.data,"a",@progbits
- 1858               	__c.1657:
+ 1858               	__c.1660:
  1859 0000 222C 206D 		.string	"\", must be ? or =\r\n"
  1859      7573 7420 
  1859      6265 203F 
  1859      206F 7220 
  1859      3D0D 0A00 
- 1862               	__c.1655:
+ 1862               	__c.1658:
  1863 0014 556E 6B6E 		.string	"Unknown command \""
  1863      6F77 6E20 
  1863      636F 6D6D 
  1863      616E 6420 
  1863      2200 
- 1866               	__c.1653:
+ 1866               	__c.1656:
  1867 0026 222C 206D 		.string	"\", must be 0 or 1\r\n"
  1867      7573 7420 
  1867      6265 2030 
  1867      206F 7220 
  1867      310D 0A00 
- 1870               	__c.1651:
+ 1870               	__c.1654:
  1871 003a 556E 6B6E 		.string	"Unknown value \""
  1871      6F77 6E20 
  1871      7661 6C75 
  1871      6520 2200 
- 1874               	__c.1649:
+ 1874               	__c.1652:
  1875 004a 0D0A 00   		.string	"\r\n"
- 1878               	__c.1647:
+ 1878               	__c.1650:
  1879 004d 222C 206D 		.string	"\", must be 0 to 7\r\n"
  1879      7573 7420 
  1879      6265 2030 
  1879      2074 6F20 
  1879      370D 0A00 
- 1882               	__c.1645:
+ 1882               	__c.1648:
  1883 0061 556E 6B6E 		.string	"Unknown pin \""
  1883      6F77 6E20 
  1883      7069 6E20 
  1883      2200 
- 1886               	__c.1643:
+ 1886               	__c.1646:
  1887 006f 222C 206D 		.string	"\", must be A - F\r\n"
  1887      7573 7420 
  1887      6265 2041 
  1887      202D 2046 
  1887      0D0A 00
- 1890               	__c.1641:
+ 1890               	__c.1644:
  1891 0082 556E 6B6E 		.string	"Unknown port \""
  1891      6F77 6E20 
  1891      706F 7274 
  1891      2022 00
- 1894               	__c.1639:
+ 1894               	__c.1642:
  1895 0091 756E 7265 		.string	"unrecognized format, 3 chars min req'd\r\n"
  1895      636F 676E 
  1895      697A 6564 
  1895      2066 6F72 
  1895      6D61 742C 
- 1898               	__c.1574:
+ 1898               	__c.1577:
  1899 00ba 494E 5641 		.string	"INVALID_COMMAND_CODE"
  1899      4C49 445F 
  1899      434F 4D4D 
  1899      414E 445F 
  1899      434F 4445 
- 1902               	__c.1561:
+ 1902               	__c.1564:
  1903 00cf 0102 0304 		.string	"\001\002\003\004\005\006\007\b\n"
  1903      0506 0708 
  1903      0A00 
- 1906               	__c.1544:
+ 1906               	__c.1547:
  1907 00d9 4D6F 746F 		.string	"Motor Controller 1.0\n"
  1907      7220 436F 
  1907      6E74 726F 
@@ -1893,38 +1893,38 @@
  1907      2031 2E30 
  2020               	.Letext0:
 DEFINED SYMBOLS
-                            *ABS*:00000000 motor.c
-     /tmp/ccARkitf.s:2      *ABS*:0000003f __SREG__
-     /tmp/ccARkitf.s:3      *ABS*:0000003e __SP_H__
-     /tmp/ccARkitf.s:4      *ABS*:0000003d __SP_L__
-     /tmp/ccARkitf.s:5      *ABS*:00000034 __CCP__
-     /tmp/ccARkitf.s:6      *ABS*:00000000 __tmp_reg__
-     /tmp/ccARkitf.s:7      *ABS*:00000001 __zero_reg__
-     /tmp/ccARkitf.s:21     .text.set_default_duty_cycles:00000000 set_default_duty_cycles
-     /tmp/ccARkitf.s:65     .text.setup_pwms:00000000 setup_pwms
-     /tmp/ccARkitf.s:110    .text.send_str:00000000 send_str
-     /tmp/ccARkitf.s:155    .text.parse_and_execute_command:00000000 parse_and_execute_command
-     /tmp/ccARkitf.s:1894   .progmem.data:00000091 __c.1639
-     /tmp/ccARkitf.s:1890   .progmem.data:00000082 __c.1641
-     /tmp/ccARkitf.s:1886   .progmem.data:0000006f __c.1643
-     /tmp/ccARkitf.s:1882   .progmem.data:00000061 __c.1645
-     /tmp/ccARkitf.s:1878   .progmem.data:0000004d __c.1647
-     /tmp/ccARkitf.s:1874   .progmem.data:0000004a __c.1649
-     /tmp/ccARkitf.s:1870   .progmem.data:0000003a __c.1651
-     /tmp/ccARkitf.s:1866   .progmem.data:00000026 __c.1653
-     /tmp/ccARkitf.s:1862   .progmem.data:00000014 __c.1655
-     /tmp/ccARkitf.s:1858   .progmem.data:00000000 __c.1657
-     /tmp/ccARkitf.s:360    .text.handle_pwm_ports_command:00000000 handle_pwm_ports_command
-     /tmp/ccARkitf.s:1902   .progmem.data:000000cf __c.1561
-     /tmp/ccARkitf.s:383    .text.handle_ping_command:00000000 handle_ping_command
-     /tmp/ccARkitf.s:440    .text.handle_version_command:00000000 handle_version_command
-     /tmp/ccARkitf.s:1906   .progmem.data:000000d9 __c.1544
-     /tmp/ccARkitf.s:460    .text.handle_set_pwm_command:00000000 handle_set_pwm_command
-     /tmp/ccARkitf.s:577    .text.recv_str:00000000 recv_str
-     /tmp/ccARkitf.s:653    .text.handle_sensor_query:00000000 handle_sensor_query
-     /tmp/ccARkitf.s:1689   .text.handle_command:00000000 handle_command
-     /tmp/ccARkitf.s:1898   .progmem.data:000000ba __c.1574
-     /tmp/ccARkitf.s:1765   .text.main:00000000 main
+                            *ABS*:0000000000000000 motor.c
+     /tmp/ccrbVfwd.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccrbVfwd.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccrbVfwd.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccrbVfwd.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccrbVfwd.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccrbVfwd.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccrbVfwd.s:21     .text.set_default_duty_cycles:0000000000000000 set_default_duty_cycles
+     /tmp/ccrbVfwd.s:65     .text.setup_pwms:0000000000000000 setup_pwms
+     /tmp/ccrbVfwd.s:110    .text.send_str:0000000000000000 send_str
+     /tmp/ccrbVfwd.s:155    .text.parse_and_execute_command:0000000000000000 parse_and_execute_command
+     /tmp/ccrbVfwd.s:1894   .progmem.data:0000000000000091 __c.1642
+     /tmp/ccrbVfwd.s:1890   .progmem.data:0000000000000082 __c.1644
+     /tmp/ccrbVfwd.s:1886   .progmem.data:000000000000006f __c.1646
+     /tmp/ccrbVfwd.s:1882   .progmem.data:0000000000000061 __c.1648
+     /tmp/ccrbVfwd.s:1878   .progmem.data:000000000000004d __c.1650
+     /tmp/ccrbVfwd.s:1874   .progmem.data:000000000000004a __c.1652
+     /tmp/ccrbVfwd.s:1870   .progmem.data:000000000000003a __c.1654
+     /tmp/ccrbVfwd.s:1866   .progmem.data:0000000000000026 __c.1656
+     /tmp/ccrbVfwd.s:1862   .progmem.data:0000000000000014 __c.1658
+     /tmp/ccrbVfwd.s:1858   .progmem.data:0000000000000000 __c.1660
+     /tmp/ccrbVfwd.s:360    .text.handle_pwm_ports_command:0000000000000000 handle_pwm_ports_command
+     /tmp/ccrbVfwd.s:1902   .progmem.data:00000000000000cf __c.1564
+     /tmp/ccrbVfwd.s:383    .text.handle_ping_command:0000000000000000 handle_ping_command
+     /tmp/ccrbVfwd.s:440    .text.handle_version_command:0000000000000000 handle_version_command
+     /tmp/ccrbVfwd.s:1906   .progmem.data:00000000000000d9 __c.1547
+     /tmp/ccrbVfwd.s:460    .text.handle_set_pwm_command:0000000000000000 handle_set_pwm_command
+     /tmp/ccrbVfwd.s:577    .text.recv_str:0000000000000000 recv_str
+     /tmp/ccrbVfwd.s:653    .text.handle_sensor_query:0000000000000000 handle_sensor_query
+     /tmp/ccrbVfwd.s:1689   .text.handle_command:0000000000000000 handle_command
+     /tmp/ccrbVfwd.s:1898   .progmem.data:00000000000000ba __c.1577
+     /tmp/ccrbVfwd.s:1765   .text.main:0000000000000000 main
 
 UNDEFINED SYMBOLS
 __do_copy_data

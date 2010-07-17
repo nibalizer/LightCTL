@@ -2040,43 +2040,43 @@
  2099 00c8 00        		.string	""
  2252               	.Letext0:
 DEFINED SYMBOLS
-                            *ABS*:00000000 usb_serial.c
-     /tmp/ccSWZgh3.s:2      *ABS*:0000003f __SREG__
-     /tmp/ccSWZgh3.s:3      *ABS*:0000003e __SP_H__
-     /tmp/ccSWZgh3.s:4      *ABS*:0000003d __SP_L__
-     /tmp/ccSWZgh3.s:5      *ABS*:00000034 __CCP__
-     /tmp/ccSWZgh3.s:6      *ABS*:00000000 __tmp_reg__
-     /tmp/ccSWZgh3.s:7      *ABS*:00000001 __zero_reg__
-     /tmp/ccSWZgh3.s:21     .text.usb_init:00000000 usb_init
-                             .bss:00000000 usb_configuration
-     /tmp/ccSWZgh3.s:1929   .bss:00000001 cdc_line_rtsdtr
-     /tmp/ccSWZgh3.s:66     .text.usb_configured:00000000 usb_configured
-     /tmp/ccSWZgh3.s:81     .text.usb_serial_getchar:00000000 usb_serial_getchar
-     /tmp/ccSWZgh3.s:142    .text.usb_serial_available:00000000 usb_serial_available
-     /tmp/ccSWZgh3.s:178    .text.usb_serial_flush_input:00000000 usb_serial_flush_input
-     /tmp/ccSWZgh3.s:218    .text.usb_serial_putchar:00000000 usb_serial_putchar
-     /tmp/ccSWZgh3.s:1931   .bss:00000003 transmit_previous_timeout
-     /tmp/ccSWZgh3.s:1930   .bss:00000002 transmit_flush_timer
-     /tmp/ccSWZgh3.s:323    .text.usb_serial_putchar_nowait:00000000 usb_serial_putchar_nowait
-     /tmp/ccSWZgh3.s:380    .text.usb_serial_write:00000000 usb_serial_write
-     /tmp/ccSWZgh3.s:1006   .text.usb_serial_flush_output:00000000 usb_serial_flush_output
-     /tmp/ccSWZgh3.s:1043   .text.usb_serial_get_baud:00000000 usb_serial_get_baud
-     /tmp/ccSWZgh3.s:1948   .data:00000000 cdc_line_coding
-     /tmp/ccSWZgh3.s:1061   .text.usb_serial_get_stopbits:00000000 usb_serial_get_stopbits
-     /tmp/ccSWZgh3.s:1075   .text.usb_serial_get_paritytype:00000000 usb_serial_get_paritytype
-     /tmp/ccSWZgh3.s:1089   .text.usb_serial_get_numbits:00000000 usb_serial_get_numbits
-     /tmp/ccSWZgh3.s:1103   .text.usb_serial_get_control:00000000 usb_serial_get_control
-     /tmp/ccSWZgh3.s:1117   .text.usb_serial_set_control:00000000 usb_serial_set_control
-     /tmp/ccSWZgh3.s:1187   .text.__vector_10:00000000 __vector_10
-     /tmp/ccSWZgh3.s:1271   .text.__vector_11:00000000 __vector_11
-     /tmp/ccSWZgh3.s:1904   .progmem.data:00000000 descriptor_list
-     /tmp/ccSWZgh3.s:1934   .progmem.data:0000002a endpoint_config_table
-     /tmp/ccSWZgh3.s:1960   .progmem.data:00000034 device_descriptor
-     /tmp/ccSWZgh3.s:1981   .progmem.data:00000046 config1_descriptor
-     /tmp/ccSWZgh3.s:2051   .progmem.data:00000089 string0
-     /tmp/ccSWZgh3.s:2057   .progmem.data:0000008d string1
-     /tmp/ccSWZgh3.s:2073   .progmem.data:000000a3 string2
-     /tmp/ccSWZgh3.s:2090   .progmem.data:000000bb string3
+                            *ABS*:0000000000000000 usb_serial.c
+     /tmp/ccZP25OC.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccZP25OC.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccZP25OC.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccZP25OC.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccZP25OC.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccZP25OC.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccZP25OC.s:21     .text.usb_init:0000000000000000 usb_init
+                             .bss:0000000000000000 usb_configuration
+     /tmp/ccZP25OC.s:1929   .bss:0000000000000001 cdc_line_rtsdtr
+     /tmp/ccZP25OC.s:66     .text.usb_configured:0000000000000000 usb_configured
+     /tmp/ccZP25OC.s:81     .text.usb_serial_getchar:0000000000000000 usb_serial_getchar
+     /tmp/ccZP25OC.s:142    .text.usb_serial_available:0000000000000000 usb_serial_available
+     /tmp/ccZP25OC.s:178    .text.usb_serial_flush_input:0000000000000000 usb_serial_flush_input
+     /tmp/ccZP25OC.s:218    .text.usb_serial_putchar:0000000000000000 usb_serial_putchar
+     /tmp/ccZP25OC.s:1931   .bss:0000000000000003 transmit_previous_timeout
+     /tmp/ccZP25OC.s:1930   .bss:0000000000000002 transmit_flush_timer
+     /tmp/ccZP25OC.s:323    .text.usb_serial_putchar_nowait:0000000000000000 usb_serial_putchar_nowait
+     /tmp/ccZP25OC.s:380    .text.usb_serial_write:0000000000000000 usb_serial_write
+     /tmp/ccZP25OC.s:1006   .text.usb_serial_flush_output:0000000000000000 usb_serial_flush_output
+     /tmp/ccZP25OC.s:1043   .text.usb_serial_get_baud:0000000000000000 usb_serial_get_baud
+     /tmp/ccZP25OC.s:1948   .data:0000000000000000 cdc_line_coding
+     /tmp/ccZP25OC.s:1061   .text.usb_serial_get_stopbits:0000000000000000 usb_serial_get_stopbits
+     /tmp/ccZP25OC.s:1075   .text.usb_serial_get_paritytype:0000000000000000 usb_serial_get_paritytype
+     /tmp/ccZP25OC.s:1089   .text.usb_serial_get_numbits:0000000000000000 usb_serial_get_numbits
+     /tmp/ccZP25OC.s:1103   .text.usb_serial_get_control:0000000000000000 usb_serial_get_control
+     /tmp/ccZP25OC.s:1117   .text.usb_serial_set_control:0000000000000000 usb_serial_set_control
+     /tmp/ccZP25OC.s:1187   .text.__vector_10:0000000000000000 __vector_10
+     /tmp/ccZP25OC.s:1271   .text.__vector_11:0000000000000000 __vector_11
+     /tmp/ccZP25OC.s:1904   .progmem.data:0000000000000000 descriptor_list
+     /tmp/ccZP25OC.s:1934   .progmem.data:000000000000002a endpoint_config_table
+     /tmp/ccZP25OC.s:1960   .progmem.data:0000000000000034 device_descriptor
+     /tmp/ccZP25OC.s:1981   .progmem.data:0000000000000046 config1_descriptor
+     /tmp/ccZP25OC.s:2051   .progmem.data:0000000000000089 string0
+     /tmp/ccZP25OC.s:2057   .progmem.data:000000000000008d string1
+     /tmp/ccZP25OC.s:2073   .progmem.data:00000000000000a3 string2
+     /tmp/ccZP25OC.s:2090   .progmem.data:00000000000000bb string3
 
 UNDEFINED SYMBOLS
 __do_copy_data

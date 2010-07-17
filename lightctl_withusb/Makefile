@@ -41,7 +41,7 @@
 
 
 # Target file name (without extension).
-TARGET = lightctl
+TARGET = lightctl_27segs
 
 
 # List C source files here. (C dependencies are automatically generated.)

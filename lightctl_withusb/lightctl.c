@@ -220,7 +220,7 @@ void handle_set_pwm_command(uint8_t port, uint8_t val)
 
 void handle_sensor_query(uint8_t port)
 {
-	int i;
+    int i;
     uint16_t val;
     char buf[4];
     int readings = 10;

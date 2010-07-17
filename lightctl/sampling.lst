@@ -187,20 +187,20 @@
  202               		.lcomm buffer,4
  251               	.Letext0:
 DEFINED SYMBOLS
-                            *ABS*:00000000 sampling.c
-     /tmp/cckSQsfQ.s:2      *ABS*:0000003f __SREG__
-     /tmp/cckSQsfQ.s:3      *ABS*:0000003e __SP_H__
-     /tmp/cckSQsfQ.s:4      *ABS*:0000003d __SP_L__
-     /tmp/cckSQsfQ.s:5      *ABS*:00000034 __CCP__
-     /tmp/cckSQsfQ.s:6      *ABS*:00000000 __tmp_reg__
-     /tmp/cckSQsfQ.s:7      *ABS*:00000001 __zero_reg__
-     /tmp/cckSQsfQ.s:21     .text.adc_start:00000000 adc_start
-                             .bss:00000000 head
-     /tmp/cckSQsfQ.s:200    .bss:00000001 tail
-     /tmp/cckSQsfQ.s:64     .text.adc_available:00000000 adc_available
-     /tmp/cckSQsfQ.s:94     .text.adc_read:00000000 adc_read
-     /tmp/cckSQsfQ.s:201    .bss:00000002 buffer
-     /tmp/cckSQsfQ.s:140    .text.__vector_29:00000000 __vector_29
+                            *ABS*:0000000000000000 sampling.c
+     /tmp/ccQ2kdoR.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccQ2kdoR.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccQ2kdoR.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccQ2kdoR.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccQ2kdoR.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccQ2kdoR.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccQ2kdoR.s:21     .text.adc_start:0000000000000000 adc_start
+                             .bss:0000000000000000 head
+     /tmp/ccQ2kdoR.s:200    .bss:0000000000000001 tail
+     /tmp/ccQ2kdoR.s:64     .text.adc_available:0000000000000000 adc_available
+     /tmp/ccQ2kdoR.s:94     .text.adc_read:0000000000000000 adc_read
+     /tmp/ccQ2kdoR.s:201    .bss:0000000000000002 buffer
+     /tmp/ccQ2kdoR.s:140    .text.__vector_29:0000000000000000 __vector_29
 
 UNDEFINED SYMBOLS
 __do_copy_data
