@@ -26,8 +26,10 @@
 #include <stdint.h>
 #include <util/delay.h>
 #include "usb_serial.h"
-#include "sampling.h"
+#include "sampling.c"
 #include "stdio.h"
+
+
 
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))

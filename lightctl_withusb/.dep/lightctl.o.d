@@ -1,5 +1,7 @@
-lightctl.o: lightctl.c usb_serial.h sampling.h
+lightctl.o: lightctl.c usb_serial.h sampling.c sampling.h
 
 usb_serial.h:
+
+sampling.c:
 
 sampling.h:

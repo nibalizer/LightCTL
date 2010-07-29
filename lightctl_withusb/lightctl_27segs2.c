@@ -43,7 +43,7 @@ void set_display(uint16_t val)
 {
 	int val_ = val;
 	uint8_t high, low;
-	val_ *= 2.5;
+	val /= 10;
 	if (val_ > 99)
 		val_ = 99;
 		
@@ -235,7 +235,7 @@ void setup_pwms(void)
 
 int main(void)
 {
-	uint8_t val;
+	uint16_t val;
 
 	CPU_PRESCALE(2); //why?
 	setup_pwms();  

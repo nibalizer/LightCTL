@@ -9,59 +9,60 @@ Archive member included because of file (symbol)
 
 Discarded input sections
 
- .data          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
- .bss           0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
- .text          0x00000000        0x0 lightctl.o
- .data          0x00000000        0x0 lightctl.o
- .bss           0x00000000        0x0 lightctl.o
- .text.set_default_duty_cycles
-                0x00000000       0x3e lightctl.o
- .text.parse_and_execute_command
-                0x00000000      0x118 lightctl.o
- .text          0x00000000        0x0 usb_serial.o
- .text.usb_serial_available
-                0x00000000       0x1a usb_serial.o
- .text.usb_serial_putchar_nowait
-                0x00000000       0x40 usb_serial.o
- .text.usb_serial_flush_output
-                0x00000000       0x20 usb_serial.o
- .text.usb_serial_get_baud
-                0x00000000       0x12 usb_serial.o
- .text.usb_serial_get_stopbits
-                0x00000000        0x6 usb_serial.o
- .text.usb_serial_get_paritytype
-                0x00000000        0x6 usb_serial.o
- .text.usb_serial_get_numbits
-                0x00000000        0x6 usb_serial.o
- .text.usb_serial_set_control
-                0x00000000       0x5a usb_serial.o
- .text          0x00000000        0x0 sampling.o
- .data          0x00000000        0x0 sampling.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+ .text          0x0000000000000000        0x0 lightctl.o
+ .data          0x0000000000000000        0x0 lightctl.o
+ .text.adc_start
+                0x0000000000000000       0x2a lightctl.o
  .text.adc_available
-                0x00000000       0x16 sampling.o
- .text          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
- .data          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
- .bss           0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
- .text.libgcc   0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
- .text          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
- .data          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
- .bss           0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
- .text          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
- .data          0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
- .bss           0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
+                0x0000000000000000       0x16 lightctl.o
+ .text.adc_read
+                0x0000000000000000       0x2e lightctl.o
+ .text.set_default_duty_cycles
+                0x0000000000000000       0x3e lightctl.o
+ .text.parse_and_execute_command
+                0x0000000000000000      0x118 lightctl.o
+ .text          0x0000000000000000        0x0 usb_serial.o
+ .text.usb_serial_available
+                0x0000000000000000       0x1a usb_serial.o
+ .text.usb_serial_putchar_nowait
+                0x0000000000000000       0x40 usb_serial.o
+ .text.usb_serial_flush_output
+                0x0000000000000000       0x20 usb_serial.o
+ .text.usb_serial_get_baud
+                0x0000000000000000       0x12 usb_serial.o
+ .text.usb_serial_get_stopbits
+                0x0000000000000000        0x6 usb_serial.o
+ .text.usb_serial_get_paritytype
+                0x0000000000000000        0x6 usb_serial.o
+ .text.usb_serial_get_numbits
+                0x0000000000000000        0x6 usb_serial.o
+ .text.usb_serial_set_control
+                0x0000000000000000       0x5a usb_serial.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
-text             0x00000000         0x00020000         xr
-data             0x00800060         0x0000ffa0         rw !x
-eeprom           0x00810000         0x00010000         rw !x
-fuse             0x00820000         0x00000400         rw !x
-lock             0x00830000         0x00000400         rw !x
-signature        0x00840000         0x00000400         rw !x
-*default*        0x00000000         0xffffffff
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800060 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+fuse             0x0000000000820000 0x0000000000000400 rw !x
+lock             0x0000000000830000 0x0000000000000400 rw !x
+signature        0x0000000000840000 0x0000000000000400 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
 
@@ -69,7 +70,6 @@ Address of section .data set to 0x800100
 LOAD /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 LOAD lightctl.o
 LOAD usb_serial.o
-LOAD sampling.o
 LOAD /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/libm.a
 LOAD /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a
 LOAD /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/libc.a
@@ -165,52 +165,52 @@ LOAD /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1322
+.text           0x0000000000000000     0x152c
  *(.vectors)
- .vectors       0x00000000       0xac /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
-                0x00000000                __vectors
-                0x00000000                __vector_default
+ .vectors       0x0000000000000000       0xac /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+                0x0000000000000000                __vectors
+                0x0000000000000000                __vector_default
  *(.vectors)
  *(.progmem.gcc*)
  .progmem.gcc_sw_table
-                0x000000ac       0x82 usb_serial.o
+                0x00000000000000ac       0x82 usb_serial.o
  *(.progmem*)
- .progmem.data  0x0000012e       0xe9 lightctl.o
- .progmem.data  0x00000217       0xc9 usb_serial.o
-                0x000002e0                . = ALIGN (0x2)
-                0x000002e0                __trampolines_start = .
+ .progmem.data  0x000000000000012e       0xe9 lightctl.o
+ .progmem.data  0x0000000000000217       0xc9 usb_serial.o
+                0x00000000000002e0                . = ALIGN (0x2)
+                0x00000000000002e0                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x000002e0        0x0 linker stubs
+ .trampolines   0x00000000000002e0        0x0 linker stubs
  *(.trampolines*)
-                0x000002e0                __trampolines_end = .
+                0x00000000000002e0                __trampolines_end = .
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x000002e0                __ctors_start = .
+                0x00000000000002e0                __ctors_start = .
  *(.ctors)
-                0x000002e0                __ctors_end = .
-                0x000002e0                __dtors_start = .
+                0x00000000000002e0                __ctors_end = .
+                0x00000000000002e0                __dtors_start = .
  *(.dtors)
-                0x000002e0                __dtors_end = .
+                0x00000000000002e0                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x000002e0        0x0 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
-                0x000002e0                __init
+ .init0         0x00000000000002e0        0x0 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+                0x00000000000002e0                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x000002e0        0xc /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+ .init2         0x00000000000002e0        0xc /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x000002ec       0x16 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
-                0x000002ec                __do_copy_data
- .init4         0x00000302       0x10 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
-                0x00000302                __do_clear_bss
+ .init4         0x00000000000002ec       0x16 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
+                0x00000000000002ec                __do_copy_data
+ .init4         0x0000000000000302       0x10 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
+                0x0000000000000302                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -221,125 +221,119 @@ LOAD /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000312        0x6 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+ .init9         0x0000000000000312        0x6 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
  *(.init9)
  *(.text)
- .text          0x00000318        0x2 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
-                0x00000318                __vector_38
-                0x00000318                __vector_22
-                0x00000318                __vector_28
-                0x00000318                __vector_1
-                0x00000318                __vector_32
-                0x00000318                __vector_34
-                0x00000318                __vector_24
-                0x00000318                __vector_12
-                0x00000318                __bad_interrupt
-                0x00000318                __vector_6
-                0x00000318                __vector_31
-                0x00000318                __vector_35
-                0x00000318                __vector_39
-                0x00000318                __vector_3
-                0x00000318                __vector_23
-                0x00000318                __vector_30
-                0x00000318                __vector_25
-                0x00000318                __vector_13
-                0x00000318                __vector_17
-                0x00000318                __vector_19
-                0x00000318                __vector_7
-                0x00000318                __vector_41
-                0x00000318                __vector_27
-                0x00000318                __vector_5
-                0x00000318                __vector_33
-                0x00000318                __vector_37
-                0x00000318                __vector_4
-                0x00000318                __vector_9
-                0x00000318                __vector_2
-                0x00000318                __vector_21
-                0x00000318                __vector_15
-                0x00000318                __vector_36
-                0x00000318                __vector_40
-                0x00000318                __vector_8
-                0x00000318                __vector_26
-                0x00000318                __vector_14
-                0x00000318                __vector_16
-                0x00000318                __vector_18
-                0x00000318                __vector_20
-                0x00000318                __vector_42
-                0x0000031a                . = ALIGN (0x2)
+ .text          0x0000000000000318        0x2 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+                0x0000000000000318                __vector_38
+                0x0000000000000318                __vector_22
+                0x0000000000000318                __vector_28
+                0x0000000000000318                __vector_1
+                0x0000000000000318                __vector_32
+                0x0000000000000318                __vector_34
+                0x0000000000000318                __vector_24
+                0x0000000000000318                __vector_12
+                0x0000000000000318                __bad_interrupt
+                0x0000000000000318                __vector_6
+                0x0000000000000318                __vector_31
+                0x0000000000000318                __vector_35
+                0x0000000000000318                __vector_39
+                0x0000000000000318                __vector_3
+                0x0000000000000318                __vector_23
+                0x0000000000000318                __vector_30
+                0x0000000000000318                __vector_25
+                0x0000000000000318                __vector_13
+                0x0000000000000318                __vector_17
+                0x0000000000000318                __vector_19
+                0x0000000000000318                __vector_7
+                0x0000000000000318                __vector_41
+                0x0000000000000318                __vector_27
+                0x0000000000000318                __vector_5
+                0x0000000000000318                __vector_33
+                0x0000000000000318                __vector_37
+                0x0000000000000318                __vector_4
+                0x0000000000000318                __vector_9
+                0x0000000000000318                __vector_2
+                0x0000000000000318                __vector_21
+                0x0000000000000318                __vector_15
+                0x0000000000000318                __vector_36
+                0x0000000000000318                __vector_40
+                0x0000000000000318                __vector_8
+                0x0000000000000318                __vector_26
+                0x0000000000000318                __vector_14
+                0x0000000000000318                __vector_16
+                0x0000000000000318                __vector_18
+                0x0000000000000318                __vector_20
+                0x0000000000000318                __vector_42
+                0x000000000000031a                . = ALIGN (0x2)
  *(.text.*)
- .text.setup_pwms
-                0x0000031a       0x3a lightctl.o
-                0x0000031a                setup_pwms
- .text.send_str
-                0x00000354       0x1a lightctl.o
-                0x00000354                send_str
- .text.handle_pwm_ports_command
-                0x0000036e        0xe lightctl.o
-                0x0000036e                handle_pwm_ports_command
- .text.handle_ping_command
-                0x0000037c       0x3c lightctl.o
-                0x0000037c                handle_ping_command
- .text.handle_version_command
-                0x000003b8        0xa lightctl.o
-                0x000003b8                handle_version_command
- .text.handle_set_pwm_command
-                0x000003c2       0xa8 lightctl.o
-                0x000003c2                handle_set_pwm_command
- .text.recv_str
-                0x0000046a       0x4c lightctl.o
-                0x0000046a                recv_str
- .text.handle_sensor_query
-                0x000004b6      0x524 lightctl.o
-                0x000004b6                handle_sensor_query
- .text.handle_command
-                0x000009da       0x3e lightctl.o
-                0x000009da                handle_command
- .text.sensor_display
-                0x00000a18      0x12e lightctl.o
-                0x00000a18                sensor_display
- .text.main     0x00000b46       0x62 lightctl.o
-                0x00000b46                main
- .text.usb_init
-                0x00000ba8       0x32 usb_serial.o
-                0x00000ba8                usb_init
- .text.usb_configured
-                0x00000bda        0x6 usb_serial.o
-                0x00000bda                usb_configured
- .text.usb_serial_getchar
-                0x00000be0       0x3e usb_serial.o
-                0x00000be0                usb_serial_getchar
- .text.usb_serial_flush_input
-                0x00000c1e       0x26 usb_serial.o
-                0x00000c1e                usb_serial_flush_input
- .text.usb_serial_putchar
-                0x00000c44       0x84 usb_serial.o
-                0x00000c44                usb_serial_putchar
- .text.usb_serial_write
-                0x00000cc8      0x250 usb_serial.o
-                0x00000cc8                usb_serial_write
- .text.usb_serial_get_control
-                0x00000f18        0x6 usb_serial.o
-                0x00000f18                usb_serial_get_control
- .text.__vector_10
-                0x00000f1e       0x76 usb_serial.o
-                0x00000f1e                __vector_10
- .text.__vector_11
-                0x00000f94      0x2d6 usb_serial.o
-                0x00000f94                __vector_11
- .text.adc_start
-                0x0000126a       0x2a sampling.o
-                0x0000126a                adc_start
- .text.adc_read
-                0x00001294       0x2e sampling.o
-                0x00001294                adc_read
  .text.__vector_29
-                0x000012c2       0x5c sampling.o
-                0x000012c2                __vector_29
-                0x0000131e                . = ALIGN (0x2)
+                0x000000000000031a       0x5c lightctl.o
+                0x000000000000031a                __vector_29
+ .text.setup_pwms
+                0x0000000000000376       0x3a lightctl.o
+                0x0000000000000376                setup_pwms
+ .text.send_str
+                0x00000000000003b0       0x1a lightctl.o
+                0x00000000000003b0                send_str
+ .text.handle_pwm_ports_command
+                0x00000000000003ca        0xe lightctl.o
+                0x00000000000003ca                handle_pwm_ports_command
+ .text.handle_ping_command
+                0x00000000000003d8       0x3c lightctl.o
+                0x00000000000003d8                handle_ping_command
+ .text.handle_version_command
+                0x0000000000000414        0xa lightctl.o
+                0x0000000000000414                handle_version_command
+ .text.handle_set_pwm_command
+                0x000000000000041e       0xa8 lightctl.o
+                0x000000000000041e                handle_set_pwm_command
+ .text.recv_str
+                0x00000000000004c6       0x4c lightctl.o
+                0x00000000000004c6                recv_str
+ .text.handle_sensor_query
+                0x0000000000000512      0x744 lightctl.o
+                0x0000000000000512                handle_sensor_query
+ .text.handle_command
+                0x0000000000000c56       0x3e lightctl.o
+                0x0000000000000c56                handle_command
+ .text.sensor_display
+                0x0000000000000c94      0x170 lightctl.o
+                0x0000000000000c94                sensor_display
+ .text.main     0x0000000000000e04       0x62 lightctl.o
+                0x0000000000000e04                main
+ .text.usb_init
+                0x0000000000000e66       0x32 usb_serial.o
+                0x0000000000000e66                usb_init
+ .text.usb_configured
+                0x0000000000000e98        0x6 usb_serial.o
+                0x0000000000000e98                usb_configured
+ .text.usb_serial_getchar
+                0x0000000000000e9e       0x3e usb_serial.o
+                0x0000000000000e9e                usb_serial_getchar
+ .text.usb_serial_flush_input
+                0x0000000000000edc       0x26 usb_serial.o
+                0x0000000000000edc                usb_serial_flush_input
+ .text.usb_serial_putchar
+                0x0000000000000f02       0x84 usb_serial.o
+                0x0000000000000f02                usb_serial_putchar
+ .text.usb_serial_write
+                0x0000000000000f86      0x250 usb_serial.o
+                0x0000000000000f86                usb_serial_write
+ .text.usb_serial_get_control
+                0x00000000000011d6        0x6 usb_serial.o
+                0x00000000000011d6                usb_serial_get_control
+ .text.__vector_10
+                0x00000000000011dc       0x76 usb_serial.o
+                0x00000000000011dc                __vector_10
+ .text.__vector_11
+                0x0000000000001252      0x2d6 usb_serial.o
+                0x0000000000001252                __vector_11
+                0x0000000000001528                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000131e        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
-                0x0000131e                exit
-                0x0000131e                _exit
+ .fini9         0x0000000000001528        0x0 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
+                0x0000000000001528                exit
+                0x0000000000001528                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -358,44 +352,44 @@ LOAD /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000131e        0x4 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
+ .fini0         0x0000000000001528        0x4 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x00001322                _etext = .
+                0x000000000000152c                _etext = .
 
-.data           0x00800100        0x8 load address 0x00001322
-                0x00800100                PROVIDE (__data_start, .)
+.data           0x0000000000800100        0x8 load address 0x000000000000152c
+                0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800100        0x7 usb_serial.o
+ .data          0x0000000000800100        0x7 usb_serial.o
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800108                . = ALIGN (0x2)
- *fill*         0x00800107        0x1 00
-                0x00800108                _edata = .
-                0x00800108                PROVIDE (__data_end, .)
+                0x0000000000800108                . = ALIGN (0x2)
+ *fill*         0x0000000000800107        0x1 00
+                0x0000000000800108                _edata = .
+                0x0000000000800108                PROVIDE (__data_end, .)
 
-.bss            0x00800108        0xa
-                0x00800108                PROVIDE (__bss_start, .)
+.bss            0x0000000000800108        0xa
+                0x0000000000800108                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800108        0x4 usb_serial.o
- .bss           0x0080010c        0x6 sampling.o
+ .bss           0x0000000000800108        0x6 lightctl.o
+ .bss           0x000000000080010e        0x4 usb_serial.o
  *(.bss*)
  *(COMMON)
-                0x00800112                PROVIDE (__bss_end, .)
-                0x00001322                __data_load_start = LOADADDR (.data)
-                0x0000132a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000800112                PROVIDE (__bss_end, .)
+                0x000000000000152c                __data_load_start = LOADADDR (.data)
+                0x0000000000001534                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800112        0x0
-                0x00800112                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800112        0x0
+                0x0000000000800112                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800112                PROVIDE (__noinit_end, .)
-                0x00800112                _end = .
-                0x00800112                PROVIDE (__heap_start, .)
+                0x0000000000800112                PROVIDE (__noinit_end, .)
+                0x0000000000800112                _end = .
+                0x0000000000800112                PROVIDE (__heap_start, .)
 
-.eeprom         0x00810000        0x0
+.eeprom         0x0000000000810000        0x0
  *(.eeprom*)
-                0x00810000                __eeprom_end = .
+                0x0000000000810000                __eeprom_end = .
 
 .fuse
  *(.fuse)
@@ -409,13 +403,13 @@ LOAD /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x6b4
+.stab           0x0000000000000000      0x6b4
  *(.stab)
- .stab          0x00000000      0x6b4 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+ .stab          0x0000000000000000      0x6b4 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 
-.stabstr        0x00000000       0x54
+.stabstr        0x0000000000000000       0x54
  *(.stabstr)
- .stabstr       0x00000000       0x54 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
+ .stabstr       0x0000000000000000       0x54 /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 
 .stab.excl
  *(.stab.excl)
@@ -444,74 +438,62 @@ LOAD /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x158
+.debug_aranges  0x0000000000000000      0x140
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x80 lightctl.o
+                0x0000000000000000       0xa0 lightctl.o
  .debug_aranges
-                0x00000080       0xa0 usb_serial.o
- .debug_aranges
-                0x00000120       0x38 sampling.o
+                0x00000000000000a0       0xa0 usb_serial.o
 
 .debug_pubnames
-                0x00000000      0x31c
+                0x0000000000000000      0x30a
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000      0x127 lightctl.o
+                0x0000000000000000      0x164 lightctl.o
  .debug_pubnames
-                0x00000127      0x1a6 usb_serial.o
- .debug_pubnames
-                0x000002cd       0x4f sampling.o
+                0x0000000000000164      0x1a6 usb_serial.o
 
-.debug_info     0x00000000     0x128f
+.debug_info     0x0000000000000000     0x154f
  *(.debug_info)
- .debug_info    0x00000000      0x85b lightctl.o
- .debug_info    0x0000085b      0x888 usb_serial.o
- .debug_info    0x000010e3      0x1ac sampling.o
+ .debug_info    0x0000000000000000      0xcc7 lightctl.o
+ .debug_info    0x0000000000000cc7      0x888 usb_serial.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x4da
+.debug_abbrev   0x0000000000000000      0x473
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x21c lightctl.o
- .debug_abbrev  0x0000021c      0x1db usb_serial.o
- .debug_abbrev  0x000003f7       0xe3 sampling.o
+ .debug_abbrev  0x0000000000000000      0x298 lightctl.o
+ .debug_abbrev  0x0000000000000298      0x1db usb_serial.o
 
-.debug_line     0x00000000     0x18a9
+.debug_line     0x0000000000000000     0x1bca
  *(.debug_line)
- .debug_line    0x00000000      0xb50 lightctl.o
- .debug_line    0x00000b50      0xbb5 usb_serial.o
- .debug_line    0x00001705      0x1a4 sampling.o
+ .debug_line    0x0000000000000000     0x1012 lightctl.o
+ .debug_line    0x0000000000001012      0xbb8 usb_serial.o
 
-.debug_frame    0x00000000      0x250
+.debug_frame    0x0000000000000000      0x240
  *(.debug_frame)
- .debug_frame   0x00000000       0xe0 lightctl.o
- .debug_frame   0x000000e0      0x120 usb_serial.o
- .debug_frame   0x00000200       0x50 sampling.o
+ .debug_frame   0x0000000000000000      0x120 lightctl.o
+ .debug_frame   0x0000000000000120      0x120 usb_serial.o
 
-.debug_str      0x00000000      0x558
+.debug_str      0x0000000000000000      0x552
  *(.debug_str)
- .debug_str     0x00000000      0x1d3 lightctl.o
-                                0x21f (size before relaxing)
- .debug_str     0x000001d3      0x33e usb_serial.o
-                                0x42b (size before relaxing)
- .debug_str     0x00000511       0x47 sampling.o
-                                 0xfb (size before relaxing)
+ .debug_str     0x0000000000000000      0x21b lightctl.o
+                                        0x267 (size before relaxing)
+ .debug_str     0x000000000000021b      0x337 usb_serial.o
+                                        0x430 (size before relaxing)
 
-.debug_loc      0x00000000     0x1288
+.debug_loc      0x0000000000000000     0x13f9
  *(.debug_loc)
- .debug_loc     0x00000000      0x7b7 lightctl.o
- .debug_loc     0x000007b7      0xa4f usb_serial.o
- .debug_loc     0x00001206       0x82 sampling.o
+ .debug_loc     0x0000000000000000      0x9aa lightctl.o
+ .debug_loc     0x00000000000009aa      0xa4f usb_serial.o
 
 .debug_macinfo
  *(.debug_macinfo)
 OUTPUT(lightctl.elf elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000      0x158
- .debug_ranges  0x00000000       0x78 lightctl.o
- .debug_ranges  0x00000078       0xb0 usb_serial.o
- .debug_ranges  0x00000128       0x30 sampling.o
+.debug_ranges   0x0000000000000000      0x148
+ .debug_ranges  0x0000000000000000       0x98 lightctl.o
+ .debug_ranges  0x0000000000000098       0xb0 usb_serial.o
 
 Cross Reference Table
 
@@ -523,11 +505,9 @@ __data_end                                        /usr/lib/gcc/avr/4.3.4/avr5/li
 __data_load_start                                 /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
 __data_start                                      /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
 __do_clear_bss                                    /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_clear_bss.o)
-                                                  sampling.o
                                                   usb_serial.o
                                                   lightctl.o
 __do_copy_data                                    /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_copy_data.o)
-                                                  sampling.o
                                                   usb_serial.o
                                                   lightctl.o
 __heap_end                                        /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
@@ -556,7 +536,7 @@ __vector_25                                       /usr/lib/gcc/avr/4.3.4/../../.
 __vector_26                                       /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 __vector_27                                       /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 __vector_28                                       /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
-__vector_29                                       sampling.o
+__vector_29                                       lightctl.o
                                                   /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 __vector_3                                        /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 __vector_30                                       /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
@@ -581,11 +561,9 @@ __vector_9                                        /usr/lib/gcc/avr/4.3.4/../../.
 __vector_default                                  /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 __vectors                                         /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 _exit                                             /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
-adc_available                                     sampling.o
-adc_read                                          sampling.o
-                                                  lightctl.o
-adc_start                                         sampling.o
-                                                  lightctl.o
+adc_available                                     lightctl.o
+adc_read                                          lightctl.o
+adc_start                                         lightctl.o
 exit                                              /usr/lib/gcc/avr/4.3.4/avr5/libgcc.a(_exit.o)
                                                   /usr/lib/gcc/avr/4.3.4/../../../avr/lib/avr5/crtm32u4.o
 handle_command                                    lightctl.o
