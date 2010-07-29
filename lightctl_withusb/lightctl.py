@@ -166,6 +166,5 @@ def sensor_readout():
             nine()
 
 
-sensor_readout()
 
 

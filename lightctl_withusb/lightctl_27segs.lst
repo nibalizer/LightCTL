@@ -613,28 +613,28 @@
  746               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 lightctl_27segs.c
-     /tmp/ccwkhXnw.s:2      *ABS*:000000000000003f __SREG__
-     /tmp/ccwkhXnw.s:3      *ABS*:000000000000003e __SP_H__
-     /tmp/ccwkhXnw.s:4      *ABS*:000000000000003d __SP_L__
-     /tmp/ccwkhXnw.s:5      *ABS*:0000000000000034 __CCP__
-     /tmp/ccwkhXnw.s:6      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccwkhXnw.s:7      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccwkhXnw.s:21     .text.adc_start:0000000000000000 adc_start
+     /tmp/ccWI2Svh.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccWI2Svh.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccWI2Svh.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccWI2Svh.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccWI2Svh.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccWI2Svh.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccWI2Svh.s:21     .text.adc_start:0000000000000000 adc_start
                              .bss:0000000000000000 head
-     /tmp/ccwkhXnw.s:637    .bss:0000000000000001 tail
-     /tmp/ccwkhXnw.s:64     .text.adc_available:0000000000000000 adc_available
-     /tmp/ccwkhXnw.s:94     .text.adc_read:0000000000000000 adc_read
-     /tmp/ccwkhXnw.s:638    .bss:0000000000000002 buffer
-     /tmp/ccwkhXnw.s:140    .text.__vector_29:0000000000000000 __vector_29
-     /tmp/ccwkhXnw.s:203    .text.read_sensor:0000000000000000 read_sensor
-     /tmp/ccwkhXnw.s:279    .text.set_display:0000000000000000 set_display
+     /tmp/ccWI2Svh.s:637    .bss:0000000000000001 tail
+     /tmp/ccWI2Svh.s:64     .text.adc_available:0000000000000000 adc_available
+     /tmp/ccWI2Svh.s:94     .text.adc_read:0000000000000000 adc_read
+     /tmp/ccWI2Svh.s:638    .bss:0000000000000002 buffer
+     /tmp/ccWI2Svh.s:140    .text.__vector_29:0000000000000000 __vector_29
+     /tmp/ccWI2Svh.s:203    .text.read_sensor:0000000000000000 read_sensor
+     /tmp/ccWI2Svh.s:279    .text.set_display:0000000000000000 set_display
                             *COM*:0000000000000001 HIGHBIT
                             *COM*:0000000000000001 LOWBIT
-     /tmp/ccwkhXnw.s:320    .text.display_num:0000000000000000 display_num
-     /tmp/ccwkhXnw.s:501    .text.display:0000000000000000 display
-     /tmp/ccwkhXnw.s:525    .text.set_default_duty_cycles:0000000000000000 set_default_duty_cycles
-     /tmp/ccwkhXnw.s:569    .text.setup_pwms:0000000000000000 setup_pwms
-     /tmp/ccwkhXnw.s:614    .text.main:0000000000000000 main
+     /tmp/ccWI2Svh.s:320    .text.display_num:0000000000000000 display_num
+     /tmp/ccWI2Svh.s:501    .text.display:0000000000000000 display
+     /tmp/ccWI2Svh.s:525    .text.set_default_duty_cycles:0000000000000000 set_default_duty_cycles
+     /tmp/ccWI2Svh.s:569    .text.setup_pwms:0000000000000000 setup_pwms
+     /tmp/ccWI2Svh.s:614    .text.main:0000000000000000 main
 
 UNDEFINED SYMBOLS
 __do_copy_data

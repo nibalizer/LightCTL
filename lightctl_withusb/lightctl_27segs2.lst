@@ -1,0 +1,687 @@
+   1               		.file	"lightctl_27segs2.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.section	.text.adc_start,"ax",@progbits
+  19               	.global	adc_start
+  21               	adc_start:
+  22               	.LFB6:
+  23               	.LSM0:
+  24               	.LVL0:
+  25               	/* prologue: function */
+  26               	/* frame size = 0 */
+  27               	.LSM1:
+  28 0000 EAE7      		ldi r30,lo8(122)
+  29 0002 F0E0      		ldi r31,hi8(122)
+  30 0004 96E8      		ldi r25,lo8(-122)
+  31 0006 9083      		st Z,r25
+  32               	.LSM2:
+  33 0008 982F      		mov r25,r24
+  34 000a 9072      		andi r25,lo8(32)
+  35 000c 9068      		ori r25,lo8(-128)
+  36 000e 9093 7B00 		sts 123,r25
+  37               	.LSM3:
+  38 0012 8F71      		andi r24,lo8(31)
+  39               	.LVL1:
+  40 0014 862B      		or r24,r22
+  41 0016 8093 7C00 		sts 124,r24
+  42               	.LSM4:
+  43 001a 1092 0000 		sts head,__zero_reg__
+  44               	.LSM5:
+  45 001e 1092 0000 		sts tail,__zero_reg__
+  46               	.LSM6:
+  47 0022 8EEE      		ldi r24,lo8(-18)
+  48               	.LVL2:
+  49 0024 8083      		st Z,r24
+  50               	.LSM7:
+  51               	/* #APP */
+  52               	 ;  21 "sampling.c" 1
+  53 0026 7894      		sei
+  54               	 ;  0 "" 2
+  55               	/* epilogue start */
+  56               	.LSM8:
+  57               	/* #NOAPP */
+  58 0028 0895      		ret
+  59               	.LFE6:
+  61               		.section	.text.adc_available,"ax",@progbits
+  62               	.global	adc_available
+  64               	adc_available:
+  65               	.LFB7:
+  66               	.LSM9:
+  67               	/* prologue: function */
+  68               	/* frame size = 0 */
+  69               	.LSM10:
+  70 0000 8091 0000 		lds r24,head
+  71               	.LVL3:
+  72               	.LSM11:
+  73 0004 9091 0000 		lds r25,tail
+  74               	.LVL4:
+  75               	.LSM12:
+  76 0008 8917      		cp r24,r25
+  77 000a 00F0      		brlo .L4
+  78 000c 892F      		mov r24,r25
+  79               	.LVL5:
+  80 000e 0895      		ret
+  81               	.L4:
+  82               	.LSM13:
+  83 0010 8E5F      		subi r24,lo8(-(2))
+  84               	.LVL6:
+  85 0012 891B      		sub r24,r25
+  86               	.LVL7:
+  87               	.LSM14:
+  88 0014 0895      		ret
+  89               	.LFE7:
+  91               		.section	.text.adc_read,"ax",@progbits
+  92               	.global	adc_read
+  94               	adc_read:
+  95               	.LFB8:
+  96               	.LSM15:
+  97               	/* prologue: function */
+  98               	/* frame size = 0 */
+  99               	.L8:
+ 100               	.LSM16:
+ 101 0000 8091 0000 		lds r24,head
+ 102               	.LVL8:
+ 103               	.LSM17:
+ 104 0004 E091 0000 		lds r30,tail
+ 105               	.LVL9:
+ 106               	.LSM18:
+ 107 0008 8E17      		cp r24,r30
+ 108 000a 01F0      		breq .L8
+ 109               	.LSM19:
+ 110 000c 8E2F      		mov r24,r30
+ 111               	.LVL10:
+ 112 000e 8F5F      		subi r24,lo8(-(1))
+ 113               	.LVL11:
+ 114 0010 8230      		cpi r24,lo8(2)
+ 115 0012 00F0      		brlo .L9
+ 116 0014 80E0      		ldi r24,lo8(0)
+ 117               	.L9:
+ 118               	.LSM20:
+ 119 0016 E82F      		mov r30,r24
+ 120 0018 F0E0      		ldi r31,lo8(0)
+ 121 001a EE0F      		lsl r30
+ 122 001c FF1F      		rol r31
+ 123 001e E050      		subi r30,lo8(-(buffer))
+ 124 0020 F040      		sbci r31,hi8(-(buffer))
+ 125 0022 2081      		ld r18,Z
+ 126 0024 3181      		ldd r19,Z+1
+ 127               	.LVL12:
+ 128               	.LSM21:
+ 129 0026 8093 0000 		sts tail,r24
+ 130               	.LSM22:
+ 131 002a C901      		movw r24,r18
+ 132               	.LVL13:
+ 133               	/* epilogue start */
+ 134 002c 0895      		ret
+ 135               	.LFE8:
+ 137               		.section	.text.__vector_29,"ax",@progbits
+ 138               	.global	__vector_29
+ 140               	__vector_29:
+ 141               	.LFB9:
+ 142               	.LSM23:
+ 143 0000 1F92      		push __zero_reg__
+ 144 0002 0F92      		push r0
+ 145 0004 0FB6      		in r0,__SREG__
+ 146 0006 0F92      		push r0
+ 147 0008 1124      		clr __zero_reg__
+ 148 000a 2F93      		push r18
+ 149 000c 3F93      		push r19
+ 150 000e 8F93      		push r24
+ 151 0010 9F93      		push r25
+ 152 0012 EF93      		push r30
+ 153 0014 FF93      		push r31
+ 154               	/* prologue: Signal */
+ 155               	/* frame size = 0 */
+ 156               	.LSM24:
+ 157 0016 2091 7800 		lds r18,120
+ 158 001a 3091 7900 		lds r19,(120)+1
+ 159               	.LSM25:
+ 160 001e 9091 0000 		lds r25,head
+ 161               	.LVL14:
+ 162 0022 9F5F      		subi r25,lo8(-(1))
+ 163               	.LSM26:
+ 164 0024 9230      		cpi r25,lo8(2)
+ 165 0026 00F0      		brlo .L13
+ 166 0028 90E0      		ldi r25,lo8(0)
+ 167               	.L13:
+ 168               	.LSM27:
+ 169 002a 8091 0000 		lds r24,tail
+ 170 002e 9817      		cp r25,r24
+ 171 0030 01F0      		breq .L15
+ 172               	.LSM28:
+ 173 0032 E92F      		mov r30,r25
+ 174 0034 F0E0      		ldi r31,lo8(0)
+ 175 0036 EE0F      		lsl r30
+ 176 0038 FF1F      		rol r31
+ 177 003a E050      		subi r30,lo8(-(buffer))
+ 178 003c F040      		sbci r31,hi8(-(buffer))
+ 179 003e 3183      		std Z+1,r19
+ 180 0040 2083      		st Z,r18
+ 181               	.LSM29:
+ 182 0042 9093 0000 		sts head,r25
+ 183               	.L15:
+ 184               	/* epilogue start */
+ 185               	.LSM30:
+ 186 0046 FF91      		pop r31
+ 187 0048 EF91      		pop r30
+ 188 004a 9F91      		pop r25
+ 189               	.LVL15:
+ 190 004c 8F91      		pop r24
+ 191 004e 3F91      		pop r19
+ 192 0050 2F91      		pop r18
+ 193 0052 0F90      		pop r0
+ 194 0054 0FBE      		out __SREG__,r0
+ 195 0056 0F90      		pop r0
+ 196 0058 1F90      		pop __zero_reg__
+ 197 005a 1895      		reti
+ 198               	.LFE9:
+ 200               		.section	.text.read_sensor,"ax",@progbits
+ 201               	.global	read_sensor
+ 203               	read_sensor:
+ 204               	.LFB10:
+ 205               	.LSM31:
+ 206               	/* prologue: function */
+ 207               	/* frame size = 0 */
+ 208               	.LBB22:
+ 209               	.LBB23:
+ 210               	.LSM32:
+ 211 0000 86E8      		ldi r24,lo8(-122)
+ 212 0002 8093 7A00 		sts 122,r24
+ 213               	.LSM33:
+ 214 0006 80E8      		ldi r24,lo8(-128)
+ 215 0008 8093 7B00 		sts 123,r24
+ 216               	.LSM34:
+ 217 000c 80E4      		ldi r24,lo8(64)
+ 218 000e 8093 7C00 		sts 124,r24
+ 219               	.LSM35:
+ 220 0012 1092 0000 		sts head,__zero_reg__
+ 221               	.LSM36:
+ 222 0016 1092 0000 		sts tail,__zero_reg__
+ 223               	.LSM37:
+ 224 001a 8EEE      		ldi r24,lo8(-18)
+ 225 001c 8093 7A00 		sts 122,r24
+ 226               	.LSM38:
+ 227               	/* #APP */
+ 228               	 ;  21 "sampling.c" 1
+ 229 0020 7894      		sei
+ 230               	 ;  0 "" 2
+ 231               	/* #NOAPP */
+ 232               	.L17:
+ 233               	.LBE23:
+ 234               	.LBE22:
+ 235               	.LBB24:
+ 236               	.LBB25:
+ 237               	.LSM39:
+ 238 0022 8091 0000 		lds r24,head
+ 239               	.LVL16:
+ 240               	.LSM40:
+ 241 0026 E091 0000 		lds r30,tail
+ 242               	.LVL17:
+ 243               	.LSM41:
+ 244 002a 8E17      		cp r24,r30
+ 245 002c 01F0      		breq .L17
+ 246               	.LSM42:
+ 247 002e 8E2F      		mov r24,r30
+ 248               	.LVL18:
+ 249 0030 8F5F      		subi r24,lo8(-(1))
+ 250               	.LVL19:
+ 251 0032 8230      		cpi r24,lo8(2)
+ 252 0034 00F0      		brlo .L18
+ 253 0036 80E0      		ldi r24,lo8(0)
+ 254               	.L18:
+ 255               	.LSM43:
+ 256 0038 E82F      		mov r30,r24
+ 257 003a F0E0      		ldi r31,lo8(0)
+ 258 003c EE0F      		lsl r30
+ 259 003e FF1F      		rol r31
+ 260 0040 E050      		subi r30,lo8(-(buffer))
+ 261 0042 F040      		sbci r31,hi8(-(buffer))
+ 262 0044 2081      		ld r18,Z
+ 263 0046 3181      		ldd r19,Z+1
+ 264               	.LVL20:
+ 265               	.LSM44:
+ 266 0048 8093 0000 		sts tail,r24
+ 267               	.LBE25:
+ 268               	.LBE24:
+ 269               	.LSM45:
+ 270 004c C901      		movw r24,r18
+ 271               	.LVL21:
+ 272               	/* epilogue start */
+ 273 004e 0895      		ret
+ 274               	.LFE10:
+ 276               		.section	.text.set_display,"ax",@progbits
+ 277               	.global	set_display
+ 279               	set_display:
+ 280               	.LFB11:
+ 281               	.LSM46:
+ 282               	.LVL22:
+ 283               	/* prologue: function */
+ 284               	/* frame size = 0 */
+ 285               	.LSM47:
+ 286 0000 AA27      		clr r26
+ 287 0002 97FD      		sbrc r25,7
+ 288 0004 A095      		com r26
+ 289 0006 BA2F      		mov r27,r26
+ 290               	.LVL23:
+ 291 0008 BC01      		movw r22,r24
+ 292 000a CD01      		movw r24,r26
+ 293 000c 0E94 0000 		call __floatsisf
+ 294               	.LVL24:
+ 295 0010 20E0      		ldi r18,lo8(0x40200000)
+ 296 0012 30E0      		ldi r19,hi8(0x40200000)
+ 297 0014 40E2      		ldi r20,hlo8(0x40200000)
+ 298 0016 50E4      		ldi r21,hhi8(0x40200000)
+ 299 0018 0E94 0000 		call __mulsf3
+ 300 001c 0E94 0000 		call __fixsfsi
+ 301 0020 9B01      		movw r18,r22
+ 302               	.LVL25:
+ 303 0022 6436      		cpi r22,100
+ 304 0024 7105      		cpc r23,__zero_reg__
+ 305 0026 04F0      		brlt .L22
+ 306 0028 23E6      		ldi r18,lo8(99)
+ 307 002a 30E0      		ldi r19,hi8(99)
+ 308               	.LVL26:
+ 309               	.L22:
+ 310               	.LSM48:
+ 311 002c C901      		movw r24,r18
+ 312 002e 6AE0      		ldi r22,lo8(10)
+ 313 0030 70E0      		ldi r23,hi8(10)
+ 314 0032 0E94 0000 		call __divmodhi4
+ 315               	.LSM49:
+ 316 0036 6093 0000 		sts HIGHBIT,r22
+ 317               	.LSM50:
+ 318 003a 86EF      		ldi r24,lo8(-10)
+ 319 003c 9FEF      		ldi r25,hi8(-10)
+ 320 003e 689F      		mul r22,r24
+ 321 0040 602D      		mov r22,r0
+ 322 0042 1124      		clr r1
+ 323 0044 620F      		add r22,r18
+ 324 0046 6093 0000 		sts LOWBIT,r22
+ 325               	/* epilogue start */
+ 326               	.LSM51:
+ 327 004a 0895      		ret
+ 328               	.LFE11:
+ 330               		.section	.text.display_num,"ax",@progbits
+ 331               	.global	display_num
+ 333               	display_num:
+ 334               	.LFB12:
+ 335               	.LSM52:
+ 336               	.LVL27:
+ 337               	/* prologue: function */
+ 338               	/* frame size = 0 */
+ 339               	.LSM53:
+ 340 0000 E82F      		mov r30,r24
+ 341 0002 F0E0      		ldi r31,lo8(0)
+ 342               	.LVL28:
+ 343 0004 E131      		cpi r30,17
+ 344 0006 F105      		cpc r31,__zero_reg__
+ 345 0008 00F0      		brlo .+2
+ 346 000a 00C0      		rjmp .L44
+ 347               	.LVL29:
+ 348 000c E050      		subi r30,lo8(-(gs(.L43)))
+ 349 000e F040      		sbci r31,hi8(-(gs(.L43)))
+ 350               	.LVL30:
+ 351 0010 EE0F      		lsl r30
+ 352 0012 FF1F      		rol r31
+ 353 0014 0590      		lpm __tmp_reg__,Z+
+ 354 0016 F491      		lpm r31,Z
+ 355 0018 E02D      		mov r30,__tmp_reg__
+ 356 001a 0994      		ijmp
+ 357               	.LVL31:
+ 358               		.data
+ 359               		.section .progmem.gcc_sw_table, "a", @progbits
+ 360               		.p2align 1
+ 361               	.L43:
+ 362               		.data
+ 363               		.section .progmem.gcc_sw_table, "a", @progbits
+ 364               		.p2align 1
+ 365 0000 0000      		.word gs(.L41)
+ 366 0002 0000      		.word gs(.L27)
+ 367 0004 0000      		.word gs(.L28)
+ 368 0006 0000      		.word gs(.L29)
+ 369 0008 0000      		.word gs(.L30)
+ 370 000a 0000      		.word gs(.L31)
+ 371 000c 0000      		.word gs(.L32)
+ 372 000e 0000      		.word gs(.L33)
+ 373 0010 0000      		.word gs(.L34)
+ 374 0012 0000      		.word gs(.L35)
+ 375 0014 0000      		.word gs(.L41)
+ 376 0016 0000      		.word gs(.L41)
+ 377 0018 0000      		.word gs(.L41)
+ 378 001a 0000      		.word gs(.L41)
+ 379 001c 0000      		.word gs(.L41)
+ 380 001e 0000      		.word gs(.L41)
+ 381 0020 0000      		.word gs(.L42)
+ 382               		.section	.text.display_num
+ 383               	.L27:
+ 384               	.LSM54:
+ 385 001c 18BC      		out 72-32,__zero_reg__
+ 386               	.LSM55:
+ 387 001e 1092 8900 		sts (136)+1,__zero_reg__
+ 388 0022 1092 8800 		sts 136,__zero_reg__
+ 389 0026 00C0      		rjmp .L45
+ 390               	.L28:
+ 391               	.LSM56:
+ 392 0028 18BC      		out 72-32,__zero_reg__
+ 393               	.LSM57:
+ 394 002a 1092 8900 		sts (136)+1,__zero_reg__
+ 395 002e 1092 8800 		sts 136,__zero_reg__
+ 396               	.LSM58:
+ 397 0032 8FEF      		ldi r24,lo8(-1)
+ 398 0034 00C0      		rjmp .L49
+ 399               	.L29:
+ 400               	.LSM59:
+ 401 0036 18BC      		out 72-32,__zero_reg__
+ 402               	.LSM60:
+ 403 0038 1092 8900 		sts (136)+1,__zero_reg__
+ 404 003c 1092 8800 		sts 136,__zero_reg__
+ 405               	.LSM61:
+ 406 0040 8FEF      		ldi r24,lo8(-1)
+ 407 0042 00C0      		rjmp .L48
+ 408               	.L30:
+ 409               	.LSM62:
+ 410 0044 8FEF      		ldi r24,lo8(-1)
+ 411 0046 88BD      		out 72-32,r24
+ 412 0048 00C0      		rjmp .L51
+ 413               	.L31:
+ 414               	.LSM63:
+ 415 004a 8FEF      		ldi r24,lo8(-1)
+ 416 004c 88BD      		out 72-32,r24
+ 417               	.LSM64:
+ 418 004e 1092 8900 		sts (136)+1,__zero_reg__
+ 419 0052 1092 8800 		sts 136,__zero_reg__
+ 420               	.LSM65:
+ 421 0056 1092 B300 		sts 179,__zero_reg__
+ 422 005a 00C0      		rjmp .L47
+ 423               	.L32:
+ 424               	.LSM66:
+ 425 005c 8FEF      		ldi r24,lo8(-1)
+ 426 005e 88BD      		out 72-32,r24
+ 427               	.LSM67:
+ 428 0060 1092 8900 		sts (136)+1,__zero_reg__
+ 429 0064 1092 8800 		sts 136,__zero_reg__
+ 430               	.L49:
+ 431               	.LSM68:
+ 432 0068 8093 B300 		sts 179,r24
+ 433 006c 00C0      		rjmp .L46
+ 434               	.L33:
+ 435               	.LSM69:
+ 436 006e 8FEF      		ldi r24,lo8(-1)
+ 437 0070 88BD      		out 72-32,r24
+ 438               	.LSM70:
+ 439 0072 1092 8900 		sts (136)+1,__zero_reg__
+ 440 0076 1092 8800 		sts 136,__zero_reg__
+ 441               	.L48:
+ 442               	.LSM71:
+ 443 007a 8093 B300 		sts 179,r24
+ 444 007e 00C0      		rjmp .L47
+ 445               	.L34:
+ 446               	.LSM72:
+ 447 0080 18BC      		out 72-32,__zero_reg__
+ 448               	.LSM73:
+ 449 0082 8FEF      		ldi r24,lo8(255)
+ 450 0084 90E0      		ldi r25,hi8(255)
+ 451 0086 9093 8900 		sts (136)+1,r25
+ 452 008a 8093 8800 		sts 136,r24
+ 453 008e 00C0      		rjmp .L50
+ 454               	.L35:
+ 455               	.LSM74:
+ 456 0090 18BC      		out 72-32,__zero_reg__
+ 457               	.LSM75:
+ 458 0092 8FEF      		ldi r24,lo8(255)
+ 459 0094 90E0      		ldi r25,hi8(255)
+ 460 0096 9093 8900 		sts (136)+1,r25
+ 461 009a 8093 8800 		sts 136,r24
+ 462               	.L45:
+ 463               	.LSM76:
+ 464 009e 1092 B300 		sts 179,__zero_reg__
+ 465               	.LSM77:
+ 466 00a2 8FEF      		ldi r24,lo8(-1)
+ 467               	.L47:
+ 468 00a4 8093 B400 		sts 180,r24
+ 469 00a8 0895      		ret
+ 470               	.L41:
+ 471               	.LSM78:
+ 472 00aa 18BC      		out 72-32,__zero_reg__
+ 473               	.L51:
+ 474               	.LSM79:
+ 475 00ac 1092 8900 		sts (136)+1,__zero_reg__
+ 476 00b0 1092 8800 		sts 136,__zero_reg__
+ 477               	.L50:
+ 478               	.LSM80:
+ 479 00b4 1092 B300 		sts 179,__zero_reg__
+ 480               	.L46:
+ 481               	.LSM81:
+ 482 00b8 1092 B400 		sts 180,__zero_reg__
+ 483 00bc 0895      		ret
+ 484               	.L42:
+ 485               	.LSM82:
+ 486 00be 18BC      		out 72-32,__zero_reg__
+ 487               	.LSM83:
+ 488 00c0 1092 8900 		sts (136)+1,__zero_reg__
+ 489 00c4 1092 8800 		sts 136,__zero_reg__
+ 490               	.LSM84:
+ 491 00c8 1092 B300 		sts 179,__zero_reg__
+ 492               	.LSM85:
+ 493 00cc 1092 B400 		sts 180,__zero_reg__
+ 494               	.LVL32:
+ 495               	.L44:
+ 496 00d0 0895      		ret
+ 497               	.LFE12:
+ 499               		.section	.text.display,"ax",@progbits
+ 500               	.global	display
+ 502               	display:
+ 503               	.LFB13:
+ 504               	.LSM86:
+ 505 0000 0F93      		push r16
+ 506 0002 1F93      		push r17
+ 507               	/* prologue: function */
+ 508               	/* frame size = 0 */
+ 509               	.LSM87:
+ 510 0004 8FEF      		ldi r24,lo8(-1)
+ 511 0006 87BD      		out 71-32,r24
+ 512               	.LSM88:
+ 513 0008 8091 0000 		lds r24,HIGHBIT
+ 514 000c 0E94 0000 		call display_num
+ 515               	.LBB26:
+ 516               	.LBB27:
+ 517               	.LBB28:
+ 518               	.LBB29:
+ 519               	.LSM89:
+ 520 0010 00E4      		ldi r16,lo8(8000)
+ 521 0012 1FE1      		ldi r17,hi8(8000)
+ 522 0014 C801      		movw r24,r16
+ 523               	.LVL33:
+ 524               	/* #APP */
+ 525               	 ;  105 "/usr/lib/gcc/avr/4.3.4/../../../avr/include/util/delay_basic.h" 1
+ 526 0016 0197      		1: sbiw r24,1
+ 527 0018 01F4      		brne 1b
+ 528               	 ;  0 "" 2
+ 529               	/* #NOAPP */
+ 530               	.LBE29:
+ 531               	.LBE28:
+ 532               	.LBE27:
+ 533               	.LBE26:
+ 534               	.LSM90:
+ 535 001a 17BC      		out 71-32,__zero_reg__
+ 536               	.LSM91:
+ 537 001c 8091 0000 		lds r24,LOWBIT
+ 538               	.LVL34:
+ 539 0020 0E94 0000 		call display_num
+ 540               	.LBB30:
+ 541               	.LBB31:
+ 542               	.LBB32:
+ 543               	.LBB33:
+ 544               	.LSM92:
+ 545 0024 C801      		movw r24,r16
+ 546               	.LVL35:
+ 547               	/* #APP */
+ 548               	 ;  105 "/usr/lib/gcc/avr/4.3.4/../../../avr/include/util/delay_basic.h" 1
+ 549 0026 0197      		1: sbiw r24,1
+ 550 0028 01F4      		brne 1b
+ 551               	 ;  0 "" 2
+ 552               	/* epilogue start */
+ 553               	/* #NOAPP */
+ 554               	.LBE33:
+ 555               	.LBE32:
+ 556               	.LBE31:
+ 557               	.LBE30:
+ 558               	.LSM93:
+ 559 002a 1F91      		pop r17
+ 560 002c 0F91      		pop r16
+ 561 002e 0895      		ret
+ 562               	.LFE13:
+ 564               		.section	.text.set_default_duty_cycles,"ax",@progbits
+ 565               	.global	set_default_duty_cycles
+ 567               	set_default_duty_cycles:
+ 568               	.LFB14:
+ 569               	.LSM94:
+ 570               	/* prologue: function */
+ 571               	/* frame size = 0 */
+ 572               	.L55:
+ 573               	.LSM95:
+ 574 0000 17BC      		out 71-32,__zero_reg__
+ 575               	.LSM96:
+ 576 0002 18BC      		out 72-32,__zero_reg__
+ 577               	.LSM97:
+ 578 0004 1092 B300 		sts 179,__zero_reg__
+ 579               	.LSM98:
+ 580 0008 1092 B400 		sts 180,__zero_reg__
+ 581               	.LSM99:
+ 582 000c 1092 8900 		sts 137,__zero_reg__
+ 583               	.LSM100:
+ 584 0010 1092 8800 		sts 136,__zero_reg__
+ 585               	.LSM101:
+ 586 0014 1092 8B00 		sts 139,__zero_reg__
+ 587               	.LSM102:
+ 588 0018 1092 8A00 		sts 138,__zero_reg__
+ 589               	.LSM103:
+ 590 001c 1092 8C00 		sts 140,__zero_reg__
+ 591               	.LSM104:
+ 592 0020 1092 8C00 		sts 140,__zero_reg__
+ 593               	.LSM105:
+ 594 0024 1092 9900 		sts 153,__zero_reg__
+ 595               	.LSM106:
+ 596 0028 1092 9800 		sts 152,__zero_reg__
+ 597               	.LSM107:
+ 598 002c 1092 9B00 		sts 155,__zero_reg__
+ 599               	.LSM108:
+ 600 0030 1092 9A00 		sts 154,__zero_reg__
+ 601               	.LSM109:
+ 602 0034 1092 9D00 		sts 157,__zero_reg__
+ 603               	.LSM110:
+ 604 0038 1092 9C00 		sts 156,__zero_reg__
+ 605 003c 00C0      		rjmp .L55
+ 606               	.LFE14:
+ 608               		.section	.text.setup_pwms,"ax",@progbits
+ 609               	.global	setup_pwms
+ 611               	setup_pwms:
+ 612               	.LFB15:
+ 613               	.LSM111:
+ 614               	/* prologue: function */
+ 615               	/* frame size = 0 */
+ 616               	.LSM112:
+ 617 0000 84B1      		in r24,36-32
+ 618 0002 806F      		ori r24,lo8(-16)
+ 619 0004 84B9      		out 36-32,r24
+ 620               	.LSM113:
+ 621 0006 8AB1      		in r24,42-32
+ 622 0008 8360      		ori r24,lo8(3)
+ 623 000a 8AB9      		out 42-32,r24
+ 624               	.LSM114:
+ 625 000c 93EA      		ldi r25,lo8(-93)
+ 626 000e 94BD      		out 68-32,r25
+ 627               	.LSM115:
+ 628 0010 81E0      		ldi r24,lo8(1)
+ 629 0012 85BD      		out 69-32,r24
+ 630               	.LSM116:
+ 631 0014 9093 B000 		sts 176,r25
+ 632               	.LSM117:
+ 633 0018 8093 B100 		sts 177,r24
+ 634               	.LSM118:
+ 635 001c 91EA      		ldi r25,lo8(-95)
+ 636 001e 9093 8000 		sts 128,r25
+ 637               	.LSM119:
+ 638 0022 89E0      		ldi r24,lo8(9)
+ 639 0024 8093 8100 		sts 129,r24
+ 640               	.LSM120:
+ 641 0028 1092 8200 		sts 130,__zero_reg__
+ 642               	.LSM121:
+ 643 002c 9093 9000 		sts 144,r25
+ 644               	.LSM122:
+ 645 0030 8093 9100 		sts 145,r24
+ 646               	.LSM123:
+ 647 0034 1092 9200 		sts 146,__zero_reg__
+ 648               	/* epilogue start */
+ 649               	.LSM124:
+ 650 0038 0895      		ret
+ 651               	.LFE15:
+ 653               		.section	.text.main,"ax",@progbits
+ 654               	.global	main
+ 656               	main:
+ 657               	.LFB16:
+ 658               	.LSM125:
+ 659               	/* prologue: function */
+ 660               	/* frame size = 0 */
+ 661               	.LSM126:
+ 662 0000 80E8      		ldi r24,lo8(-128)
+ 663 0002 8093 6100 		sts 97,r24
+ 664 0006 82E0      		ldi r24,lo8(2)
+ 665 0008 8093 6100 		sts 97,r24
+ 666               	.LSM127:
+ 667 000c 0E94 0000 		call setup_pwms
+ 668               	.L60:
+ 669               	.LSM128:
+ 670 0010 0E94 0000 		call read_sensor
+ 671               	.LSM129:
+ 672 0014 90E0      		ldi r25,lo8(0)
+ 673 0016 0E94 0000 		call set_display
+ 674               	.LSM130:
+ 675 001a 0E94 0000 		call display
+ 676 001e 00C0      		rjmp .L60
+ 677               	.LFE16:
+ 679               		.lcomm head,1
+ 680               		.lcomm tail,1
+ 681               		.lcomm buffer,4
+ 682               		.comm HIGHBIT,1,1
+ 683               		.comm LOWBIT,1,1
+ 788               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 lightctl_27segs2.c
+     /tmp/cc7c9nQX.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cc7c9nQX.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cc7c9nQX.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cc7c9nQX.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/cc7c9nQX.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc7c9nQX.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc7c9nQX.s:21     .text.adc_start:0000000000000000 adc_start
+                             .bss:0000000000000000 head
+     /tmp/cc7c9nQX.s:679    .bss:0000000000000001 tail
+     /tmp/cc7c9nQX.s:64     .text.adc_available:0000000000000000 adc_available
+     /tmp/cc7c9nQX.s:94     .text.adc_read:0000000000000000 adc_read
+     /tmp/cc7c9nQX.s:680    .bss:0000000000000002 buffer
+     /tmp/cc7c9nQX.s:140    .text.__vector_29:0000000000000000 __vector_29
+     /tmp/cc7c9nQX.s:203    .text.read_sensor:0000000000000000 read_sensor
+     /tmp/cc7c9nQX.s:279    .text.set_display:0000000000000000 set_display
+                            *COM*:0000000000000001 HIGHBIT
+                            *COM*:0000000000000001 LOWBIT
+     /tmp/cc7c9nQX.s:333    .text.display_num:0000000000000000 display_num
+     /tmp/cc7c9nQX.s:502    .text.display:0000000000000000 display
+     /tmp/cc7c9nQX.s:567    .text.set_default_duty_cycles:0000000000000000 set_default_duty_cycles
+     /tmp/cc7c9nQX.s:611    .text.setup_pwms:0000000000000000 setup_pwms
+     /tmp/cc7c9nQX.s:656    .text.main:0000000000000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__floatsisf
+__mulsf3
+__fixsfsi
+__divmodhi4

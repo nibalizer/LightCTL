@@ -19,8 +19,8 @@ import sys, time, serial
 
 
 x = serial.Serial('/dev/ttyACM0')
-pause = float(sys.argv[1])
-
+#pause = float(sys.argv[1])
+pause = .5
 def zero():
     x.write('\x04\x01\x00\n')
     x.write('\x04\x02\x00\n')
@@ -185,6 +185,3 @@ def sensor_readout():
         elif (t < 1023):
             nine()
 
-
-
-display_two()
