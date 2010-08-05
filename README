@@ -1,30 +1,17 @@
 LightCTL is a program that allows for control of a Lamp using an Atmel microcontroller dev board called a Teensy. 
 
 
-You must configure your teensy with a luminosity sensor, a potentiometer, two seven segment displays for reporting, and a PWM
-controlled voltage regulator.
+You must configure your teensy with a luminosity sensor, a potentiometer, two seven segment displays for reporting, and a PWM controlled voltage regulator.
 
-The idea is that the user will twist the potentiometer until the seven segment displays read the luminoisty that the user wants
-his or her light to output, then the software will interface with that hardware to maintain that luminosity indefinitely.
+The idea is that the user will twist the potentiometer until the seven segment displays read the luminoisty that the user wants his or her light to output, then the software will interface with that hardware to maintain that luminosity indefinitely.
 
-The Teensy reads the analog voltage across a photoresistor and converts it to a digital value with an internal 10bit ADC.
-The software then adjusts the voltage across the lamp to counteract any increase or decrease in the luminosity.
+The Teensy reads the analog voltage across a photoresistor and converts it to a digital value with an internal 10bit ADC. The software then adjusts the voltage across the lamp to counteract any increase or decrease in the luminosity.
 
 
 There are two ways to run the software.
 
-The dumb_Teensy directory contains software that puts the teensy into a mode where it listens for serial communication over its
-USB serial port and sets its digital I/O pins and its PWM outputs only when it recieves commands from a controlling computer. It
-is (affectionately) called dumb Teensy because it doesn't do any processing or thinking. The closed loop control system is writen
-in Python and is performed by a controlling computer. The disadvantage to this configuration is that a computer must be dedicated
-to controlling a lamp. The advantage is that with the inclusion of the matPlotLib python libraries, it is very easy to ouput neat
-graphs of voltage, luminosity, and time. Included with this code are a number of simple python scripts that use python's serial 
-module to handle communication with the teensy and will serve as a launching point for anyone wishing to change the function of
-LightCTL.
+The dumb_Teensy directory contains software that puts the teensy into a mode where it listens for serial communication over its USB serial port and sets its digital I/O pins and its PWM outputs only when it recieves commands from a controlling computer. It is (affectionately) called dumb Teensy because it doesn't do any processing or thinking. The closed loop control system is writen in Python and is performed by a controlling computer. The disadvantage to this configuration is that a computer must be dedicated to controlling a lamp. The advantage is that with the inclusion of the matPlotLib python libraries, it is very easy to ouput neat graphs of voltage, luminosity, and time. Included with this code are a number of simple python scripts that use python's serial  module to handle communication with the teensy and will serve as a launching point for anyone wishing to change the function of LightCTL.
 
-The smart_Teensy directory contains software that puts the teensy into a mode where it reads inputs and writes outputs independently
-of a computer controller. The closed loop control system is implemented in C and programmed into the Teensy. The advantages to this 
-configuration are that the device that the LightCTL software is running on becomes a true embeded device, if it has power it is working.
-The disadvantages are that it is much harder to debug without a computer connection.
+The smart_Teensy directory contains software that puts the teensy into a mode where it reads inputs and writes outputs independently of a computer controller. The closed loop control system is implemented in C and programmed into the Teensy. The advantages to this configuration are that the device that the LightCTL software is running on becomes a true embeded device, if it has power it is working. The disadvantages are that it is much harder to debug without a computer connection.
 
 See the README in each directory for precise install/setup directions.
