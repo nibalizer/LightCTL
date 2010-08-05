@@ -1,0 +1,54 @@
+LightCTL smart_Teensy is a part of the LightCTL software package.
+
+It is designed to control a lamp using a Teensy microcontroller.
+
+----------------------------------------------------------------
+
+Features:
+
+
+*Set Luminosity in Lux for the lamp
+*Monitor luminoisty via python serial module, other serial module, or visually with 7-segment displays
+*Closed loop control system maintains set luminosity indefinately
+*Open Source
+
+
+---------------------------------------------------------------
+
+Getting started(Hardware):
+
+	Get:
+		All Prices in USD
+
+
+		Item				Quantity	Price	Link
+		Teensy2.0 			1		18 	http://pjrc.com/store/teensy.html
+		7-Seg Displays			2		1.99	http://www.radioshack.com Model 276-075 | Catalog #: 276-075
+		BCD to 7-Segment Decoder	1 		0.99	http://hobbyengineering.com/H1388.html
+		Quad NAND gate			1		0.99	http://www.hobbyegineering.com/H1385.html
+		CdS Phototresistors(5pk)	1		2.99	http://www.radioshack.com Model 176-1657 | Catalog #: 276-1657
+
+There is a .pdf of the LightCTL circuit in the main directory. Build it!
+		
+
+---------------------------------------------------------------
+
+Getting started(Software):
+
+You'll need to set up the Teensy Loader Application, follow instructions here: http://pjrc.com/teensy/loader.html
+
+You'll also need the Teensy C compiler: http://pjrc.com/teensy/gcc.html
+
+If you don't want to set up a build environment you will find dumb_Teensy.hex and smart_Teensy.hex in the hex directoy
+inside the main directory.
+
+
+---------------------------------------------------------------
+
+Example Use:
+
+	1) Build dumb_Teensy.c using the makefile.
+
+	2) Use the Teensy Loader application to program the Teensy with dumb_Teensy.hex.
+
+	3) Twist the potentiometer to change the luminosity of the lamp.
