@@ -33,6 +33,20 @@
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))
 
+#define DIGITAL_IO_INIT		(DORB |= (1<<0)|(1<<1)|(1<<2)|(1<<3)) //Set pins B0 - B3 as digital outputs
+
+#define PORT_UP_B0		(PORTB |= (1<<0))
+#define PORT_DOWN_B0		(PORTB &= ~(1<<0))
+
+
+#define PORT_UP_B1		(PORTB |= (1<<1))
+#define PORT_DOWN_B1		(PORTB &= ~(1<<1))
+
+#define PORT_UP_B2		(PORTB |= (1<<2))
+#define PORT_DOWN_B2		(PORTB &= ~(1<<2))
+
+#define PORT_UP_B3		(PORTB |= (1<<3))
+#define PORT_DOWN_B3		(PORTB &= ~(1<<3))
 
 void send_str(const char *s);
 uint8_t recv_str(char *buf, uint8_t size);
@@ -89,6 +103,34 @@ void setup_pwms(void)
 /**
  * @breif Handle a set pwm command
  */
+
+
+void handle_set_digitalio_command(uint8_t port, uint8_t val)
+{
+	usb_serial_putchar('\x08');
+	usb_serial_putchar(port);
+	switch(port)
+	{
+		case 0: 
+			break;
+		case 1:
+			break;
+		case 2;
+			break;
+		case 3; 
+			break;
+		case 4;
+			break;
+		default:
+			usb_serial_putchar('\x01');
+			usb_serial_putchar('\n');
+			return;
+	}
+	usb_serial_putchar('\x00');
+	usb_serial_putchar('\n');
+}
+
+
 
 void handle_set_pwm_command(uint8_t port, uint8_t val)
 {
@@ -294,9 +336,12 @@ void handle_command(const char *str, uint8_t len)
 		case 4:
 			handle_set_pwm_command(str[1], str[2]);
 			break;
-        case 7:
-            handle_sensor_query(str[1]);
-            break;
+        	case 7:
+            		handle_sensor_query(str[1]);
+           		break;
+		case 8:
+			handle_set_digitalio_command(str[1], str[2]);
+			break;	
 		default:
 			send_str(PSTR("INVALID_COMMAND_CODE"));
 	}
