@@ -101,7 +101,7 @@ void setup_pwms(void)
 }
 
 /**
- * @breif Handle a set pwm command
+ * @breif Handle a set digital I/O command
  */
 
 
@@ -129,6 +129,10 @@ void handle_set_digitalio_command(uint8_t port, uint8_t val)
 	usb_serial_putchar('\x00');
 	usb_serial_putchar('\n');
 }
+
+/**
+ * @breif Handle a set pwm command
+ */
 
 
 
