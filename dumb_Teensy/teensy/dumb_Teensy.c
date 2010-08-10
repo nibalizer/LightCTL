@@ -33,7 +33,7 @@
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))
 
-#define DIGITAL_IO_INIT		(DORB |= (1<<0)|(1<<1)|(1<<2)|(1<<3)) //Set pins B0 - B3 as digital outputs
+#define DIGITAL_IO_INIT		(DDRB  |= (1<<0)|(1<<1)|(1<<2)|(1<<3)) //Set pins B0 - B3 as digital outputs
 
 #define PORT_UP_B0		(PORTB |= (1<<0))
 #define PORT_DOWN_B0		(PORTB &= ~(1<<0))
@@ -109,23 +109,15 @@ void handle_set_digitalio_command(uint8_t port, uint8_t val)
 {
 	usb_serial_putchar('\x08');
 	usb_serial_putchar(port);
-	switch(port)
+	//This part is from the CS tutors, Jesusaurus++
+	if (val)
 	{
-		case 0: 
-			break;
-		case 1:
-			break;
-		case 2;
-			break;
-		case 3; 
-			break;
-		case 4;
-			break;
-		default:
-			usb_serial_putchar('\x01');
-			usb_serial_putchar('\n');
-			return;
+		PORTB |= (1 << port);
+	}else{
+		PORTB &= ~(1 << port);
 	}
+
+
 	usb_serial_putchar('\x00');
 	usb_serial_putchar('\n');
 }
@@ -343,13 +335,23 @@ void handle_command(const char *str, uint8_t len)
         	case 7:
             		handle_sensor_query(str[1]);
            		break;
-		case 8:
+		case 9:
 			handle_set_digitalio_command(str[1], str[2]);
 			break;	
 		default:
 			send_str(PSTR("INVALID_COMMAND_CODE"));
 	}
 }
+
+void setup_digitalio(void)
+{
+	DIGITAL_IO_INIT;
+	DDRB |= (1<<0);
+	DDRB |= (1<<1);
+	DDRB |= (1<<2);
+	DDRB |= (1<<3);
+}
+
 
 int main(void)
 {
@@ -358,6 +360,7 @@ int main(void)
 
 	CPU_PRESCALE(2);
 	setup_pwms();
+	setup_digitalio();
 
 	usb_init();
 	while (!usb_configured()) /* wait */ ;
