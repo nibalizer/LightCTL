@@ -27,18 +27,24 @@
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 #define HEX(n) (((n) < 10) ? ((n) + '0') : ((n) + 'A' - 10))
 
+#define DIGITAL_IO_INIT_D	(DDRB  |= (1<<0)|(1<<1)|(1<<2)|(1<<3)) //Set pins B0 - B3 as digital outputs
+#define DITITAL_IO_INIT_C	(DDRC |= (1<<7)
 uint8_t HIGHBIT;
 uint8_t LOWBIT;
 
+bool lowerloop = true;
 
-
-uint16_t read_sensor(void){
+uint16_t read_sensor(uint8_t sensor)
+{
 	uint16_t val;
-	adc_start(ADC_MUX_PIN_F0, ADC_REF_POWER);
-	val = adc_read();
-	return val;
-}
 
+	adc_start(sensor, ADC_REF_POWER);
+
+	val = adc_read();
+	usb_serial_putchar(val);
+	return val;
+	
+}
 void set_display(uint16_t val)
 {
 	int val_ = val;
@@ -54,126 +60,11 @@ void set_display(uint16_t val)
 }
 
 
-void display_num(uint8_t number)
-{
-	uint8_t full = 255;
-	uint8_t off  = 0;
-	switch(number)
-	{
-		case 0:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 1:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = full;
-			break;
-		case 2:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = full;
-			OCR2B = off;
-			break;
-		case 3:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = full;
-			OCR2B = full;
-			break;
-		case 4:
-			OCR0B = full;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 5:
-			OCR0B = full;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = full;
-			break;
-		case 6:
-			OCR0B = full;
-			OCR1A = off;
-			OCR2A = full;
-			OCR2B = off;
-			break;
-		case 7:
-			OCR0B = full;
-			OCR1A = off;
-			OCR2A = full;
-			OCR2B = full;
-			break;
-		case 8:
-			OCR0B = off;
-			OCR1A = full;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 9:
-			OCR0B = off;
-			OCR1A = full;
-			OCR2A = off;
-			OCR2B = full;
-			break;
-		case 10:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 11:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 12:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 13:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 14:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 15:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;
-		case 16:
-			OCR0B = off;
-			OCR1A = off;
-			OCR2A = off;
-			OCR2B = off;
-			break;					 	
-	}
-}
-
 void display(void){
-	uint8_t full = 255;
-	uint8_t off = 0;
-	
-	OCR0A = full;
+	PORTC |= (1<<7);	
 	display_num(HIGHBIT);
-	OCR0A = off;
+	PORTC &= ~(1<<7);
 	display_num(LOWBIT);
-	
 }
 
 void lamp_v(uint8_t lum){
@@ -236,22 +127,214 @@ void setup_pwms(void)
 	TCCR3C = 0;
 }
 
+
+uint16_t PID(uint16_t pot, uint16_t lux)
+{
+	uint16_t ratio;
+	ratio = pot/lux;
+	
+	uint16_t pid;
+	pid = ratio * 255;
+	return pid;
+}
+
+void handle_set_pwm_command(uint8_t port, uint8_t val)
+{
+	switch(port)
+	{
+		case 0:
+			OCR0A = val;
+			break;
+		case 1:
+			OCR0B = val;
+			break;
+		case 2:
+			OCR1A = val;
+			break;
+		case 3:
+			OCR1B = val;
+			break;
+		case 4:
+			OCR2A = val;
+			break;
+		case 5:
+			OCR2B = val;
+			break;
+		case 6:
+			OCR3A = val;
+			break;
+		case 7:
+			OCR3B = val;
+			break;
+		case 8:
+			OCR3C = val;
+			break;
+		default:
+			return;
+	}
+	usb_serial_putchar('\x00');
+	usb_serial_putchar('\n');
+}
+void setup_digitalio(void)
+{
+	DIGITAL_IO_INIT_D;
+	DIGITAL_IO_INIT_C;
+}
+/**
+ * @breif Handle a set digital I/O command
+ */
+
+
+void handle_set_digitalio_command(uint8_t port, uint8_t val)
+{
+	usb_serial_putchar('\x08');
+	usb_serial_putchar(port);
+	//This part is from the CS tutors, Jesusaurus++
+	if (val)
+	{
+		PORTB |= (1 << port);
+	}else{
+		PORTB &= ~(1 << port);
+	}
+
+
+	usb_serial_putchar('\x00');
+	usb_serial_putchar('\n');
+}
+
+void display_num(uint8_t number)
+{
+	PORTB = number;	
+}
+
+void handle_command(const char *str, uint8_t len)
+{
+	if(len == 0)
+		return;
+
+	switch(str[0])
+	{
+		case 0:
+			lowerhalf(str[1]);
+			break;
+		
+		case 4:
+			handle_set_pwm_command(str[1], str[2]);
+			break;
+        	case 7:
+            		read_sensor(str[1]);
+           		break;
+		case 9:
+			handle_set_digitalio_command(str[1], str[2]);
+			break;	
+		default:
+			send_str(PSTR("INVALID_COMMAND_CODE"));
+	}
+}
+
+
+void lowerhalf(uint8_t onoff)
+{
+	if (onoff){
+		lowerloop = true;
+		send_str(PSTR("Lower half of control loop enabled, sir"));
+		send_srt(PSTR("Autopilot engaged, course set for Risa"));
+	}else{
+		lowerloop = false;
+		send_str(PSTR("Disabling lower half of control loop, captain"));
+		send_srt(PSTR("We are flying manually now"));	
+	}	
+}
+
 int main(void)
 {
-	uint8_t val;
+	uint16_t lux, pot, pid;
+	uint8_t n;
+	char buf[32];	
+	
+
 
 	CPU_PRESCALE(2); //why?
 	setup_pwms();  
-	
+
+	usb_init();
+	while (!usb_configured());
+	_delay_ms(1000);
+
+
+
 	while(1){
-		val = read_sensor();
-		set_display(val);
-		lamp_v(val);
-		display();
+		while (!(usb_serial_get_control() & USB_SERIAL_DTR)) 
+		usb_serial_flush_input();
+		send_str(PSTR("Everything Initialized!"));
+		while(1){
+			//Upper Half
+			n = recv_str(buf, sizeof(buf));
+			if (n == 255) break;
+			handle_command(buf, n);
+		
+
+			//Lower Half
+			if (lowerloop){
+
+				pot = read_sensor(0x01);
+				lux = read_sensor(0x00);
+				set_display(255);
+				display();
+				pid = PID(lux, pot);
+				lamp_v(pid);
+			}
+		}
 	}
 }	
+
 	
 
+
+// Send a string to the USB serial port.  The string must be in
+// flash memory, using PSTR
+//
+void send_str(const char *s)
+{
+	char c;
+	while (1) {
+		c = pgm_read_byte(s++);
+		if (!c) break;
+		usb_serial_putchar(c);
+	}
+}
+
+
+// Receive a string from the USB serial port.  The string is stored
+// in the buffer and this function will not exceed the buffer size.
+// A carriage return or newline completes the string, and is not
+// stored into the buffer.
+// The return value is the number of characters received, or 255 if
+// the virtual serial connection was closed while waiting.
+//
+uint8_t recv_str(char *buf, uint8_t size)
+{
+	int16_t r;
+	uint8_t count=0;
+
+	while (count < size) {
+		r = usb_serial_getchar();
+		if (r != -1) {
+			if (r == '\r' || r == '\n') return count;
+			*buf++ = r;
+			//usb_serial_putchar(r);
+			count++;
+		} else {
+			if (!usb_configured() ||
+			  !(usb_serial_get_control() & USB_SERIAL_DTR)) {
+				// user no longer connected
+				return 255;
+			}
+			// just a normal timeout, keep waiting
+		}
+	}
+	return count;
+}
 
 
 
