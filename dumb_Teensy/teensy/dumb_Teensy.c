@@ -130,8 +130,6 @@ void handle_set_digitalio_command(uint8_t port, uint8_t val)
 
 void handle_set_pwm_command(uint8_t port, uint8_t val)
 {
-	usb_serial_putchar('\x04');
-	usb_serial_putchar(port);
 	switch(port)
 	{
 		case 0:
@@ -162,8 +160,6 @@ void handle_set_pwm_command(uint8_t port, uint8_t val)
 			OCR3C = val;
 			break;
 		default:
-			usb_serial_putchar('\x01');
-			usb_serial_putchar('\n');
 			return;
 	}
 	usb_serial_putchar('\x00');
@@ -176,21 +172,14 @@ void handle_sensor_query(uint8_t port)
     uint16_t val;
     char buf[4];
     int readings = 10;
-    usb_serial_putchar('\x07');
 	usb_serial_putchar(port);
 	switch(port)
 	{
 		case 0:
             
             adc_start(ADC_MUX_PIN_F0, ADC_REF_POWER);
-            for(i=1;i<readings;i++){
                 val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
+		usb_serial_putchar(val);
 			break;
 		case 1:
 			adc_start(ADC_MUX_PIN_F1, ADC_REF_POWER);
@@ -281,8 +270,6 @@ void handle_sensor_query(uint8_t port)
 			usb_serial_putchar('\n');
 			return;
 	}
-	usb_serial_putchar('\x00');
-	usb_serial_putchar('\n');
 }
 void handle_version_command(void)
 {

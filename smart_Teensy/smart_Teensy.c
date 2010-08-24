@@ -32,7 +32,7 @@
 uint8_t HIGHBIT;
 uint8_t LOWBIT;
 
-bool lowerloop = true;
+int lowerloop = 1;
 
 uint16_t read_sensor(uint8_t sensor)
 {
@@ -76,7 +76,6 @@ void lamp_v(uint8_t lum){
 void set_default_duty_cycles(void)
 {
 	
-	//TODO figure out what the f*** is going on here
 	OCR0A = 0x00;
 	OCR0B = 0x00;
 	
@@ -103,8 +102,6 @@ void set_default_duty_cycles(void)
 
 void setup_pwms(void)
 {
-	//TODO figure out what the f*** is going on here
-	//TODO become a bittwidddling mastah
 
 	// Timer 0
 	// Set ports to output
@@ -130,11 +127,23 @@ void setup_pwms(void)
 
 uint16_t PID(uint16_t pot, uint16_t lux)
 {
-	uint16_t ratio;
+    //constants
+    uint8_t Kp; //proportional constant
+    uint8_t ki; //integral constant
+    uint8_t kd; //derivative constant
+
+
+    uint16_t ratio;
 	ratio = pot/lux;
-	
+
+    uint16_t difference;
+    diference = pot - lux;
+
 	uint16_t pid;
-	pid = ratio * 255;
+
+    uint16_t proportion;
+    proportion = difference * kp;
+
 	return pid;
 }
 
@@ -250,8 +259,7 @@ int main(void)
 {
 	uint16_t lux, pot, pid;
 	uint8_t n;
-	char buf[32];	
-	
+	char buf[32];	    
 
 
 	CPU_PRESCALE(2); //why?
@@ -279,7 +287,7 @@ int main(void)
 
 				pot = read_sensor(0x01);
 				lux = read_sensor(0x00);
-				set_display(255);
+				set_display(lux);
 				display();
 				pid = PID(lux, pot);
 				lamp_v(pid);
