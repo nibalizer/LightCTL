@@ -1,4 +1,7 @@
-import serial, sys, getopt
+#dumb_teensy.py is (c) 2010 Spencer Krum and released under the GPLv3 or any later version
+#see README, LICENSE for more information
+
+import serial, sys, getopt, time
 
 class LightController:
 	def __init__(self, teensy):
@@ -54,10 +57,12 @@ def main(argv):
 		usage()
 		sys.exit(2)
 	x = LightController(teensy)
+    time.sleep(1000);
 	while (1):
 		p = int(raw_input("Give me a number p for port: "))
 		t = int(raw_input("Give me a number t for value: "))
 		x.setDIO(p,t)
+        x.listenout()
 if __name__ == "__main__":
 	main(sys.argv[1:])
 
