@@ -5,6 +5,10 @@
  *	serial support. This one has very little or perhaps none.
  */
 
+/*
+ *  Project website at http://github.com/spencer-krum/LightCTL
+ */
+
 /* 
  *	It is copyright (c) Spencer Krum. July 17, 2010. It is released under the
  * 	GPL v3 or any later version.
@@ -29,10 +33,16 @@
 
 #define DIGITAL_IO_INIT_D	(DDRB  |= (1<<0)|(1<<1)|(1<<2)|(1<<3)) //Set pins B0 - B3 as digital outputs
 #define DITITAL_IO_INIT_C	(DDRC |= (1<<7)
-uint8_t HIGHBIT;
-uint8_t LOWBIT;
 
+void send_str(const char *s);
+uint8_t recv_str(char *but, uint8_t size);
+	
 int lowerloop = 1;
+
+/*
+ * command to perform ADC on a sensor port(F0-F7)
+ */
+
 
 uint16_t read_sensor(uint8_t sensor)
 {
@@ -45,6 +55,12 @@ uint16_t read_sensor(uint8_t sensor)
 	return val;
 	
 }
+
+/*
+ * command to output to and multiplex accross seven segment displays
+ */
+
+
 void set_display(uint16_t val)
 {
 	int val_ = val;
@@ -55,17 +71,13 @@ void set_display(uint16_t val)
 	val_ /= 10;
 	high = val_ / 10;
 	low = (val_ - (high * 10));
-	HIGHBIT = high;
-	LOWBIT = low;
-}
 
-
-void display(void){
 	PORTC |= (1<<7);	
-	display_num(HIGHBIT);
+	PORTB = high;
 	PORTC &= ~(1<<7);
-	display_num(LOWBIT);
+	PORTB = low;
 }
+
 
 void lamp_v(uint8_t lum){
 	OCR1B = lum;
@@ -128,7 +140,7 @@ void setup_pwms(void)
 uint16_t PID(uint16_t pot, uint16_t lux)
 {
     //constants
-    uint8_t Kp; //proportional constant
+    uint8_t kp; //proportional constant
     uint8_t ki; //integral constant
     uint8_t kd; //derivative constant
 
@@ -137,7 +149,7 @@ uint16_t PID(uint16_t pot, uint16_t lux)
 	ratio = pot/lux;
 
     uint16_t difference;
-    diference = pot - lux;
+    difference = pot - lux;
 
 	uint16_t pid;
 
@@ -186,9 +198,13 @@ void handle_set_pwm_command(uint8_t port, uint8_t val)
 }
 void setup_digitalio(void)
 {
-	DIGITAL_IO_INIT_D;
-	DIGITAL_IO_INIT_C;
+    
+    DDRB  |= (1<<0)|(1<<1)|(1<<2)|(1<<3);   //Set pins B0 - B3 as digital outputs
+    DDRC  |= (1<<7);                        //Set pin C7 as didigal output
+
 }
+
+
 /**
  * @breif Handle a set digital I/O command
  */
@@ -196,7 +212,7 @@ void setup_digitalio(void)
 
 void handle_set_digitalio_command(uint8_t port, uint8_t val)
 {
-	usb_serial_putchar('\x08');
+	usb_serial_putchar('\x09');
 	usb_serial_putchar(port);
 	//This part is from the CS tutors, Jesusaurus++
 	if (val)
@@ -211,9 +227,18 @@ void handle_set_digitalio_command(uint8_t port, uint8_t val)
 	usb_serial_putchar('\n');
 }
 
-void display_num(uint8_t number)
+void lowerhalf(uint8_t onoff)
 {
-	PORTB = number;	
+	usb_serial_putchar('\x00');
+    if (onoff){
+		lowerloop = 1;
+        usb_serial_putchar('\x00');
+        usb_serial_putchar('\n');
+	}else{
+		lowerloop = 0;
+        usb_serial_putchar('\x01');
+        usb_serial_putchar('\n');
+	}	
 }
 
 void handle_command(const char *str, uint8_t len)
@@ -230,35 +255,27 @@ void handle_command(const char *str, uint8_t len)
 		case 4:
 			handle_set_pwm_command(str[1], str[2]);
 			break;
-        	case 7:
-            		read_sensor(str[1]);
-           		break;
-		case 9:
+       
+        case 7:
+            read_sensor(str[1]);
+           	break;
+		
+        case 9:
 			handle_set_digitalio_command(str[1], str[2]);
 			break;	
-		default:
+		
+        default:
 			send_str(PSTR("INVALID_COMMAND_CODE"));
 	}
 }
 
 
-void lowerhalf(uint8_t onoff)
-{
-	if (onoff){
-		lowerloop = true;
-		send_str(PSTR("Lower half of control loop enabled, sir"));
-		send_srt(PSTR("Autopilot engaged, course set for Risa"));
-	}else{
-		lowerloop = false;
-		send_str(PSTR("Disabling lower half of control loop, captain"));
-		send_srt(PSTR("We are flying manually now"));	
-	}	
-}
-
 int main(void)
 {
 	uint16_t lux, pot, pid;
 	uint8_t n;
+    uint8_t F0 = 0x00;
+    uint8_t F1 = 0x01;
 	char buf[32];	    
 
 
@@ -285,12 +302,11 @@ int main(void)
 			//Lower Half
 			if (lowerloop){
 
-				pot = read_sensor(0x01);
-				lux = read_sensor(0x00);
-				set_display(lux);
-				display();
-				pid = PID(lux, pot);
-				lamp_v(pid);
+				pot = read_sensor(F0); 
+				lux = read_sensor(F1);
+                set_display(lux);
+				//pid = PID(lux, pot);
+				//lamp_v(pid);
 			}
 		}
 	}
@@ -345,8 +361,4 @@ uint8_t recv_str(char *buf, uint8_t size)
 }
 
 
-
-
-				
-
-	
+//  Live Long and Prosper - Spock
