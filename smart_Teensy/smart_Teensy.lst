@@ -1,0 +1,1028 @@
+   1               		.file	"smart_Teensy.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               		.section	.text.adc_start,"ax",@progbits
+  18               	.global	adc_start
+  20               	adc_start:
+  21               	.LFB4:
+  22               	.LSM0:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	/* stack size = 0 */
+  27               	.L__stack_usage = 0
+  28               	.LSM1:
+  29 0000 EAE7      		ldi r30,lo8(122)
+  30 0002 F0E0      		ldi r31,hi8(122)
+  31 0004 96E8      		ldi r25,lo8(-122)
+  32 0006 9083      		st Z,r25
+  33               	.LSM2:
+  34 0008 982F      		mov r25,r24
+  35 000a 9072      		andi r25,lo8(32)
+  36 000c 9068      		ori r25,lo8(-128)
+  37 000e 9093 7B00 		sts 123,r25
+  38               	.LSM3:
+  39 0012 8F71      		andi r24,lo8(31)
+  40               	.LVL1:
+  41 0014 862B      		or r24,r22
+  42 0016 8093 7C00 		sts 124,r24
+  43               	.LSM4:
+  44 001a 1092 0000 		sts head,__zero_reg__
+  45               	.LSM5:
+  46 001e 1092 0000 		sts tail,__zero_reg__
+  47               	.LSM6:
+  48 0022 8EEE      		ldi r24,lo8(-18)
+  49 0024 8083      		st Z,r24
+  50               	.LSM7:
+  51               	/* #APP */
+  52               	 ;  21 "sampling.c" 1
+  53 0026 7894      		sei
+  54               	 ;  0 "" 2
+  55               	/* epilogue start */
+  56               	.LSM8:
+  57               	/* #NOAPP */
+  58 0028 0895      		ret
+  59               	.LFE4:
+  61               		.section	.text.adc_available,"ax",@progbits
+  62               	.global	adc_available
+  64               	adc_available:
+  65               	.LFB5:
+  66               	.LSM9:
+  67               	/* prologue: function */
+  68               	/* frame size = 0 */
+  69               	/* stack size = 0 */
+  70               	.L__stack_usage = 0
+  71               	.LSM10:
+  72 0000 8091 0000 		lds r24,head
+  73               	.LVL2:
+  74               	.LSM11:
+  75 0004 9091 0000 		lds r25,tail
+  76               	.LVL3:
+  77               	.LSM12:
+  78 0008 8917      		cp r24,r25
+  79 000a 00F4      		brsh .L4
+  80               	.LSM13:
+  81 000c 8E5F      		subi r24,lo8(-(2))
+  82               	.LVL4:
+  83 000e 891B      		sub r24,r25
+  84               	.LVL5:
+  85 0010 0895      		ret
+  86               	.LVL6:
+  87               	.L4:
+  88               	.LSM14:
+  89 0012 892F      		mov r24,r25
+  90               	.LVL7:
+  91               	.LSM15:
+  92 0014 0895      		ret
+  93               	.LFE5:
+  95               		.section	.text.adc_read,"ax",@progbits
+  96               	.global	adc_read
+  98               	adc_read:
+  99               	.LFB6:
+ 100               	.LSM16:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	/* stack size = 0 */
+ 104               	.L__stack_usage = 0
+ 105               	.L6:
+ 106               	.LSM17:
+ 107 0000 9091 0000 		lds r25,head
+ 108               	.LVL8:
+ 109               	.LSM18:
+ 110 0004 8091 0000 		lds r24,tail
+ 111               	.LVL9:
+ 112               	.LSM19:
+ 113 0008 9817      		cp r25,r24
+ 114 000a 01F0      		breq .L6
+ 115               	.LSM20:
+ 116 000c 8F5F      		subi r24,lo8(-(1))
+ 117               	.LVL10:
+ 118 000e 8230      		cpi r24,lo8(2)
+ 119 0010 00F0      		brlo .L7
+ 120 0012 80E0      		ldi r24,lo8(0)
+ 121               	.LVL11:
+ 122               	.L7:
+ 123               	.LSM21:
+ 124 0014 E82F      		mov r30,r24
+ 125 0016 F0E0      		ldi r31,lo8(0)
+ 126 0018 EE0F      		lsl r30
+ 127 001a FF1F      		rol r31
+ 128               	.LVL12:
+ 129 001c E050      		subi r30,lo8(-(buffer))
+ 130 001e F040      		sbci r31,hi8(-(buffer))
+ 131 0020 2081      		ld r18,Z
+ 132 0022 3181      		ldd r19,Z+1
+ 133               	.LVL13:
+ 134               	.LSM22:
+ 135 0024 8093 0000 		sts tail,r24
+ 136               	.LSM23:
+ 137 0028 C901      		movw r24,r18
+ 138               	.LVL14:
+ 139               	/* epilogue start */
+ 140 002a 0895      		ret
+ 141               	.LFE6:
+ 143               		.section	.text.__vector_29,"ax",@progbits
+ 144               	.global	__vector_29
+ 146               	__vector_29:
+ 147               	.LFB7:
+ 148               	.LSM24:
+ 149 0000 1F92      		push __zero_reg__
+ 150 0002 0F92      		push r0
+ 151 0004 0FB6      		in r0,__SREG__
+ 152 0006 0F92      		push r0
+ 153 0008 1124      		clr __zero_reg__
+ 154 000a 2F93      		push r18
+ 155 000c 3F93      		push r19
+ 156 000e 8F93      		push r24
+ 157 0010 9F93      		push r25
+ 158 0012 EF93      		push r30
+ 159 0014 FF93      		push r31
+ 160               	/* prologue: Signal */
+ 161               	/* frame size = 0 */
+ 162               	/* stack size = 9 */
+ 163               	.L__stack_usage = 9
+ 164               	.LSM25:
+ 165 0016 8091 7800 		lds r24,120
+ 166 001a 9091 7900 		lds r25,120+1
+ 167               	.LVL15:
+ 168               	.LSM26:
+ 169 001e 2091 0000 		lds r18,head
+ 170 0022 2F5F      		subi r18,lo8(-(1))
+ 171               	.LVL16:
+ 172               	.LSM27:
+ 173 0024 2230      		cpi r18,lo8(2)
+ 174 0026 00F0      		brlo .L11
+ 175 0028 20E0      		ldi r18,lo8(0)
+ 176               	.LVL17:
+ 177               	.L11:
+ 178               	.LSM28:
+ 179 002a 3091 0000 		lds r19,tail
+ 180 002e 2317      		cp r18,r19
+ 181 0030 01F0      		breq .L10
+ 182               	.LSM29:
+ 183 0032 E22F      		mov r30,r18
+ 184 0034 F0E0      		ldi r31,lo8(0)
+ 185 0036 EE0F      		lsl r30
+ 186 0038 FF1F      		rol r31
+ 187 003a E050      		subi r30,lo8(-(buffer))
+ 188 003c F040      		sbci r31,hi8(-(buffer))
+ 189 003e 9183      		std Z+1,r25
+ 190 0040 8083      		st Z,r24
+ 191               	.LSM30:
+ 192 0042 2093 0000 		sts head,r18
+ 193               	.L10:
+ 194               	/* epilogue start */
+ 195               	.LSM31:
+ 196 0046 FF91      		pop r31
+ 197 0048 EF91      		pop r30
+ 198 004a 9F91      		pop r25
+ 199 004c 8F91      		pop r24
+ 200               	.LVL18:
+ 201 004e 3F91      		pop r19
+ 202 0050 2F91      		pop r18
+ 203               	.LVL19:
+ 204 0052 0F90      		pop r0
+ 205 0054 0FBE      		out __SREG__,r0
+ 206 0056 0F90      		pop r0
+ 207 0058 1F90      		pop __zero_reg__
+ 208 005a 1895      		reti
+ 209               	.LFE7:
+ 211               		.section	.text.read_sensor,"ax",@progbits
+ 212               	.global	read_sensor
+ 214               	read_sensor:
+ 215               	.LFB8:
+ 216               	.LSM32:
+ 217               	.LVL20:
+ 218 0000 1F93      		push r17
+ 219 0002 DF93      		push r29
+ 220 0004 CF93      		push r28
+ 221 0006 0F92      		push __tmp_reg__
+ 222 0008 CDB7      		in r28,__SP_L__
+ 223 000a DEB7      		in r29,__SP_H__
+ 224               	/* prologue: function */
+ 225               	/* frame size = 1 */
+ 226               	/* stack size = 4 */
+ 227               	.L__stack_usage = 4
+ 228               	.LSM33:
+ 229 000c 60E4      		ldi r22,lo8(64)
+ 230 000e 0E94 0000 		call adc_start
+ 231               	.LVL21:
+ 232               	.LSM34:
+ 233 0012 0E94 0000 		call adc_read
+ 234 0016 182F      		mov r17,r24
+ 235               	.LVL22:
+ 236               	.LSM35:
+ 237 0018 9983      		std Y+1,r25
+ 238 001a 0E94 0000 		call usb_serial_putchar
+ 239               	.LVL23:
+ 240               	.LSM36:
+ 241 001e 812F      		mov r24,r17
+ 242 0020 9981      		ldd r25,Y+1
+ 243               	/* epilogue start */
+ 244 0022 0F90      		pop __tmp_reg__
+ 245 0024 CF91      		pop r28
+ 246 0026 DF91      		pop r29
+ 247 0028 1F91      		pop r17
+ 248 002a 0895      		ret
+ 249               	.LFE8:
+ 251               		.section	.text.set_display,"ax",@progbits
+ 252               	.global	set_display
+ 254               	set_display:
+ 255               	.LFB9:
+ 256               	.LSM37:
+ 257               	.LVL24:
+ 258               	/* prologue: function */
+ 259               	/* frame size = 0 */
+ 260               	/* stack size = 0 */
+ 261               	.L__stack_usage = 0
+ 262               	.LSM38:
+ 263 0000 282F      		mov r18,r24
+ 264 0002 392F      		mov r19,r25
+ 265 0004 C901      		movw r24,r18
+ 266               	.LVL25:
+ 267 0006 23E0      		ldi r18,hi8(991)
+ 268 0008 8F3D      		cpi r24,lo8(991)
+ 269 000a 9207      		cpc r25,r18
+ 270               	.LVL26:
+ 271 000c 04F0      		brlt .L16
+ 272 000e 8EED      		ldi r24,lo8(990)
+ 273 0010 93E0      		ldi r25,hi8(990)
+ 274               	.L16:
+ 275               	.LVL27:
+ 276               	.LSM39:
+ 277 0012 2AE0      		ldi r18,lo8(10)
+ 278 0014 30E0      		ldi r19,hi8(10)
+ 279 0016 B901      		movw r22,r18
+ 280 0018 0E94 0000 		call __divmodhi4
+ 281               	.LVL28:
+ 282 001c 462F      		mov r20,r22
+ 283               	.LVL29:
+ 284               	.LSM40:
+ 285 001e 862F      		mov r24,r22
+ 286 0020 972F      		mov r25,r23
+ 287 0022 B901      		movw r22,r18
+ 288               	.LVL30:
+ 289 0024 0E94 0000 		call __divmodhi4
+ 290               	.LVL31:
+ 291               	.LSM41:
+ 292 0028 86EF      		ldi r24,lo8(-10)
+ 293 002a 869F      		mul r24,r22
+ 294 002c 802D      		mov r24,r0
+ 295 002e 1124      		clr r1
+ 296 0030 840F      		add r24,r20
+ 297               	.LVL32:
+ 298               	.LSM42:
+ 299 0032 479A      		sbi 40-0x20,7
+ 300               	.LSM43:
+ 301 0034 65B9      		out 37-0x20,r22
+ 302               	.LSM44:
+ 303 0036 4798      		cbi 40-0x20,7
+ 304               	.LSM45:
+ 305 0038 85B9      		out 37-0x20,r24
+ 306               	/* epilogue start */
+ 307               	.LSM46:
+ 308 003a 0895      		ret
+ 309               	.LFE9:
+ 311               		.section	.text.lamp_v,"ax",@progbits
+ 312               	.global	lamp_v
+ 314               	lamp_v:
+ 315               	.LFB10:
+ 316               	.LSM47:
+ 317               	.LVL33:
+ 318               	/* prologue: function */
+ 319               	/* frame size = 0 */
+ 320               	/* stack size = 0 */
+ 321               	.L__stack_usage = 0
+ 322               	.LSM48:
+ 323 0000 90E0      		ldi r25,lo8(0)
+ 324 0002 9093 8B00 		sts 138+1,r25
+ 325 0006 8093 8A00 		sts 138,r24
+ 326               	/* epilogue start */
+ 327               	.LSM49:
+ 328 000a 0895      		ret
+ 329               	.LFE10:
+ 331               		.section	.text.set_default_duty_cycles,"ax",@progbits
+ 332               	.global	set_default_duty_cycles
+ 334               	set_default_duty_cycles:
+ 335               	.LFB11:
+ 336               	.LSM50:
+ 337               	/* prologue: function */
+ 338               	/* frame size = 0 */
+ 339               	/* stack size = 0 */
+ 340               	.L__stack_usage = 0
+ 341               	.L19:
+ 342               	.LSM51:
+ 343 0000 17BC      		out 71-0x20,__zero_reg__
+ 344               	.LSM52:
+ 345 0002 18BC      		out 72-0x20,__zero_reg__
+ 346               	.LSM53:
+ 347 0004 1092 B300 		sts 179,__zero_reg__
+ 348               	.LSM54:
+ 349 0008 1092 B400 		sts 180,__zero_reg__
+ 350               	.LSM55:
+ 351 000c 1092 8900 		sts 137,__zero_reg__
+ 352               	.LSM56:
+ 353 0010 1092 8800 		sts 136,__zero_reg__
+ 354               	.LSM57:
+ 355 0014 1092 8B00 		sts 139,__zero_reg__
+ 356               	.LSM58:
+ 357 0018 1092 8A00 		sts 138,__zero_reg__
+ 358               	.LSM59:
+ 359 001c 1092 8C00 		sts 140,__zero_reg__
+ 360               	.LSM60:
+ 361 0020 1092 8C00 		sts 140,__zero_reg__
+ 362               	.LSM61:
+ 363 0024 1092 9900 		sts 153,__zero_reg__
+ 364               	.LSM62:
+ 365 0028 1092 9800 		sts 152,__zero_reg__
+ 366               	.LSM63:
+ 367 002c 1092 9B00 		sts 155,__zero_reg__
+ 368               	.LSM64:
+ 369 0030 1092 9A00 		sts 154,__zero_reg__
+ 370               	.LSM65:
+ 371 0034 1092 9D00 		sts 157,__zero_reg__
+ 372               	.LSM66:
+ 373 0038 1092 9C00 		sts 156,__zero_reg__
+ 374 003c 00C0      		rjmp .L19
+ 375               	.LFE11:
+ 377               		.section	.text.setup_pwms,"ax",@progbits
+ 378               	.global	setup_pwms
+ 380               	setup_pwms:
+ 381               	.LFB12:
+ 382               	.LSM67:
+ 383               	/* prologue: function */
+ 384               	/* frame size = 0 */
+ 385               	/* stack size = 0 */
+ 386               	.L__stack_usage = 0
+ 387               	.LSM68:
+ 388 0000 84B1      		in r24,36-0x20
+ 389 0002 806F      		ori r24,lo8(-16)
+ 390 0004 84B9      		out 36-0x20,r24
+ 391               	.LSM69:
+ 392 0006 8AB1      		in r24,42-0x20
+ 393 0008 8360      		ori r24,lo8(3)
+ 394 000a 8AB9      		out 42-0x20,r24
+ 395               	.LSM70:
+ 396 000c 93EA      		ldi r25,lo8(-93)
+ 397 000e 94BD      		out 68-0x20,r25
+ 398               	.LSM71:
+ 399 0010 81E0      		ldi r24,lo8(1)
+ 400 0012 85BD      		out 69-0x20,r24
+ 401               	.LSM72:
+ 402 0014 9093 B000 		sts 176,r25
+ 403               	.LSM73:
+ 404 0018 8093 B100 		sts 177,r24
+ 405               	.LSM74:
+ 406 001c 91EA      		ldi r25,lo8(-95)
+ 407 001e 9093 8000 		sts 128,r25
+ 408               	.LSM75:
+ 409 0022 89E0      		ldi r24,lo8(9)
+ 410 0024 8093 8100 		sts 129,r24
+ 411               	.LSM76:
+ 412 0028 1092 8200 		sts 130,__zero_reg__
+ 413               	.LSM77:
+ 414 002c 9093 9000 		sts 144,r25
+ 415               	.LSM78:
+ 416 0030 8093 9100 		sts 145,r24
+ 417               	.LSM79:
+ 418 0034 1092 9200 		sts 146,__zero_reg__
+ 419               	/* epilogue start */
+ 420               	.LSM80:
+ 421 0038 0895      		ret
+ 422               	.LFE12:
+ 424               		.section	.text.PID,"ax",@progbits
+ 425               	.global	PID
+ 427               	PID:
+ 428               	.LFB13:
+ 429               	.LSM81:
+ 430               	.LVL34:
+ 431               	/* prologue: function */
+ 432               	/* frame size = 0 */
+ 433               	/* stack size = 0 */
+ 434               	.L__stack_usage = 0
+ 435               	.LSM82:
+ 436 0000 80E0      		ldi r24,lo8(0)
+ 437               	.LVL35:
+ 438 0002 90E0      		ldi r25,lo8(0)
+ 439               	/* epilogue start */
+ 440 0004 0895      		ret
+ 441               	.LFE13:
+ 443               		.section	.text.handle_set_pwm_command,"ax",@progbits
+ 444               	.global	handle_set_pwm_command
+ 446               	handle_set_pwm_command:
+ 447               	.LFB14:
+ 448               	.LSM83:
+ 449               	.LVL36:
+ 450               	/* prologue: function */
+ 451               	/* frame size = 0 */
+ 452               	/* stack size = 0 */
+ 453               	.L__stack_usage = 0
+ 454               	.LSM84:
+ 455 0000 8430      		cpi r24,lo8(4)
+ 456 0002 01F0      		breq .L28
+ 457 0004 8530      		cpi r24,lo8(5)
+ 458 0006 00F4      		brsh .L33
+ 459 0008 8130      		cpi r24,lo8(1)
+ 460 000a 01F0      		breq .L25
+ 461 000c 8130      		cpi r24,lo8(1)
+ 462 000e 00F0      		brlo .L24
+ 463 0010 8230      		cpi r24,lo8(2)
+ 464 0012 01F0      		breq .L26
+ 465 0014 8330      		cpi r24,lo8(3)
+ 466 0016 01F4      		brne .L22
+ 467 0018 00C0      		rjmp .L35
+ 468               	.L33:
+ 469 001a 8630      		cpi r24,lo8(6)
+ 470 001c 01F0      		breq .L30
+ 471 001e 8630      		cpi r24,lo8(6)
+ 472 0020 00F0      		brlo .L29
+ 473 0022 8730      		cpi r24,lo8(7)
+ 474 0024 01F0      		breq .L31
+ 475 0026 8830      		cpi r24,lo8(8)
+ 476 0028 01F4      		brne .L22
+ 477 002a 00C0      		rjmp .L36
+ 478               	.L24:
+ 479               	.LSM85:
+ 480 002c 67BD      		out 71-0x20,r22
+ 481               	.LSM86:
+ 482 002e 00C0      		rjmp .L34
+ 483               	.L25:
+ 484               	.LSM87:
+ 485 0030 68BD      		out 72-0x20,r22
+ 486               	.LSM88:
+ 487 0032 00C0      		rjmp .L34
+ 488               	.L26:
+ 489               	.LSM89:
+ 490 0034 70E0      		ldi r23,lo8(0)
+ 491 0036 7093 8900 		sts 136+1,r23
+ 492 003a 6093 8800 		sts 136,r22
+ 493               	.LSM90:
+ 494 003e 00C0      		rjmp .L34
+ 495               	.L35:
+ 496               	.LSM91:
+ 497 0040 70E0      		ldi r23,lo8(0)
+ 498 0042 7093 8B00 		sts 138+1,r23
+ 499 0046 6093 8A00 		sts 138,r22
+ 500               	.LSM92:
+ 501 004a 00C0      		rjmp .L34
+ 502               	.L28:
+ 503               	.LSM93:
+ 504 004c 6093 B300 		sts 179,r22
+ 505               	.LSM94:
+ 506 0050 00C0      		rjmp .L34
+ 507               	.L29:
+ 508               	.LSM95:
+ 509 0052 6093 B400 		sts 180,r22
+ 510               	.LSM96:
+ 511 0056 00C0      		rjmp .L34
+ 512               	.L30:
+ 513               	.LSM97:
+ 514 0058 70E0      		ldi r23,lo8(0)
+ 515 005a 7093 9900 		sts 152+1,r23
+ 516 005e 6093 9800 		sts 152,r22
+ 517               	.LSM98:
+ 518 0062 00C0      		rjmp .L34
+ 519               	.L31:
+ 520               	.LSM99:
+ 521 0064 70E0      		ldi r23,lo8(0)
+ 522 0066 7093 9B00 		sts 154+1,r23
+ 523 006a 6093 9A00 		sts 154,r22
+ 524               	.LSM100:
+ 525 006e 00C0      		rjmp .L34
+ 526               	.L36:
+ 527               	.LSM101:
+ 528 0070 70E0      		ldi r23,lo8(0)
+ 529 0072 7093 9D00 		sts 156+1,r23
+ 530 0076 6093 9C00 		sts 156,r22
+ 531               	.L34:
+ 532               	.LSM102:
+ 533 007a 80E0      		ldi r24,lo8(0)
+ 534               	.LVL37:
+ 535 007c 0E94 0000 		call usb_serial_putchar
+ 536               	.LVL38:
+ 537               	.LSM103:
+ 538 0080 8AE0      		ldi r24,lo8(10)
+ 539 0082 0E94 0000 		call usb_serial_putchar
+ 540               	.L22:
+ 541 0086 0895      		ret
+ 542               	.LFE14:
+ 544               		.section	.text.setup_digitalio,"ax",@progbits
+ 545               	.global	setup_digitalio
+ 547               	setup_digitalio:
+ 548               	.LFB15:
+ 549               	.LSM104:
+ 550               	/* prologue: function */
+ 551               	/* frame size = 0 */
+ 552               	/* stack size = 0 */
+ 553               	.L__stack_usage = 0
+ 554               	.LSM105:
+ 555 0000 84B1      		in r24,36-0x20
+ 556 0002 8F60      		ori r24,lo8(15)
+ 557 0004 84B9      		out 36-0x20,r24
+ 558               	.LSM106:
+ 559 0006 3F9A      		sbi 39-0x20,7
+ 560               	/* epilogue start */
+ 561               	.LSM107:
+ 562 0008 0895      		ret
+ 563               	.LFE15:
+ 565               		.section	.text.handle_set_digitalio_command,"ax",@progbits
+ 566               	.global	handle_set_digitalio_command
+ 568               	handle_set_digitalio_command:
+ 569               	.LFB16:
+ 570               	.LSM108:
+ 571               	.LVL39:
+ 572 0000 1F93      		push r17
+ 573 0002 DF93      		push r29
+ 574 0004 CF93      		push r28
+ 575 0006 0F92      		push __tmp_reg__
+ 576 0008 CDB7      		in r28,__SP_L__
+ 577 000a DEB7      		in r29,__SP_H__
+ 578               	/* prologue: function */
+ 579               	/* frame size = 1 */
+ 580               	/* stack size = 4 */
+ 581               	.L__stack_usage = 4
+ 582 000c 182F      		mov r17,r24
+ 583               	.LSM109:
+ 584 000e 89E0      		ldi r24,lo8(9)
+ 585               	.LVL40:
+ 586 0010 6983      		std Y+1,r22
+ 587 0012 0E94 0000 		call usb_serial_putchar
+ 588               	.LVL41:
+ 589               	.LSM110:
+ 590 0016 812F      		mov r24,r17
+ 591 0018 0E94 0000 		call usb_serial_putchar
+ 592               	.LSM111:
+ 593 001c 6981      		ldd r22,Y+1
+ 594 001e 6623      		tst r22
+ 595 0020 01F0      		breq .L39
+ 596               	.LSM112:
+ 597 0022 85B1      		in r24,37-0x20
+ 598 0024 21E0      		ldi r18,lo8(1)
+ 599 0026 30E0      		ldi r19,hi8(1)
+ 600 0028 00C0      		rjmp 2f
+ 601 002a 220F      	1:	lsl r18
+ 602 002c 331F      		rol r19
+ 603 002e 1A95      	2:	dec r17
+ 604 0030 02F4      		brpl 1b
+ 605 0032 822B      		or r24,r18
+ 606 0034 85B9      		out 37-0x20,r24
+ 607 0036 00C0      		rjmp .L40
+ 608               	.L39:
+ 609               	.LSM113:
+ 610 0038 85B1      		in r24,37-0x20
+ 611 003a 21E0      		ldi r18,lo8(1)
+ 612 003c 30E0      		ldi r19,hi8(1)
+ 613 003e 00C0      		rjmp 2f
+ 614 0040 220F      	1:	lsl r18
+ 615 0042 331F      		rol r19
+ 616 0044 1A95      	2:	dec r17
+ 617 0046 02F4      		brpl 1b
+ 618 0048 2095      		com r18
+ 619 004a 2823      		and r18,r24
+ 620 004c 25B9      		out 37-0x20,r18
+ 621               	.L40:
+ 622               	.LSM114:
+ 623 004e 80E0      		ldi r24,lo8(0)
+ 624 0050 0E94 0000 		call usb_serial_putchar
+ 625               	.LSM115:
+ 626 0054 8AE0      		ldi r24,lo8(10)
+ 627 0056 0E94 0000 		call usb_serial_putchar
+ 628               	/* epilogue start */
+ 629               	.LSM116:
+ 630 005a 0F90      		pop __tmp_reg__
+ 631 005c CF91      		pop r28
+ 632 005e DF91      		pop r29
+ 633 0060 1F91      		pop r17
+ 634               	.LVL42:
+ 635 0062 0895      		ret
+ 636               	.LFE16:
+ 638               		.section	.text.lowerhalf,"ax",@progbits
+ 639               	.global	lowerhalf
+ 641               	lowerhalf:
+ 642               	.LFB17:
+ 643               	.LSM117:
+ 644               	.LVL43:
+ 645 0000 1F93      		push r17
+ 646               	/* prologue: function */
+ 647               	/* frame size = 0 */
+ 648               	/* stack size = 1 */
+ 649               	.L__stack_usage = 1
+ 650 0002 182F      		mov r17,r24
+ 651               	.LSM118:
+ 652 0004 80E0      		ldi r24,lo8(0)
+ 653               	.LVL44:
+ 654 0006 0E94 0000 		call usb_serial_putchar
+ 655               	.LSM119:
+ 656 000a 1123      		tst r17
+ 657 000c 01F0      		breq .L42
+ 658               	.LSM120:
+ 659 000e 81E0      		ldi r24,lo8(1)
+ 660 0010 90E0      		ldi r25,hi8(1)
+ 661 0012 9093 0000 		sts lowerloop+1,r25
+ 662 0016 8093 0000 		sts lowerloop,r24
+ 663               	.LSM121:
+ 664 001a 80E0      		ldi r24,lo8(0)
+ 665 001c 00C0      		rjmp .L44
+ 666               	.L42:
+ 667               	.LSM122:
+ 668 001e 1092 0000 		sts lowerloop+1,__zero_reg__
+ 669 0022 1092 0000 		sts lowerloop,__zero_reg__
+ 670               	.LSM123:
+ 671 0026 81E0      		ldi r24,lo8(1)
+ 672               	.L44:
+ 673 0028 0E94 0000 		call usb_serial_putchar
+ 674               	.LSM124:
+ 675 002c 8AE0      		ldi r24,lo8(10)
+ 676 002e 0E94 0000 		call usb_serial_putchar
+ 677               	/* epilogue start */
+ 678               	.LSM125:
+ 679 0032 1F91      		pop r17
+ 680               	.LVL45:
+ 681 0034 0895      		ret
+ 682               	.LFE17:
+ 684               		.section	.text.send_str,"ax",@progbits
+ 685               	.global	send_str
+ 687               	send_str:
+ 688               	.LFB20:
+ 689               	.LSM126:
+ 690               	.LVL46:
+ 691 0000 CF93      		push r28
+ 692 0002 DF93      		push r29
+ 693               	/* prologue: function */
+ 694               	/* frame size = 0 */
+ 695               	/* stack size = 2 */
+ 696               	.L__stack_usage = 2
+ 697 0004 EC01      		movw r28,r24
+ 698               	.LVL47:
+ 699               	.L47:
+ 700               	.LSM127:
+ 701 0006 FE01      		movw r30,r28
+ 702               	.LVL48:
+ 703               	.LBB13:
+ 704               	.LSM128:
+ 705 0008 2196      		adiw r28,1
+ 706               	.LVL49:
+ 707               	/* #APP */
+ 708               	 ;  325 "smart_Teensy.c" 1
+ 709 000a 8491      		lpm r24, Z
+ 710               		
+ 711               	 ;  0 "" 2
+ 712               	.LVL50:
+ 713               	/* #NOAPP */
+ 714               	.LBE13:
+ 715               	.LSM129:
+ 716 000c 8823      		tst r24
+ 717 000e 01F0      		breq .L45
+ 718               	.LSM130:
+ 719 0010 0E94 0000 		call usb_serial_putchar
+ 720               	.LVL51:
+ 721               	.LSM131:
+ 722 0014 00C0      		rjmp .L47
+ 723               	.LVL52:
+ 724               	.L45:
+ 725               	/* epilogue start */
+ 726               	.LSM132:
+ 727 0016 DF91      		pop r29
+ 728 0018 CF91      		pop r28
+ 729               	.LVL53:
+ 730 001a 0895      		ret
+ 731               	.LFE20:
+ 733               		.section	.text.handle_command,"ax",@progbits
+ 734               	.global	handle_command
+ 736               	handle_command:
+ 737               	.LFB18:
+ 738               	.LSM133:
+ 739               	.LVL54:
+ 740               	/* prologue: function */
+ 741               	/* frame size = 0 */
+ 742               	/* stack size = 0 */
+ 743               	.L__stack_usage = 0
+ 744 0000 FC01      		movw r30,r24
+ 745               	.LSM134:
+ 746 0002 6623      		tst r22
+ 747 0004 01F0      		breq .L48
+ 748               	.LSM135:
+ 749 0006 8081      		ld r24,Z
+ 750               	.LVL55:
+ 751 0008 8430      		cpi r24,lo8(4)
+ 752 000a 01F0      		breq .L52
+ 753 000c 8530      		cpi r24,lo8(5)
+ 754 000e 00F4      		brsh .L55
+ 755 0010 8823      		tst r24
+ 756 0012 01F0      		breq .L51
+ 757 0014 00C0      		rjmp .L50
+ 758               	.L55:
+ 759 0016 8730      		cpi r24,lo8(7)
+ 760 0018 01F0      		breq .L53
+ 761 001a 8930      		cpi r24,lo8(9)
+ 762 001c 01F4      		brne .L50
+ 763 001e 00C0      		rjmp .L56
+ 764               	.L51:
+ 765               	.LSM136:
+ 766 0020 8181      		ldd r24,Z+1
+ 767 0022 0E94 0000 		call lowerhalf
+ 768               	.LVL56:
+ 769               	.LSM137:
+ 770 0026 0895      		ret
+ 771               	.LVL57:
+ 772               	.L52:
+ 773               	.LSM138:
+ 774 0028 8181      		ldd r24,Z+1
+ 775 002a 6281      		ldd r22,Z+2
+ 776               	.LVL58:
+ 777 002c 0E94 0000 		call handle_set_pwm_command
+ 778               	.LVL59:
+ 779               	.LSM139:
+ 780 0030 0895      		ret
+ 781               	.LVL60:
+ 782               	.L53:
+ 783               	.LSM140:
+ 784 0032 8181      		ldd r24,Z+1
+ 785 0034 0E94 0000 		call read_sensor
+ 786               	.LVL61:
+ 787               	.LSM141:
+ 788 0038 0895      		ret
+ 789               	.LVL62:
+ 790               	.L56:
+ 791               	.LSM142:
+ 792 003a 8181      		ldd r24,Z+1
+ 793 003c 6281      		ldd r22,Z+2
+ 794               	.LVL63:
+ 795 003e 0E94 0000 		call handle_set_digitalio_command
+ 796               	.LVL64:
+ 797               	.LSM143:
+ 798 0042 0895      		ret
+ 799               	.LVL65:
+ 800               	.L50:
+ 801               	.LSM144:
+ 802 0044 80E0      		ldi r24,lo8(__c.1519)
+ 803 0046 90E0      		ldi r25,hi8(__c.1519)
+ 804 0048 0E94 0000 		call send_str
+ 805               	.LVL66:
+ 806               	.L48:
+ 807 004c 0895      		ret
+ 808               	.LFE18:
+ 810               		.section	.text.recv_str,"ax",@progbits
+ 811               	.global	recv_str
+ 813               	recv_str:
+ 814               	.LFB21:
+ 815               	.LSM145:
+ 816               	.LVL67:
+ 817 0000 0F93      		push r16
+ 818 0002 1F93      		push r17
+ 819 0004 CF93      		push r28
+ 820 0006 DF93      		push r29
+ 821               	/* prologue: function */
+ 822               	/* frame size = 0 */
+ 823               	/* stack size = 4 */
+ 824               	.L__stack_usage = 4
+ 825 0008 EC01      		movw r28,r24
+ 826 000a 062F      		mov r16,r22
+ 827               	.LVL68:
+ 828               	.LSM146:
+ 829 000c 10E0      		ldi r17,lo8(0)
+ 830               	.LSM147:
+ 831 000e 00C0      		rjmp .L65
+ 832               	.LVL69:
+ 833               	.L62:
+ 834               	.LSM148:
+ 835 0010 0E94 0000 		call usb_serial_getchar
+ 836 0014 9C01      		movw r18,r24
+ 837               	.LVL70:
+ 838               	.LSM149:
+ 839 0016 8FEF      		ldi r24,hi8(-1)
+ 840 0018 2F3F      		cpi r18,lo8(-1)
+ 841 001a 3807      		cpc r19,r24
+ 842               	.LVL71:
+ 843 001c 01F0      		breq .L59
+ 844               	.LSM150:
+ 845 001e 2D30      		cpi r18,13
+ 846 0020 3105      		cpc r19,__zero_reg__
+ 847 0022 01F0      		breq .L60
+ 848               	.LSM151:
+ 849 0024 2A30      		cpi r18,10
+ 850 0026 3105      		cpc r19,__zero_reg__
+ 851 0028 01F0      		breq .L60
+ 852               	.LSM152:
+ 853 002a 2993      		st Y+,r18
+ 854               	.LVL72:
+ 855               	.LSM153:
+ 856 002c 1F5F      		subi r17,lo8(-(1))
+ 857               	.LVL73:
+ 858 002e 00C0      		rjmp .L65
+ 859               	.L59:
+ 860               	.LSM154:
+ 861 0030 0E94 0000 		call usb_configured
+ 862               	.LVL74:
+ 863 0034 8823      		tst r24
+ 864 0036 01F0      		breq .L64
+ 865               	.LSM155:
+ 866 0038 0E94 0000 		call usb_serial_get_control
+ 867               	.LSM156:
+ 868 003c 80FF      		sbrs r24,0
+ 869 003e 00C0      		rjmp .L64
+ 870               	.LVL75:
+ 871               	.L65:
+ 872               	.LSM157:
+ 873 0040 1017      		cp r17,r16
+ 874 0042 00F0      		brlo .L62
+ 875 0044 00C0      		rjmp .L60
+ 876               	.L64:
+ 877               	.LSM158:
+ 878 0046 1FEF      		ldi r17,lo8(-1)
+ 879               	.LVL76:
+ 880               	.L60:
+ 881               	.LSM159:
+ 882 0048 812F      		mov r24,r17
+ 883               	/* epilogue start */
+ 884 004a DF91      		pop r29
+ 885 004c CF91      		pop r28
+ 886               	.LVL77:
+ 887 004e 1F91      		pop r17
+ 888 0050 0F91      		pop r16
+ 889               	.LVL78:
+ 890 0052 0895      		ret
+ 891               	.LFE21:
+ 893               		.section	.text.main,"ax",@progbits
+ 894               	.global	main
+ 896               	main:
+ 897               	.LFB19:
+ 898               	.LSM160:
+ 899 0000 0F93      		push r16
+ 900 0002 1F93      		push r17
+ 901 0004 DF93      		push r29
+ 902 0006 CF93      		push r28
+ 903 0008 CDB7      		in r28,__SP_L__
+ 904 000a DEB7      		in r29,__SP_H__
+ 905 000c A097      		sbiw r28,32
+ 906 000e 0FB6      		in __tmp_reg__,__SREG__
+ 907 0010 F894      		cli
+ 908 0012 DEBF      		out __SP_H__,r29
+ 909 0014 0FBE      		out __SREG__,__tmp_reg__
+ 910 0016 CDBF      		out __SP_L__,r28
+ 911               	/* prologue: function */
+ 912               	/* frame size = 32 */
+ 913               	/* stack size = 36 */
+ 914               	.L__stack_usage = 36
+ 915               	.LVL79:
+ 916               	.LSM161:
+ 917 0018 80E8      		ldi r24,lo8(-128)
+ 918 001a 8093 6100 		sts 97,r24
+ 919 001e 82E0      		ldi r24,lo8(2)
+ 920 0020 8093 6100 		sts 97,r24
+ 921               	.LSM162:
+ 922 0024 0E94 0000 		call setup_pwms
+ 923               	.LSM163:
+ 924 0028 0E94 0000 		call usb_init
+ 925               	.L67:
+ 926               	.LSM164:
+ 927 002c 0E94 0000 		call usb_configured
+ 928 0030 8823      		tst r24
+ 929 0032 01F0      		breq .L67
+ 930               	.LSM165:
+ 931 0034 80E1      		ldi r24,lo8(10000)
+ 932 0036 97E2      		ldi r25,hi8(10000)
+ 933               	.LBB14:
+ 934               	.LBB15:
+ 935               	.LBB16:
+ 936               	.LBB17:
+ 937               	.LSM166:
+ 938 0038 20E9      		ldi r18,lo8(400)
+ 939 003a 31E0      		ldi r19,hi8(400)
+ 940               	.L68:
+ 941               	.LVL80:
+ 942 003c F901      		movw r30,r18
+ 943               	/* #APP */
+ 944               	 ;  105 "/usr/lib/gcc/avr/4.5.1/../../../../avr/include/util/delay_basic.h" 1
+ 945 003e 3197      		1: sbiw r30,1
+ 946 0040 01F4      		brne 1b
+ 947               	 ;  0 "" 2
+ 948               	.LVL81:
+ 949               	/* #NOAPP */
+ 950 0042 0197      		sbiw r24,1
+ 951               	.LBE17:
+ 952               	.LBE16:
+ 953               	.LSM167:
+ 954 0044 01F4      		brne .L68
+ 955 0046 00C0      		rjmp .L83
+ 956               	.L70:
+ 957               	.LBE15:
+ 958               	.LBE14:
+ 959               	.LSM168:
+ 960 0048 0E94 0000 		call usb_serial_flush_input
+ 961 004c 00C0      		rjmp .L80
+ 962               	.L83:
+ 963               	.LSM169:
+ 964 004e 8E01      		movw r16,r28
+ 965 0050 0F5F      		subi r16,lo8(-(1))
+ 966 0052 1F4F      		sbci r17,hi8(-(1))
+ 967               	.L80:
+ 968               	.LSM170:
+ 969 0054 0E94 0000 		call usb_serial_get_control
+ 970 0058 80FF      		sbrs r24,0
+ 971 005a 00C0      		rjmp .L70
+ 972               	.LSM171:
+ 973 005c 80E0      		ldi r24,lo8(__c.1537)
+ 974 005e 90E0      		ldi r25,hi8(__c.1537)
+ 975 0060 0E94 0000 		call send_str
+ 976               	.L81:
+ 977               	.LSM172:
+ 978 0064 C801      		movw r24,r16
+ 979 0066 60E2      		ldi r22,lo8(32)
+ 980 0068 0E94 0000 		call recv_str
+ 981 006c 682F      		mov r22,r24
+ 982               	.LVL82:
+ 983               	.LSM173:
+ 984 006e 8F3F      		cpi r24,lo8(-1)
+ 985 0070 01F0      		breq .L80
+ 986               	.LSM174:
+ 987 0072 C801      		movw r24,r16
+ 988               	.LVL83:
+ 989 0074 0E94 0000 		call handle_command
+ 990               	.LVL84:
+ 991               	.LSM175:
+ 992 0078 8091 0000 		lds r24,lowerloop
+ 993 007c 9091 0000 		lds r25,lowerloop+1
+ 994 0080 0097      		sbiw r24,0
+ 995 0082 01F0      		breq .L81
+ 996               	.LSM176:
+ 997 0084 80E0      		ldi r24,lo8(0)
+ 998 0086 0E94 0000 		call read_sensor
+ 999               	.LSM177:
+ 1000 008a 81E0      		ldi r24,lo8(1)
+ 1001 008c 0E94 0000 		call read_sensor
+ 1002               	.LVL85:
+ 1003               	.LSM178:
+ 1004 0090 0E94 0000 		call set_display
+ 1005               	.LVL86:
+ 1006 0094 00C0      		rjmp .L81
+ 1007               	.LFE19:
+ 1009               	.global	lowerloop
+ 1010               		.data
+ 1013               	lowerloop:
+ 1014 0000 0100      		.word	1
+ 1015               		.section	.progmem.data,"a",@progbits
+ 1018               	__c.1537:
+ 1019 0000 4576 6572 		.string	"Everything Initialized!"
+ 1019      7974 6869 
+ 1019      6E67 2049 
+ 1019      6E69 7469 
+ 1019      616C 697A 
+ 1022               	__c.1519:
+ 1023 0018 494E 5641 		.string	"INVALID_COMMAND_CODE"
+ 1023      4C49 445F 
+ 1023      434F 4D4D 
+ 1023      414E 445F 
+ 1023      434F 4445 
+ 1024               		.lcomm head,1
+ 1025               		.lcomm tail,1
+ 1026               		.lcomm buffer,4
+ 1187               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 smart_Teensy.c
+     /tmp/ccsTBlSK.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccsTBlSK.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccsTBlSK.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccsTBlSK.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccsTBlSK.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccsTBlSK.s:20     .text.adc_start:0000000000000000 adc_start
+                             .bss:0000000000000000 head
+     /tmp/ccsTBlSK.s:1024   .bss:0000000000000001 tail
+     /tmp/ccsTBlSK.s:64     .text.adc_available:0000000000000000 adc_available
+     /tmp/ccsTBlSK.s:98     .text.adc_read:0000000000000000 adc_read
+     /tmp/ccsTBlSK.s:1025   .bss:0000000000000002 buffer
+     /tmp/ccsTBlSK.s:146    .text.__vector_29:0000000000000000 __vector_29
+     /tmp/ccsTBlSK.s:214    .text.read_sensor:0000000000000000 read_sensor
+     /tmp/ccsTBlSK.s:254    .text.set_display:0000000000000000 set_display
+     /tmp/ccsTBlSK.s:314    .text.lamp_v:0000000000000000 lamp_v
+     /tmp/ccsTBlSK.s:334    .text.set_default_duty_cycles:0000000000000000 set_default_duty_cycles
+     /tmp/ccsTBlSK.s:380    .text.setup_pwms:0000000000000000 setup_pwms
+     /tmp/ccsTBlSK.s:427    .text.PID:0000000000000000 PID
+     /tmp/ccsTBlSK.s:446    .text.handle_set_pwm_command:0000000000000000 handle_set_pwm_command
+     /tmp/ccsTBlSK.s:547    .text.setup_digitalio:0000000000000000 setup_digitalio
+     /tmp/ccsTBlSK.s:568    .text.handle_set_digitalio_command:0000000000000000 handle_set_digitalio_command
+     /tmp/ccsTBlSK.s:641    .text.lowerhalf:0000000000000000 lowerhalf
+     /tmp/ccsTBlSK.s:1013   .data:0000000000000000 lowerloop
+     /tmp/ccsTBlSK.s:687    .text.send_str:0000000000000000 send_str
+     /tmp/ccsTBlSK.s:736    .text.handle_command:0000000000000000 handle_command
+     /tmp/ccsTBlSK.s:1022   .progmem.data:0000000000000018 __c.1519
+     /tmp/ccsTBlSK.s:813    .text.recv_str:0000000000000000 recv_str
+     /tmp/ccsTBlSK.s:896    .text.main:0000000000000000 main
+     /tmp/ccsTBlSK.s:1018   .progmem.data:0000000000000000 __c.1537
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+usb_serial_putchar
+__divmodhi4
+usb_serial_getchar
+usb_configured
+usb_serial_get_control
+usb_init
+usb_serial_flush_input

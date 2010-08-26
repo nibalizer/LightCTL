@@ -1,27 +1,7 @@
 //LightCTL
-//dumb_Teensy 
-//(c) Spencer Krum 2010, with lots of help from pjrc.com, greghaynes
-
-
-/* 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+//dumb_Teensy.c is(c) Spencer Krum 2010, with lots of help from pjrc.com, greghaynes
+//Released under the GPLv3 or any later License
+//See README, LICENSE for further details
 
 #include <avr/io.h>
 #include <avr/pgmspace.h>
@@ -122,6 +102,23 @@ void handle_set_digitalio_command(uint8_t port, uint8_t val)
 	usb_serial_putchar('\n');
 }
 
+
+/*
+ * @brief command to perform ADC on a sensor port (F0-F7) 
+ */
+
+uint16_t read_sensor(uint8_t sensor)
+{
+	uint16_t val;
+
+	adc_start(sensor, ADC_REF_POWER);
+
+	val = adc_read();
+	usb_serial_putchar(val);
+	return val;
+	
+}
+
 /**
  * @breif Handle a set pwm command
  */
@@ -166,111 +163,8 @@ void handle_set_pwm_command(uint8_t port, uint8_t val)
 	usb_serial_putchar('\n');
 }
 
-void handle_sensor_query(uint8_t port)
-{
-	int i;
-    uint16_t val;
-    char buf[4];
-    int readings = 10;
-	usb_serial_putchar(port);
-	switch(port)
-	{
-		case 0:
-            
-            adc_start(ADC_MUX_PIN_F0, ADC_REF_POWER);
-                val = adc_read();
-		usb_serial_putchar(val);
-			break;
-		case 1:
-			adc_start(ADC_MUX_PIN_F1, ADC_REF_POWER);
-           _delay_ms(500); 
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 2:
-            adc_start(ADC_MUX_PIN_F2, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 3:
-            adc_start(ADC_MUX_PIN_F3, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 4:
-            adc_start(ADC_MUX_PIN_F4, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 5:
-            adc_start(ADC_MUX_PIN_F5, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 6:
-            adc_start(ADC_MUX_PIN_F6, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		case 7:
-            adc_start(ADC_MUX_PIN_F7, ADC_REF_POWER);
-            _delay_ms(500);
-            for(i=1;i<readings;i++){
-                val = adc_read();
-                buf[0] = HEX((val >> 8) & 15);
-                buf[1] = HEX((val >> 4) & 15);
-                buf[2] = HEX(val & 15);
-                buf[3] = ' ';
-	        	usb_serial_write((unsigned char *)buf, 4);
-           }
-			break;
-		default:
-			usb_serial_putchar('\x01');
-			usb_serial_putchar('\n');
-			return;
-	}
-}
+
+
 void handle_version_command(void)
 {
 	usb_serial_putchar('\x00');

@@ -1,0 +1,620 @@
+Archive member included because of file (symbol)
+
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+                              smart_Teensy.o (__divmodhi4)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o (exit)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+                              smart_Teensy.o (__do_copy_data)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+                              smart_Teensy.o (__do_clear_bss)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodhi4.o)
+                              /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o) (__udivmodhi4)
+
+Discarded input sections
+
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+ .text          0x0000000000000000        0x0 smart_Teensy.o
+ .text.adc_available
+                0x0000000000000000       0x16 smart_Teensy.o
+ .text.lamp_v   0x0000000000000000        0xc smart_Teensy.o
+ .text.set_default_duty_cycles
+                0x0000000000000000       0x3e smart_Teensy.o
+ .text.PID      0x0000000000000000        0x6 smart_Teensy.o
+ .text.setup_digitalio
+                0x0000000000000000        0xa smart_Teensy.o
+ .text          0x0000000000000000        0x0 usb_serial.o
+ .text.usb_serial_available
+                0x0000000000000000       0x1e usb_serial.o
+ .text.usb_serial_putchar_nowait
+                0x0000000000000000       0x42 usb_serial.o
+ .text.usb_serial_write
+                0x0000000000000000      0x248 usb_serial.o
+ .progmem.gcc_sw_table
+                0x0000000000000000       0x82 usb_serial.o
+ .text.usb_serial_flush_output
+                0x0000000000000000       0x20 usb_serial.o
+ .text.usb_serial_get_baud
+                0x0000000000000000       0x12 usb_serial.o
+ .text.usb_serial_get_stopbits
+                0x0000000000000000        0x6 usb_serial.o
+ .text.usb_serial_get_paritytype
+                0x0000000000000000        0x6 usb_serial.o
+ .text.usb_serial_get_numbits
+                0x0000000000000000        0x6 usb_serial.o
+ .text.usb_serial_set_control
+                0x0000000000000000       0x58 usb_serial.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodhi4.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodhi4.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800060 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+LOAD smart_Teensy.o
+LOAD usb_serial.o
+LOAD /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libm.a
+LOAD /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a
+LOAD /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a
+LOAD /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000      0xa06
+ *(.vectors)
+ .vectors       0x0000000000000000       0xac /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+                0x0000000000000000                __vectors
+                0x0000000000000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000000000000ac       0x2d smart_Teensy.o
+ .progmem.data  0x00000000000000d9       0xc9 usb_serial.o
+                0x00000000000001a2                . = ALIGN (0x2)
+                0x00000000000001a2                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000000000001a2        0x0 linker stubs
+ *(.trampolines*)
+                0x00000000000001a2                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000000000001a2                __ctors_start = .
+ *(.ctors)
+                0x00000000000001a2                __ctors_end = .
+                0x00000000000001a2                __dtors_start = .
+ *(.dtors)
+                0x00000000000001a2                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000000000001a2        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+                0x00000000000001a2                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000000000001a2        0xc /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000000000001ae       0x16 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+                0x00000000000001ae                __do_copy_data
+ .init4         0x00000000000001c4       0x10 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000001c4                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000000000001d4        0x4 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+ *(.init9)
+ *(.text)
+ .text          0x00000000000001d8        0x2 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+                0x00000000000001d8                __vector_38
+                0x00000000000001d8                __vector_22
+                0x00000000000001d8                __vector_28
+                0x00000000000001d8                __vector_1
+                0x00000000000001d8                __vector_32
+                0x00000000000001d8                __vector_34
+                0x00000000000001d8                __vector_24
+                0x00000000000001d8                __vector_12
+                0x00000000000001d8                __bad_interrupt
+                0x00000000000001d8                __vector_6
+                0x00000000000001d8                __vector_31
+                0x00000000000001d8                __vector_35
+                0x00000000000001d8                __vector_39
+                0x00000000000001d8                __vector_3
+                0x00000000000001d8                __vector_23
+                0x00000000000001d8                __vector_30
+                0x00000000000001d8                __vector_25
+                0x00000000000001d8                __vector_13
+                0x00000000000001d8                __vector_17
+                0x00000000000001d8                __vector_19
+                0x00000000000001d8                __vector_7
+                0x00000000000001d8                __vector_41
+                0x00000000000001d8                __vector_27
+                0x00000000000001d8                __vector_5
+                0x00000000000001d8                __vector_33
+                0x00000000000001d8                __vector_37
+                0x00000000000001d8                __vector_4
+                0x00000000000001d8                __vector_9
+                0x00000000000001d8                __vector_2
+                0x00000000000001d8                __vector_21
+                0x00000000000001d8                __vector_15
+                0x00000000000001d8                __vector_36
+                0x00000000000001d8                __vector_40
+                0x00000000000001d8                __vector_8
+                0x00000000000001d8                __vector_26
+                0x00000000000001d8                __vector_14
+                0x00000000000001d8                __vector_16
+                0x00000000000001d8                __vector_18
+                0x00000000000001d8                __vector_20
+                0x00000000000001d8                __vector_42
+                0x00000000000001da                . = ALIGN (0x2)
+ *(.text.*)
+ .text.adc_start
+                0x00000000000001da       0x2a smart_Teensy.o
+                0x00000000000001da                adc_start
+ .text.adc_read
+                0x0000000000000204       0x2c smart_Teensy.o
+                0x0000000000000204                adc_read
+ .text.__vector_29
+                0x0000000000000230       0x5c smart_Teensy.o
+                0x0000000000000230                __vector_29
+ .text.read_sensor
+                0x000000000000028c       0x26 smart_Teensy.o
+                0x000000000000028c                read_sensor
+ .text.set_display
+                0x00000000000002b2       0x38 smart_Teensy.o
+                0x00000000000002b2                set_display
+ .text.setup_pwms
+                0x00000000000002ea       0x3a smart_Teensy.o
+                0x00000000000002ea                setup_pwms
+ .text.handle_set_pwm_command
+                0x0000000000000324       0x84 smart_Teensy.o
+                0x0000000000000324                handle_set_pwm_command
+ .text.handle_set_digitalio_command
+                0x00000000000003a8       0x5c smart_Teensy.o
+                0x00000000000003a8                handle_set_digitalio_command
+ .text.lowerhalf
+                0x0000000000000404       0x30 smart_Teensy.o
+                0x0000000000000404                lowerhalf
+ .text.send_str
+                0x0000000000000434       0x1a smart_Teensy.o
+                0x0000000000000434                send_str
+ .text.handle_command
+                0x000000000000044e       0x3c smart_Teensy.o
+                0x000000000000044e                handle_command
+ .text.recv_str
+                0x000000000000048a       0x4e smart_Teensy.o
+                0x000000000000048a                recv_str
+ .text.main     0x00000000000004d8       0x80 smart_Teensy.o
+                0x00000000000004d8                main
+ .text.usb_wait_in_ready
+                0x0000000000000558        0xa usb_serial.o
+ .text.usb_init
+                0x0000000000000562       0x32 usb_serial.o
+                0x0000000000000562                usb_init
+ .text.usb_configured
+                0x0000000000000594        0x6 usb_serial.o
+                0x0000000000000594                usb_configured
+ .text.usb_serial_getchar
+                0x000000000000059a       0x3c usb_serial.o
+                0x000000000000059a                usb_serial_getchar
+ .text.usb_serial_flush_input
+                0x00000000000005d6       0x26 usb_serial.o
+                0x00000000000005d6                usb_serial_flush_input
+ .text.usb_serial_putchar
+                0x00000000000005fc       0x84 usb_serial.o
+                0x00000000000005fc                usb_serial_putchar
+ .text.usb_serial_get_control
+                0x0000000000000680        0x6 usb_serial.o
+                0x0000000000000680                usb_serial_get_control
+ .text.__vector_10
+                0x0000000000000686       0x74 usb_serial.o
+                0x0000000000000686                __vector_10
+ .text.__vector_11
+                0x00000000000006fa      0x2ba usb_serial.o
+                0x00000000000006fa                __vector_11
+ .text.libgcc   0x00000000000009b4       0x26 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+                0x00000000000009b4                __divmodhi4
+                0x00000000000009b4                _div
+ .text.libgcc   0x00000000000009da       0x28 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodhi4.o)
+                0x00000000000009da                __udivmodhi4
+                0x0000000000000a02                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000000000000a02        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+                0x0000000000000a02                exit
+                0x0000000000000a02                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000000000000a02        0x4 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000000000000a06                _etext = .
+
+.data           0x0000000000800100        0xa load address 0x0000000000000a06
+                0x0000000000800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x0000000000800100        0x2 smart_Teensy.o
+                0x0000000000800100                lowerloop
+ .data          0x0000000000800102        0x7 usb_serial.o
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x000000000080010a                . = ALIGN (0x2)
+ *fill*         0x0000000000800109        0x1 00
+                0x000000000080010a                _edata = .
+                0x000000000080010a                PROVIDE (__data_end, .)
+
+.bss            0x000000000080010a        0xa
+                0x000000000080010a                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x000000000080010a        0x6 smart_Teensy.o
+ .bss           0x0000000000800110        0x4 usb_serial.o
+ *(.bss*)
+ *(COMMON)
+                0x0000000000800114                PROVIDE (__bss_end, .)
+                0x0000000000000a06                __data_load_start = LOADADDR (.data)
+                0x0000000000000a10                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x0000000000800114        0x0
+                0x0000000000800114                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x0000000000800114                PROVIDE (__noinit_end, .)
+                0x0000000000800114                _end = .
+                0x0000000000800114                PROVIDE (__heap_start, .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.stab           0x0000000000000000      0x6b4
+ *(.stab)
+ .stab          0x0000000000000000      0x6b4 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+
+.stabstr        0x0000000000000000       0x54
+ *(.stabstr)
+ .stabstr       0x0000000000000000       0x54 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x150
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0xa8 smart_Teensy.o
+ .debug_aranges
+                0x00000000000000a8       0xa8 usb_serial.o
+
+.debug_pubnames
+                0x0000000000000000      0x2f5
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x0000000000000000      0x14f smart_Teensy.o
+ .debug_pubnames
+                0x000000000000014f      0x1a6 usb_serial.o
+
+.debug_info     0x0000000000000000      0xec8
+ *(.debug_info)
+ .debug_info    0x0000000000000000      0x626 smart_Teensy.o
+ .debug_info    0x0000000000000626      0x8a2 usb_serial.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x0000000000000000      0x42c
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x270 smart_Teensy.o
+ .debug_abbrev  0x0000000000000270      0x1bc usb_serial.o
+
+.debug_line     0x0000000000000000     0x149f
+ *(.debug_line)
+ .debug_line    0x0000000000000000      0x773 smart_Teensy.o
+ .debug_line    0x0000000000000773      0xd2c usb_serial.o
+
+.debug_frame    0x0000000000000000      0x260
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000      0x130 smart_Teensy.o
+ .debug_frame   0x0000000000000130      0x130 usb_serial.o
+
+.debug_str      0x0000000000000000      0x557
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x220 smart_Teensy.o
+                                        0x273 (size before relaxing)
+ .debug_str     0x0000000000000220      0x337 usb_serial.o
+                                        0x442 (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x1412
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000      0x446 smart_Teensy.o
+ .debug_loc     0x0000000000000446      0xfcc usb_serial.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(smart_Teensy.elf elf32-avr)
+LOAD linker stubs
+
+.debug_pubtypes
+                0x0000000000000000       0xc2
+ .debug_pubtypes
+                0x0000000000000000       0x37 smart_Teensy.o
+ .debug_pubtypes
+                0x0000000000000037       0x8b usb_serial.o
+
+.debug_ranges   0x0000000000000000      0x168
+ .debug_ranges  0x0000000000000000       0x98 smart_Teensy.o
+ .debug_ranges  0x0000000000000098       0xd0 usb_serial.o
+
+Cross Reference Table
+
+Symbol                                            File
+PID                                               smart_Teensy.o
+__bad_interrupt                                   /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__bss_end                                         /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+__bss_start                                       /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+__data_end                                        /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+__data_load_start                                 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+__data_start                                      /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+__divmodhi4                                       /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+                                                  smart_Teensy.o
+__do_clear_bss                                    /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+                                                  usb_serial.o
+                                                  smart_Teensy.o
+__do_copy_data                                    /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+                                                  usb_serial.o
+                                                  smart_Teensy.o
+__heap_end                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__init                                            /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__stack                                           /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__udivmodhi4                                      /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodhi4.o)
+                                                  /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+__vector_1                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_10                                       usb_serial.o
+                                                  /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_11                                       usb_serial.o
+                                                  /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_12                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_13                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_14                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_15                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_16                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_17                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_18                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_19                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_2                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_20                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_21                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_22                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_23                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_24                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_25                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_26                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_27                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_28                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_29                                       smart_Teensy.o
+                                                  /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_3                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_30                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_31                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_32                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_33                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_34                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_35                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_36                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_37                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_38                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_39                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_4                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_40                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_41                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_42                                       /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_5                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_6                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_7                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_8                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_9                                        /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vector_default                                  /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+__vectors                                         /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+_div                                              /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_divmodhi4.o)
+_exit                                             /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+adc_available                                     smart_Teensy.o
+adc_read                                          smart_Teensy.o
+adc_start                                         smart_Teensy.o
+exit                                              /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+                                                  /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+handle_command                                    smart_Teensy.o
+handle_set_digitalio_command                      smart_Teensy.o
+handle_set_pwm_command                            smart_Teensy.o
+lamp_v                                            smart_Teensy.o
+lowerhalf                                         smart_Teensy.o
+lowerloop                                         smart_Teensy.o
+main                                              smart_Teensy.o
+                                                  /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm32u4.o
+read_sensor                                       smart_Teensy.o
+recv_str                                          smart_Teensy.o
+send_str                                          smart_Teensy.o
+set_default_duty_cycles                           smart_Teensy.o
+set_display                                       smart_Teensy.o
+setup_digitalio                                   smart_Teensy.o
+setup_pwms                                        smart_Teensy.o
+usb_configured                                    usb_serial.o
+                                                  smart_Teensy.o
+usb_init                                          usb_serial.o
+                                                  smart_Teensy.o
+usb_serial_available                              usb_serial.o
+usb_serial_flush_input                            usb_serial.o
+                                                  smart_Teensy.o
+usb_serial_flush_output                           usb_serial.o
+usb_serial_get_baud                               usb_serial.o
+usb_serial_get_control                            usb_serial.o
+                                                  smart_Teensy.o
+usb_serial_get_numbits                            usb_serial.o
+usb_serial_get_paritytype                         usb_serial.o
+usb_serial_get_stopbits                           usb_serial.o
+usb_serial_getchar                                usb_serial.o
+                                                  smart_Teensy.o
+usb_serial_putchar                                usb_serial.o
+                                                  smart_Teensy.o
+usb_serial_putchar_nowait                         usb_serial.o
+usb_serial_set_control                            usb_serial.o
+usb_serial_write                                  usb_serial.o

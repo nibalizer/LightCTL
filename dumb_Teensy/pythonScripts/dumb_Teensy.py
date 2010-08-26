@@ -56,13 +56,11 @@ def main(argv):
 	if (args):
 		usage()
 		sys.exit(2)
-	x = LightController(teensy)
-    time.sleep(1000);
-	while (1):
-		p = int(raw_input("Give me a number p for port: "))
-		t = int(raw_input("Give me a number t for value: "))
-		x.setDIO(p,t)
-        x.listenout()
+    x = LightController(teensy)
+    while (1):
+        p = int(raw_input("Give me a number p for port: "))
+        t = int(raw_input("Give me a number t for value: "))
+        x.setDIO(p,t)
 if __name__ == "__main__":
 	main(sys.argv[1:])
 
